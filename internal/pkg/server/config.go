@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
 	homedir "github.com/skeleton1231/gotal/pkg/util/common"
 	"github.com/spf13/viper"
 )
@@ -147,6 +148,7 @@ func LoadConfig(cfg string, defaultName string) error {
 	viper.SetEnvKeyReplacer(strings.NewReplacer(".", DefaultEnvKeyReplace, "-", DefaultEnvKeyReplace))
 
 	if err := viper.ReadInConfig(); err != nil {
+		logrus.Warnf("WARNING: viper failed to discover and load the configuration file: %s", err.Error())
 		return err
 	}
 	return nil
