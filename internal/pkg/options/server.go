@@ -5,9 +5,16 @@
 package options
 
 import (
+	"github.com/go-playground/validator/v10"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/spf13/pflag"
 )
+
+var validate *validator.Validate
+
+func init() {
+	validate = validator.New()
+}
 
 // ServerRunOptions represents the customizable options for running the server.
 // It includes fields such as Mode, Healthz status, and the middlewares used.

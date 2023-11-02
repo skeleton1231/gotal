@@ -1,10 +1,13 @@
-// Copyright 2020 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
 package options
 
 import (
+	"fmt"
+	"net"
+
 	"github.com/spf13/pflag"
 )
 
@@ -47,6 +50,49 @@ func NewRedisOptions() *RedisOptions {
 // Validate verifies flags passed to RedisOptions.
 func (o *RedisOptions) Validate() []error {
 	errs := []error{}
+
+	// Validate Host
+	if o.Host == "" {
+		errs = append(errs, fmt.Errorf("host cannot be empty"))
+	}
+
+	// Validate Port
+	if o.Port < 1 || o.Port > 65535 {
+		errs = append(errs, fmt.Errorf("port should be between 1 and 65535"))
+	}
+
+	// Validate Addrs
+	for _, addr := range o.Addrs {
+		host, port, err := net.SplitHostPort(addr)
+		if err != nil || host == "" || port == "" {
+			errs = append(errs, fmt.Errorf("invalid address format for %s, expected format: host:port", addr))
+		}
+	}
+
+	// Validate Database when using Redis cluster
+	if o.EnableCluster && o.Database != 0 {
+		errs = append(errs, fmt.Errorf("database must be 0 when using Redis cluster"))
+	}
+
+	// Validate MaxIdle
+	if o.MaxIdle <= 0 {
+		errs = append(errs, fmt.Errorf("maxIdle should be positive"))
+	}
+
+	// Validate MaxActive
+	if o.MaxActive < o.MaxIdle {
+		errs = append(errs, fmt.Errorf("maxActive should be greater than or equal to maxIdle"))
+	}
+
+	// Validate Timeout
+	if o.Timeout < 0 {
+		errs = append(errs, fmt.Errorf("timeout should be non-negative"))
+	}
+
+	// Validate SSL flags if UseSSL is true
+	if o.UseSSL && o.SSLInsecureSkipVerify {
+		errs = append(errs, fmt.Errorf("using insecure SSL settings, make sure you understand the implications"))
+	}
 
 	return errs
 }

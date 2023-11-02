@@ -18,7 +18,7 @@ import (
 
 var (
 	// progressMessage is a visually appealing string for indicating progress.
-	progressMessage = color.GreenString("====================>")
+	progressMessage = color.GreenString("==================================>")
 )
 
 // App is the central structure representing the CLI application.

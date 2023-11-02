@@ -1,10 +1,12 @@
-// Copyright 2020 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
 package options
 
 import (
+	"fmt"
+	"strings"
 	"time"
 
 	"github.com/skeleton1231/gotal/pkg/db"
@@ -39,8 +41,46 @@ func NewMySQLOptions() *MySQLOptions {
 }
 
 // Validate verifies flags passed to MySQLOptions.
+// Validate verifies fields of MySQLOptions.
 func (o *MySQLOptions) Validate() []error {
-	errs := []error{}
+	var errs []error
+
+	// Check if Host is not empty and has a proper format
+	if o.Host == "" {
+		errs = append(errs, fmt.Errorf("MySQL host cannot be empty"))
+	} else if !strings.Contains(o.Host, ":") {
+		errs = append(errs, fmt.Errorf("MySQL host format should be 'host:port'"))
+	}
+
+	// Check if Username is not empty
+	if o.Username == "" {
+		errs = append(errs, fmt.Errorf("MySQL username cannot be empty"))
+	}
+
+	// Check if Database is not empty
+	if o.Database == "" {
+		errs = append(errs, fmt.Errorf("MySQL database cannot be empty"))
+	}
+
+	// Check the range for MaxIdleConnections
+	if o.MaxIdleConnections <= 0 {
+		errs = append(errs, fmt.Errorf("MaxIdleConnections should be greater than 0"))
+	}
+
+	// Check the range for MaxOpenConnections
+	if o.MaxOpenConnections <= 0 {
+		errs = append(errs, fmt.Errorf("MaxOpenConnections should be greater than 0"))
+	}
+
+	// Check if MaxConnectionLifeTime is positive
+	if o.MaxConnectionLifeTime <= 0 {
+		errs = append(errs, fmt.Errorf("MaxConnectionLifeTime should be a positive duration"))
+	}
+
+	// Check the LogLevel range
+	if o.LogLevel < 0 || o.LogLevel > 3 {
+		errs = append(errs, fmt.Errorf("LogLevel should be between 0 (silent) and 3 (verbose)"))
+	}
 
 	return errs
 }
