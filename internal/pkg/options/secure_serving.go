@@ -21,6 +21,7 @@ const (
 	DefaultCertDirectory = "/var/run/apiserver"
 )
 
+// SecureServingOptions represents configuration for securely serving requests (usually over HTTPS).
 type SecureServingOptions struct {
 	BindAddress string `json:"bind-address" mapstructure:"bind-address"`
 	BindPort    int    `json:"bind-port"    mapstructure:"bind-port"`
@@ -28,11 +29,13 @@ type SecureServingOptions struct {
 	ServerCert  GeneratableKeyCert `json:"tls"          mapstructure:"tls"`
 }
 
+// CertKey holds paths for a certificate and its corresponding key file.
 type CertKey struct {
 	CertFile string `json:"cert-file"        mapstructure:"cert-file"`
 	KeyFile  string `json:"private-key-file" mapstructure:"private-key-file"`
 }
 
+// GeneratableKeyCert holds configuration for generating or locating key and cert files.
 type GeneratableKeyCert struct {
 	CertKey CertKey `json:"cert-key" mapstructure:"cert-key"`
 
@@ -41,6 +44,7 @@ type GeneratableKeyCert struct {
 	PairName string `json:"pair-name" mapstructure:"pair-name"`
 }
 
+// NewSecureServingOptions creates a new instance of SecureServingOptions with default values.
 func NewSecureServingOptions() *SecureServingOptions {
 	return &SecureServingOptions{
 		BindAddress: DefaultBindAddress,
@@ -53,6 +57,7 @@ func NewSecureServingOptions() *SecureServingOptions {
 	}
 }
 
+// ApplyTo sets up the secure serving info on the given server Config.
 func (s *SecureServingOptions) ApplyTo(c *server.Config) error {
 	c.SecureServing = &server.SecureServingInfo{
 		BindAddress: s.BindAddress,
@@ -66,6 +71,7 @@ func (s *SecureServingOptions) ApplyTo(c *server.Config) error {
 	return nil
 }
 
+// Validate checks for any errors in the secure serving options.
 func (s *SecureServingOptions) Validate() []error {
 	if s == nil {
 		return nil
@@ -88,6 +94,7 @@ func (s *SecureServingOptions) Validate() []error {
 	return errors
 }
 
+// AddFlags adds flags for the secure serving options to the given flag set.
 func (s *SecureServingOptions) AddFlags(fs *pflag.FlagSet) {
 	// IP address configuration for secure port
 	fs.StringVar(&s.BindAddress, "secure.bind-address", s.BindAddress,
@@ -119,6 +126,7 @@ func (s *SecureServingOptions) AddFlags(fs *pflag.FlagSet) {
 		"File holding the x509 private key that corresponds to the certificate in --secure.tls.cert-key.cert-file.")
 }
 
+// Complete finalizes the SecureServingOptions after flag parsing.
 func (s *SecureServingOptions) Complete() error {
 	if s == nil || s.BindPort == 0 {
 		return nil
@@ -140,6 +148,7 @@ func (s *SecureServingOptions) Complete() error {
 	return nil
 }
 
+// CreateListener sets up a TCP listener on the specified address.
 func CreateListener(addr string) (net.Listener, int, error) {
 	network := "tcp"
 
