@@ -12,8 +12,6 @@ import (
 	"github.com/sirupsen/logrus"
 
 	"github.com/skeleton1231/gotal/pkg/util/flag"
-	globalflag "github.com/skeleton1231/gotal/pkg/util/flag"
-	sections "github.com/skeleton1231/gotal/pkg/util/flag"
 	"github.com/skeleton1231/gotal/pkg/util/term"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -147,6 +145,7 @@ func (a *App) buildCommand() {
 		Args:          a.args,
 	}
 	// Basic settings for command output.
+	cmd.SetUsageTemplate(usageTemplate)
 	cmd.SetOut(os.Stdout)
 	cmd.SetErr(os.Stderr)
 	// Sort the flags for better visualization.
@@ -167,7 +166,7 @@ func (a *App) buildCommand() {
 	}
 
 	// Add flags to the command.
-	var namedFlagSets sections.NamedFlagSets
+	var namedFlagSets flag.NamedFlagSets
 	if a.options != nil {
 		namedFlagSets = a.options.Flags()
 		fs := cmd.Flags()
@@ -178,7 +177,7 @@ func (a *App) buildCommand() {
 
 	// Init Global Config
 	addConfigFlag(a.basename, namedFlagSets.FlagSet("global"))
-	globalflag.AddGlobalFlags(namedFlagSets.FlagSet("global"), cmd.Name())
+	flag.AddGlobalFlags(namedFlagSets.FlagSet("global"), cmd.Name())
 	cmd.Flags().AddFlagSet(namedFlagSets.FlagSet("global"))
 
 	// Apply custom usage and help templates.
@@ -248,18 +247,18 @@ func printWorkingDir() {
 }
 
 // addCmdTemplate customizes the usage and help templates for the command.
-func addCmdTemplate(cmd *cobra.Command, namedFlagSets sections.NamedFlagSets) {
+func addCmdTemplate(cmd *cobra.Command, namedFlagSets flag.NamedFlagSets) {
 	usageFmt := "Usage:\n  %s\n"
 	cols, _, _ := term.TerminalSize(cmd.OutOrStdout())
 	cmd.SetUsageFunc(func(cmd *cobra.Command) error {
 		fmt.Fprintf(cmd.OutOrStderr(), usageFmt, cmd.UseLine())
-		sections.PrintSections(cmd.OutOrStderr(), namedFlagSets, cols)
+		flag.PrintSections(cmd.OutOrStderr(), namedFlagSets, cols)
 
 		return nil
 	})
 	cmd.SetHelpFunc(func(cmd *cobra.Command, args []string) {
 		fmt.Fprintf(cmd.OutOrStdout(), "%s\n\n"+usageFmt, cmd.Long, cmd.UseLine())
-		sections.PrintSections(cmd.OutOrStdout(), namedFlagSets, cols)
+		flag.PrintSections(cmd.OutOrStdout(), namedFlagSets, cols)
 
 	})
 }
