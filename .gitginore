@@ -327,7 +327,6 @@ flycheck_*.el
 
 # End of https://www.toptal.com/developers/gitignore/api/vim,jetbrains,vscode,git,go,tags,backup,test
 
-# Start by iam
 
 # log
 *.log
@@ -353,5 +352,5 @@ dist
 # project root
 sripts/
 
-configs
+configs/
 
