@@ -7,8 +7,8 @@ package apiserver
 import (
 	"context"
 	"fmt"
-	"log"
 
+	"github.com/sirupsen/logrus"
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
 	genericoptions "github.com/skeleton1231/gotal/internal/pkg/options"
 	genericapiserver "github.com/skeleton1231/gotal/internal/pkg/server"
@@ -98,7 +98,7 @@ func (c *ExtraConfig) complete() *completedExtraConfig {
 func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	creds, err := credentials.NewServerTLSFromFile(c.ServerCert.CertKey.CertFile, c.ServerCert.CertKey.KeyFile)
 	if err != nil {
-		log.Fatalf("Failed to generate credentials %s", err.Error())
+		logrus.Fatalf("Failed to generate credentials %s", err.Error())
 	}
 	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
 	grpcServer := grpc.NewServer(opts...)

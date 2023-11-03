@@ -1,0 +1,67 @@
+# Full configuration for the API server
+
+# RESTful service configuration
+server:
+    mode: debug # server mode: release, debug, test, default is release
+    healthz: true # whether to enable health check, will set up /healthz route if enabled, default is true
+    middlewares: recovery,secure,nocache,dump # list of gin middlewares to load, separated by commas(,)
+    max-ping-count: 3 # number of self-check attempts after http service starts, default is 3
+
+# GRPC service configuration
+grpc:
+  bind-address: 127.0.0.1 # IP address for grpc secure mode, default is 0.0.0.0
+  bind-port: 8081 # port number for grpc secure mode, default is 8081
+
+# HTTP configuration
+insecure:
+    bind-address: 127.0.0.1 # IP address for insecure binding, 0.0.0.0 means using all network interfaces, default is 127.0.0.1
+    bind-port: 8883 # port for non-secure authentication, default is 8080
+
+# HTTPS configuration
+secure:
+    bind-address: 127.0.0.1 # IP address for HTTPS secure mode, default is 0.0.0.0
+    bind-port: 8443 # port number for using HTTPS secure mode, 0 means HTTPS is not enabled, default is 8443
+    tls:
+        #cert-dir: .iam/cert # directory where the TLS certificates are located, default is /var/run/iam
+        #pair-name: iam # name of the TLS key pair, default is iam
+        cert-key:
+            cert-file: /Users/huanghaitao/iam/etc/cert/iam-apiserver.pem # path to the file containing the x509 certificate for HTTPS authentication
+            private-key-file: /Users/huanghaitao/iam/etc/cert/iam-apiserver-key.pem # TLS private key
+
+# MySQL database related configuration
+mysql:
+  host: 127.0.0.1:3306 # MySQL server IP and port, default is 127.0.0.1:3306
+  username: root # MySQL username (minimal privilege set is recommended)
+  password: MyN3wP4ssw0rd # MySQL user password
+  database: iam # database name used by the iam system
+  max-idle-connections: 100 # maximum number of idle MySQL connections, default is 100
+  max-open-connections: 100 # maximum number of open MySQL connections, default is 100
+  max-connection-life-time: 10s # maximum lifetime of idle connections, default is 10s
+  log-level: 4 # GORM log level, 1: silent, 2:error, 3:warn, 4:info
+
+# Redis configuration
+redis:
+  host: 127.0.0.1 # redis address, default is 127.0.0.1:6379
+  port: 6379 # redis port, default is 6379
+  password: MyN3wP4ssw0rd # redis password
+  #addrs:
+  #master-name: # name of the redis cluster master
+  #username: # redis login username
+  #database: # redis database number
+  #optimisation-max-idle:  # maximum number of idle connections in the redis pool
+  #optimisation-max-active: # maximum number of active connections
+  #timeout: # timeout for connecting to redis
+  enable-cluster: false # whether to enable cluster mode
+  #use-ssl: # whether to enable TLS
+  #ssl-insecure-skip-verify: # allows the use of self-signed certificates when connecting to redis
+
+# JWT configuration
+jwt:
+  realm: JWT # jwt identifier
+  key: dfVpOK8LZeJLZHYmHdb1VdyRrACKpqoo # server-side secret
+  timeout: 24h # token expiration time (hours)
+  max-refresh: 24h # token refresh time (hours)
+
+feature:
+  enable-metrics: true # enable metrics, router:  /metrics
+  profiling: true # enable performance analysis, access system info like program stack, threads at <host>:<port>/debug/pprof/, default is true

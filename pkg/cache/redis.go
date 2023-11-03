@@ -169,7 +169,8 @@ func establishConnection(ctx context.Context, clusters []RedisClusterV2, config 
 func connectSingletonV2(ctx context.Context, isCache bool, config *Config) bool {
 	// NOTE: Assuming the connect logic remains the same, but if it differs, adjust accordingly.
 	if singletonV2(isCache) == nil {
-		logrus.Debug("Connecting to redis cluster")
+		logrus.Debugf("Connecting to redis cluster: %s", "")
+
 		if isCache {
 			singleCachePool.Store(NewRedisClusterPoolV2(isCache, config))
 			return true
@@ -262,7 +263,7 @@ func (opts *RedisOptsV2) failover() *redis.FailoverOptions {
 // NewRedisClusterPool create a redis cluster pool.
 func NewRedisClusterPoolV2(isCache bool, config *Config) redis.UniversalClient {
 	// redisSingletonMu is locked and we know the singleton is nil
-	logrus.Debug("Creating new Redis connection pool")
+	logrus.Info("Creating new Redis connection pool")
 
 	// poolSize applies per cluster node and not for the whole cluster.
 	poolSize := 500

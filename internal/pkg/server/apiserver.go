@@ -14,6 +14,8 @@ import (
 
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
+	"github.com/sirupsen/logrus"
+	"github.com/skeleton1231/gotal/internal/pkg/middleware"
 	ginprometheus "github.com/zsais/go-gin-prometheus"
 	"golang.org/x/sync/errgroup"
 )
@@ -56,13 +58,30 @@ func (s *APIServer) InstallAPIs() {
 
 // Setup customizes gin settings, mainly for debugging purposes.
 func (s *APIServer) Setup() {
-	// Suppress route logging for cleaner output
-	gin.DebugPrintRouteFunc = func(httpMethod, absolutePath, handlerName string, nuHandlers int) {}
+	// Override the DebugPrintRouteFunc for customized route logging
+	gin.DebugPrintRouteFunc = func(httpMethod, absolutePath, handlerName string, nuHandlers int) {
+		// Now this log statement is within the scope where the variables are defined
+		logrus.Infof("%-6s %-s --> %s (%d handlers)", httpMethod, absolutePath, handlerName, nuHandlers)
+	}
+	// Rest of your setup code...
 }
 
 // InstallMiddlewares sets up any global middlewares for the server.
 func (s *APIServer) InstallMiddlewares() {
 	// Potential spot to install any necessary middlewares
+
+	// install custom middlewares
+	for _, m := range s.middlewares {
+		mw, ok := middleware.Middlewares[m]
+		if !ok {
+			logrus.Warnf("can not find middleware: %s", m)
+
+			continue
+		}
+
+		logrus.Infof("install middleware: %s", m)
+		s.Use(mw)
+	}
 }
 
 // Run starts the API server. It sets up and runs both the insecure and secure servers.
@@ -83,9 +102,14 @@ func (s *APIServer) Run() error {
 
 	// Start insecure server
 	eg.Go(func() error {
+		logrus.Infof("Start to listening the incoming requests on http address: %s", s.InsecureServingInfo.Address)
+
 		if err := s.insecureServer.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			logrus.Fatal(err.Error())
 			return err
 		}
+		logrus.Infof("Server on %s stopped", s.InsecureServingInfo.Address)
+
 		return nil
 	})
 
@@ -95,20 +119,34 @@ func (s *APIServer) Run() error {
 		if cert == "" || key == "" || s.SecureServingInfo.BindPort == 0 {
 			return nil
 		}
+
+		logrus.Infof("Start to listening the incoming requests on https address: %s", s.SecureServingInfo.Address())
+
 		if err := s.secureServer.ListenAndServeTLS(cert, key); err != nil && !errors.Is(err, http.ErrServerClosed) {
+			logrus.Fatal(err.Error())
+
 			return err
 		}
+
+		logrus.Infof("Server on %s stopped", s.SecureServingInfo.Address())
+
 		return nil
 	})
 
 	// Check server health (if enabled) before continuing
 	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
-	if s.healthz && s.ping(ctx) != nil {
-		return errors.New("server failed health check")
+	if s.healthz {
+		if err := s.ping(ctx); err != nil {
+			return err
+		}
 	}
 
-	return eg.Wait()
+	if err := eg.Wait(); err != nil {
+		logrus.Fatal(err.Error())
+	}
+
+	return nil
 }
 
 // Close gracefully shuts down both the insecure and secure servers.
@@ -129,15 +167,18 @@ func (s *APIServer) ping(ctx context.Context) error {
 	for {
 		resp, err := http.Get(url) // simplified from creating a new request
 		if err == nil && resp.StatusCode == http.StatusOK {
+			logrus.Info("The router has been deployed successfully.")
 			resp.Body.Close()
 			return nil
 		}
+
+		logrus.Info("Waiting for the router, if fail will retry in 1 second.")
 
 		time.Sleep(1 * time.Second)
 
 		select {
 		case <-ctx.Done():
-			return errors.New("ping timeout")
+			logrus.Fatal("can not ping http server within the specified time interval.")
 		default:
 		}
 	}

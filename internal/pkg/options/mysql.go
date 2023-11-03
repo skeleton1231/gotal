@@ -102,7 +102,7 @@ func (o *MySQLOptions) AddFlags(fs *pflag.FlagSet) {
 
 	fs.DurationVar(&o.MaxConnectionLifeTime, "mysql.max-connection-life-time", o.MaxConnectionLifeTime, "Max connection life time for mysql.")
 
-	fs.IntVar(&o.LogLevel, "mysql.log-mode", o.LogLevel, "Specify gorm log level.")
+	// fs.IntVar(&o.LogLevel, "mysql.log-mode", o.LogLevel, "Specify gorm log level.")
 }
 
 // NewClient create mysql store with the given config.
@@ -115,7 +115,7 @@ func (o *MySQLOptions) NewClient() (*gorm.DB, error) {
 		MaxIdleConnections:    o.MaxIdleConnections,
 		MaxOpenConnections:    o.MaxOpenConnections,
 		MaxConnectionLifeTime: o.MaxConnectionLifeTime,
-		LogLevel:              o.LogLevel,
+		// LogLevel:              o.LogLevel,
 	}
 
 	return db.New(opts)

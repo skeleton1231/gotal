@@ -29,7 +29,8 @@ type Options struct {
 
 // NewOptions creates a new Options object with default parameters.
 func NewOptions() *Options {
-	o := Options{
+
+	return &Options{
 		GenericServerRunOptions: genericoptions.NewServerRunOptions(),
 		GRPCOptions:             genericoptions.NewGRPCOptions(),
 		InsecureServing:         genericoptions.NewInsecureServingOptions(),
@@ -39,8 +40,6 @@ func NewOptions() *Options {
 		JwtOptions:              genericoptions.NewJwtOptions(),
 		FeatureOptions:          genericoptions.NewFeatureOptions(),
 	}
-
-	return &o
 }
 
 // ApplyTo applies the run options to the method receiver and returns self.
@@ -68,7 +67,6 @@ func (o *Options) String() string {
 	return string(data)
 }
 
-// Complete set default Options.
 // Complete set default Options.
 func (o *Options) Complete() error {
 	if o.JwtOptions.Key == "" {

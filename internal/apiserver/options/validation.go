@@ -1,4 +1,4 @@
-// Copyright 2020 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
@@ -8,14 +8,22 @@ package options
 func (o *Options) Validate() []error {
 	var errs []error
 
-	errs = append(errs, o.GenericServerRunOptions.Validate()...)
-	errs = append(errs, o.GRPCOptions.Validate()...)
-	errs = append(errs, o.InsecureServing.Validate()...)
-	errs = append(errs, o.SecureServing.Validate()...)
-	errs = append(errs, o.MySQLOptions.Validate()...)
-	errs = append(errs, o.RedisOptions.Validate()...)
-	errs = append(errs, o.JwtOptions.Validate()...)
-	errs = append(errs, o.FeatureOptions.Validate()...)
+	validators := []interface {
+		Validate() []error
+	}{
+		o.GenericServerRunOptions,
+		o.GRPCOptions,
+		o.InsecureServing,
+		o.SecureServing,
+		o.MySQLOptions,
+		o.RedisOptions,
+		o.JwtOptions,
+		o.FeatureOptions,
+	}
+
+	for _, validator := range validators {
+		errs = append(errs, validator.Validate()...)
+	}
 
 	return errs
 }

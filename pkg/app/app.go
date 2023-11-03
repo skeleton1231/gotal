@@ -9,16 +9,55 @@ import (
 	"os"
 
 	"github.com/fatih/color"
+	"github.com/sirupsen/logrus"
+
 	"github.com/skeleton1231/gotal/pkg/util/flag"
 	globalflag "github.com/skeleton1231/gotal/pkg/util/flag"
 	sections "github.com/skeleton1231/gotal/pkg/util/flag"
+	"github.com/skeleton1231/gotal/pkg/util/term"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
 
 var (
-	// progressMessage is a visually appealing string for indicating progress.
-	progressMessage = color.GreenString("==================================>")
+	progressMessage = color.GreenString("==>")
+
+	usageTemplate = fmt.Sprintf(`%s{{if .Runnable}}
+  %s{{end}}{{if .HasAvailableSubCommands}}
+  %s{{end}}{{if gt (len .Aliases) 0}}
+
+%s
+  {{.NameAndAliases}}{{end}}{{if .HasExample}}
+
+%s
+{{.Example}}{{end}}{{if .HasAvailableSubCommands}}
+
+%s{{range .Commands}}{{if (or .IsAvailableCommand (eq .Name "help"))}}
+  %s {{.Short}}{{end}}{{end}}{{end}}{{if .HasAvailableLocalFlags}}
+
+%s
+{{.LocalFlags.FlagUsages | trimTrailingWhitespaces}}{{end}}{{if .HasAvailableInheritedFlags}}
+
+%s
+{{.InheritedFlags.FlagUsages | trimTrailingWhitespaces}}{{end}}{{if .HasHelpSubCommands}}
+
+%s{{range .Commands}}{{if .IsAdditionalHelpTopicCommand}}
+  {{rpad .CommandPath .CommandPathPadding}} {{.Short}}{{end}}{{end}}{{end}}{{if .HasAvailableSubCommands}}
+
+Use "%s --help" for more information about a command.{{end}}
+`,
+		color.CyanString("Usage:"),
+		color.GreenString("{{.UseLine}}"),
+		color.GreenString("{{.CommandPath}} [command]"),
+		color.CyanString("Aliases:"),
+		color.CyanString("Examples:"),
+		color.CyanString("Available Commands:"),
+		color.GreenString("{{rpad .Name .NamePadding }}"),
+		color.CyanString("Flags:"),
+		color.CyanString("Global Flags:"),
+		color.CyanString("Additional help topics:"),
+		color.GreenString("{{.CommandPath}} [command]"),
+	)
 )
 
 // App is the central structure representing the CLI application.
@@ -83,6 +122,7 @@ func WithDefaultValidArgs() Option {
 
 // NewApp initializes a new App instance.
 func NewApp(name string, basename string, opts ...Option) *App {
+
 	a := &App{
 		name:     name,
 		basename: basename,
@@ -142,7 +182,7 @@ func (a *App) buildCommand() {
 	cmd.Flags().AddFlagSet(namedFlagSets.FlagSet("global"))
 
 	// Apply custom usage and help templates.
-	addCmdTemplate(&cmd)
+	addCmdTemplate(&cmd, namedFlagSets)
 	// Assign the main cobra command to the App instance.
 	a.cmd = &cmd
 }
@@ -173,6 +213,7 @@ func (a *App) runCommand(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	logrus.Infof("%v Starting %s ...", progressMessage, a.name)
 	// Apply option rules.
 	if a.options != nil {
 		if err := a.applyOptionRules(); err != nil {
@@ -193,6 +234,10 @@ func (a *App) applyOptionRules() error {
 			return err
 		}
 	}
+
+	if printableOptions, ok := a.options.(PrintableOptions); ok {
+		logrus.Infof("%v Config: `%s`", progressMessage, printableOptions.String())
+	}
 	return nil
 }
 
@@ -203,13 +248,18 @@ func printWorkingDir() {
 }
 
 // addCmdTemplate customizes the usage and help templates for the command.
-func addCmdTemplate(cmd *cobra.Command) {
+func addCmdTemplate(cmd *cobra.Command, namedFlagSets sections.NamedFlagSets) {
 	usageFmt := "Usage:\n  %s\n"
+	cols, _, _ := term.TerminalSize(cmd.OutOrStdout())
 	cmd.SetUsageFunc(func(cmd *cobra.Command) error {
 		fmt.Fprintf(cmd.OutOrStderr(), usageFmt, cmd.UseLine())
+		sections.PrintSections(cmd.OutOrStderr(), namedFlagSets, cols)
+
 		return nil
 	})
 	cmd.SetHelpFunc(func(cmd *cobra.Command, args []string) {
 		fmt.Fprintf(cmd.OutOrStdout(), "%s\n\n"+usageFmt, cmd.Long, cmd.UseLine())
+		sections.PrintSections(cmd.OutOrStdout(), namedFlagSets, cols)
+
 	})
 }

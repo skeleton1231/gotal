@@ -5,7 +5,6 @@ package flag
 
 import (
 	goflag "flag"
-	"fmt"
 	"strings"
 
 	"github.com/spf13/pflag"
@@ -25,6 +24,6 @@ func InitFlags(flags *pflag.FlagSet) {
 
 func PrintFlags(flags *pflag.FlagSet) {
 	flags.VisitAll(func(flag *pflag.Flag) {
-		fmt.Println("flags log")
+		// fmt.Println("flags log")
 	})
 }
