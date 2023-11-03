@@ -1,4 +1,4 @@
-// Copyright 2020 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
@@ -15,7 +15,6 @@ import (
 	"github.com/skeleton1231/gotal/pkg/util/common"
 )
 
-// Options runs an iam api server.
 type Options struct {
 	GenericServerRunOptions *genericoptions.ServerRunOptions       `json:"server"   mapstructure:"server"`
 	GRPCOptions             *genericoptions.GRPCOptions            `json:"grpc"     mapstructure:"grpc"`
@@ -27,7 +26,6 @@ type Options struct {
 	FeatureOptions          *genericoptions.FeatureOptions         `json:"feature"  mapstructure:"feature"`
 }
 
-// NewOptions creates a new Options object with default parameters.
 func NewOptions() *Options {
 
 	return &Options{
@@ -42,12 +40,10 @@ func NewOptions() *Options {
 	}
 }
 
-// ApplyTo applies the run options to the method receiver and returns self.
 func (o *Options) ApplyTo(c *server.Config) error {
 	return nil
 }
 
-// Flags returns flags for a specific APIServer by section name.
 func (o *Options) Flags() (fss sections.NamedFlagSets) {
 	o.GenericServerRunOptions.AddFlags(fss.FlagSet("generic"))
 	o.JwtOptions.AddFlags(fss.FlagSet("jwt"))

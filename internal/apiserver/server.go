@@ -28,7 +28,7 @@ type preparedAPIServer struct {
 	*apiServer
 }
 
-// ExtraConfig defines extra configuration for the iam-apiserver.
+// ExtraConfig defines extra configuration for the apiserver.
 type ExtraConfig struct {
 	Addr         string
 	MaxMsgSize   int

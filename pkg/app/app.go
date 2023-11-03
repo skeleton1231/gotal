@@ -244,7 +244,7 @@ func (a *App) applyOptionRules() error {
 // printWorkingDir prints the current working directory to the console.
 func printWorkingDir() {
 	wd, _ := os.Getwd()
-	fmt.Println(wd)
+	logrus.Infof("%v WorkingDir: %s", progressMessage, wd)
 }
 
 // addCmdTemplate customizes the usage and help templates for the command.

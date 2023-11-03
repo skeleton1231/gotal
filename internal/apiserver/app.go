@@ -1,8 +1,8 @@
-// Copyright 2020 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-// Package apiserver does all the work necessary to create a iam APIServer.
+// Package apiserver does all the work necessary to create a APIServer.
 package apiserver
 
 import (
