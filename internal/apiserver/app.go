@@ -11,16 +11,17 @@ import (
 	"github.com/skeleton1231/gotal/pkg/app"
 )
 
-const commandDesc = `APISERVER Description`
+const serverName = "APISERVER"
+const commandDesc = `Description`
 
 // NewApp creates an App object with default parameters.
 func NewApp(basename string) *app.App {
 
 	opts := options.NewOptions()
-	application := app.NewApp("APISERVER",
+	application := app.NewApp(serverName,
 		basename,
 		app.WithOptions(opts),
-		app.WithDescription(commandDesc),
+		app.WithDescription(serverName+commandDesc),
 		app.WithDefaultValidArgs(),
 		app.WithRunFunc(run(opts)),
 	)

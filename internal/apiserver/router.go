@@ -16,6 +16,11 @@ func installMiddleware(g *gin.Engine) {
 }
 
 func installController(g *gin.Engine) *gin.Engine {
+	testController(g)
+	return g
+}
+
+func testController(g *gin.Engine) {
 
 	g.GET("/api-test", func(c *gin.Context) {
 		c.JSON(200, gin.H{
@@ -28,10 +33,10 @@ func installController(g *gin.Engine) *gin.Engine {
 		ctx := c.Request.Context()
 
 		// Example key-value to set in Redis
-		key := "testKey"
-		value := "testValue"
+		key := "testKey111"
+		value := "testValue111"
 
-		redisClient := cache.RedisClusterV2{KeyPrefix: "test"}
+		redisClient := &cache.RedisClusterV2{KeyPrefix: "test"}
 		// Set the value in Redis
 		err := redisClient.SetKey(ctx, key, value, 3600)
 		if err != nil {
@@ -55,5 +60,4 @@ func installController(g *gin.Engine) *gin.Engine {
 			"retrieved_value": retrievedValue,
 		})
 	})
-	return g
 }

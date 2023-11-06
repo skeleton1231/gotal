@@ -8,35 +8,35 @@ package options
 import (
 	"encoding/json"
 
-	sections "github.com/skeleton1231/gotal/pkg/util/flag"
+	"github.com/skeleton1231/gotal/pkg/util/flag"
 
-	genericoptions "github.com/skeleton1231/gotal/internal/pkg/options"
+	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/util/common"
 )
 
 type Options struct {
-	GenericServerRunOptions *genericoptions.ServerRunOptions       `json:"server"   mapstructure:"server"`
-	GRPCOptions             *genericoptions.GRPCOptions            `json:"grpc"     mapstructure:"grpc"`
-	InsecureServing         *genericoptions.InsecureServingOptions `json:"insecure" mapstructure:"insecure"`
-	SecureServing           *genericoptions.SecureServingOptions   `json:"secure"   mapstructure:"secure"`
-	MySQLOptions            *genericoptions.MySQLOptions           `json:"mysql"    mapstructure:"mysql"`
-	RedisOptions            *genericoptions.RedisOptions           `json:"redis"    mapstructure:"redis"`
-	JwtOptions              *genericoptions.JwtOptions             `json:"jwt"      mapstructure:"jwt"`
-	FeatureOptions          *genericoptions.FeatureOptions         `json:"feature"  mapstructure:"feature"`
+	GenericServerRunOptions *options.ServerRunOptions       `json:"server"   mapstructure:"server"`
+	GRPCOptions             *options.GRPCOptions            `json:"grpc"     mapstructure:"grpc"`
+	InsecureServing         *options.InsecureServingOptions `json:"insecure" mapstructure:"insecure"`
+	SecureServing           *options.SecureServingOptions   `json:"secure"   mapstructure:"secure"`
+	MySQLOptions            *options.MySQLOptions           `json:"mysql"    mapstructure:"mysql"`
+	RedisOptions            *options.RedisOptions           `json:"redis"    mapstructure:"redis"`
+	JwtOptions              *options.JwtOptions             `json:"jwt"      mapstructure:"jwt"`
+	FeatureOptions          *options.FeatureOptions         `json:"feature"  mapstructure:"feature"`
 }
 
 func NewOptions() *Options {
 
 	return &Options{
-		GenericServerRunOptions: genericoptions.NewServerRunOptions(),
-		GRPCOptions:             genericoptions.NewGRPCOptions(),
-		InsecureServing:         genericoptions.NewInsecureServingOptions(),
-		SecureServing:           genericoptions.NewSecureServingOptions(),
-		MySQLOptions:            genericoptions.NewMySQLOptions(),
-		RedisOptions:            genericoptions.NewRedisOptions(),
-		JwtOptions:              genericoptions.NewJwtOptions(),
-		FeatureOptions:          genericoptions.NewFeatureOptions(),
+		GenericServerRunOptions: options.NewServerRunOptions(),
+		GRPCOptions:             options.NewGRPCOptions(),
+		InsecureServing:         options.NewInsecureServingOptions(),
+		SecureServing:           options.NewSecureServingOptions(),
+		MySQLOptions:            options.NewMySQLOptions(),
+		RedisOptions:            options.NewRedisOptions(),
+		JwtOptions:              options.NewJwtOptions(),
+		FeatureOptions:          options.NewFeatureOptions(),
 	}
 }
 
@@ -44,7 +44,7 @@ func (o *Options) ApplyTo(c *server.Config) error {
 	return nil
 }
 
-func (o *Options) Flags() (fss sections.NamedFlagSets) {
+func (o *Options) Flags() (fss flag.NamedFlagSets) {
 	o.GenericServerRunOptions.AddFlags(fss.FlagSet("generic"))
 	o.JwtOptions.AddFlags(fss.FlagSet("jwt"))
 	o.GRPCOptions.AddFlags(fss.FlagSet("grpc"))
