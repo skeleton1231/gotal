@@ -108,7 +108,7 @@ func (s *APIServer) Run() error {
 			logrus.Fatal(err.Error())
 			return err
 		}
-		logrus.Infof("Server on %s stopped", s.InsecureServingInfo.Address)
+		logrus.Infof("HTTP Server on %s stopped", s.InsecureServingInfo.Address)
 
 		return nil
 	})
@@ -128,7 +128,7 @@ func (s *APIServer) Run() error {
 			return err
 		}
 
-		logrus.Infof("Server on %s stopped", s.SecureServingInfo.Address())
+		logrus.Infof("HTTPS Server on %s stopped", s.SecureServingInfo.Address())
 
 		return nil
 	})

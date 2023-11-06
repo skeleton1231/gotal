@@ -1,7 +1,11 @@
-package posix
+/*
+Package posixsignal provides a listener for a posix signal. By default
+it listens for SIGINT and SIGTERM, but others can be chosen in NewPosixSignalManager.
+When ShutdownFinish is called it exits with os.Exit(0)
+*/
+package posixsignal
 
 import (
-	"log"
 	"os"
 	"os/signal"
 	"syscall"
@@ -9,19 +13,24 @@ import (
 	"github.com/skeleton1231/gotal/pkg/shutdown"
 )
 
-// Name is the identifier for the PosixSignalManager.
+// Name defines shutdown manager name.
 const Name = "PosixSignalManager"
 
-// PosixSignalManager listens for POSIX signals and triggers a graceful shutdown.
+// PosixSignalManager implements ShutdownManager interface that is added
+// to GracefulShutdown. Initialize with NewPosixSignalManager.
 type PosixSignalManager struct {
 	signals []os.Signal
 }
 
-// NewPosixSignalManager creates a new PosixSignalManager that listens for the provided signals.
-// If no signals are provided, it defaults to listening for SIGINT and SIGTERM.
+// NewPosixSignalManager initializes the PosixSignalManager.
+// As arguments you can provide os.Signal-s to listen to, if none are given,
+// it will default to SIGINT and SIGTERM.
 func NewPosixSignalManager(sig ...os.Signal) *PosixSignalManager {
 	if len(sig) == 0 {
-		sig = []os.Signal{os.Interrupt, syscall.SIGINT, syscall.SIGTERM} // Simplified signal slice initialization
+		sig = make([]os.Signal, 3)
+		sig[0] = os.Interrupt
+		sig[1] = syscall.SIGINT
+		sig[2] = syscall.SIGTERM
 	}
 
 	return &PosixSignalManager{
@@ -29,39 +38,34 @@ func NewPosixSignalManager(sig ...os.Signal) *PosixSignalManager {
 	}
 }
 
-// GetName returns the name of this ShutdownManager.
-func (pm *PosixSignalManager) GetName() string {
+// GetName returns name of this ShutdownManager.
+func (posixSignalManager *PosixSignalManager) GetName() string {
 	return Name
 }
 
-// Start begins the signal listening process.
-// It runs in its own goroutine to avoid blocking the caller.
-func (pm *PosixSignalManager) Start(gs shutdown.GSInterface) error {
-	signalChan := make(chan os.Signal, 1)
-	signal.Notify(signalChan, pm.signals...)
+// Start starts listening for posix signals.
+func (posixSignalManager *PosixSignalManager) Start(gs shutdown.GSInterface) error {
 	go func() {
-		for {
-			sig := <-signalChan
-			log.Printf("Received signal: %v\n", sig)
-			gs.StartShutdown(pm)
-			// Depending on your shutdown logic, you might want to break after initiating shutdown
-		}
+		c := make(chan os.Signal, 1)
+		signal.Notify(c, posixSignalManager.signals...)
+
+		// Block until a signal is received.
+		<-c
+
+		gs.StartShutdown(posixSignalManager)
 	}()
 
 	return nil
 }
 
-// ShutdownStart is called when a shutdown sequence begins.
-// This implementation currently does nothing but can be extended if needed.
-func (pm *PosixSignalManager) ShutdownStart() error {
-	// Implement any pre-shutdown initiation logic here if necessary.
+// ShutdownStart does nothing.
+func (posixSignalManager *PosixSignalManager) ShutdownStart() error {
 	return nil
 }
 
-// ShutdownFinish is called after all shutdown callbacks have been completed.
-// It terminates the application by calling os.Exit(0).
-func (pm *PosixSignalManager) ShutdownFinish() error {
-	// Implement any last-minute cleanup here if necessary.
-	os.Exit(0) // Terminates the program. The line below will not be executed.
-	return nil // This is unreachable code. Document that os.Exit is called above.
+// ShutdownFinish exits the app with os.Exit(0).
+func (posixSignalManager *PosixSignalManager) ShutdownFinish() error {
+	os.Exit(0)
+
+	return nil
 }
