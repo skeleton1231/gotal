@@ -80,22 +80,6 @@ func Connected() bool {
 	return false
 }
 
-func singleton(cache bool) redis.UniversalClient {
-	if cache {
-		v := singleCachePool.Load()
-		if v != nil {
-			return v.(redis.UniversalClient)
-		}
-
-		return nil
-	}
-	if v := singlePool.Load(); v != nil {
-		return v.(redis.UniversalClient)
-	}
-
-	return nil
-}
-
 func singletonV2(cache bool) redis.UniversalClient {
 	if cache {
 		v := singleCachePool.Load()
@@ -147,6 +131,12 @@ func ConnectToRedisV2(ctx context.Context, config *Config) {
 
 		select {
 		case <-ctx.Done():
+			// Call the Close method for each RedisClusterV2 instance
+			for _, cluster := range c {
+				if err := cluster.Close(); err != nil {
+					logrus.Errorf("Error closing Redis connection: %s", err)
+				}
+			}
 			return
 		case <-tick.C:
 			continue
@@ -318,6 +308,14 @@ func (r *RedisClusterV2) Connect() bool {
 	return true
 }
 
+func (r *RedisClusterV2) Close() error {
+	client := r.singleton()
+	if client != nil {
+		return client.Close()
+	}
+	return nil
+}
+
 func (r *RedisClusterV2) singleton() redis.UniversalClient {
 	return singletonV2(r.IsCache)
 }
@@ -459,7 +457,7 @@ func (r *RedisClusterV2) GetExp(ctx context.Context, keyName string) (int64, err
 
 	value, err := r.singleton().TTL(ctx, r.fixKey(keyName)).Result()
 	if err != nil {
-		logrus.Errorf("Error trying to get TTL: ", err.Error())
+		logrus.Errorf("Error trying to get TTL: %s", err.Error())
 
 		return 0, ErrKeyNotFound
 	}
