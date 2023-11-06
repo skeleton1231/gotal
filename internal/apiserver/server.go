@@ -10,18 +10,18 @@ import (
 
 	"github.com/sirupsen/logrus"
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
-	genericoptions "github.com/skeleton1231/gotal/internal/pkg/options"
-	genericapiserver "github.com/skeleton1231/gotal/internal/pkg/server"
-	storage "github.com/skeleton1231/gotal/pkg/cache"
+	"github.com/skeleton1231/gotal/internal/pkg/options"
+	"github.com/skeleton1231/gotal/internal/pkg/server"
+	"github.com/skeleton1231/gotal/pkg/cache"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/reflection"
 )
 
 type apiServer struct {
-	redisOptions     *genericoptions.RedisOptions
-	genericAPIServer *genericapiserver.APIServer
-	gRPCAPIServer    *grpcAPIServer
+	redisOptions  *options.RedisOptions
+	httpAPIServer *server.APIServer
+	gRPCAPIServer *grpcAPIServer
 }
 
 type preparedAPIServer struct {
@@ -32,8 +32,8 @@ type preparedAPIServer struct {
 type ExtraConfig struct {
 	Addr         string
 	MaxMsgSize   int
-	ServerCert   genericoptions.GeneratableKeyCert
-	mysqlOptions *genericoptions.MySQLOptions
+	ServerCert   options.GeneratableKeyCert
+	mysqlOptions *options.MySQLOptions
 }
 
 func createAPIServer(cfg *config.Config) (*apiServer, error) {
@@ -58,9 +58,9 @@ func createAPIServer(cfg *config.Config) (*apiServer, error) {
 	}
 
 	server := &apiServer{
-		redisOptions:     cfg.RedisOptions,
-		genericAPIServer: genericServer,
-		gRPCAPIServer:    extraServer,
+		redisOptions:  cfg.RedisOptions,
+		httpAPIServer: genericServer,
+		gRPCAPIServer: extraServer,
 	}
 
 	return server, nil
@@ -68,7 +68,7 @@ func createAPIServer(cfg *config.Config) (*apiServer, error) {
 
 func (s *apiServer) PrepareRun() preparedAPIServer {
 
-	initRouter(s.genericAPIServer.Engine)
+	initRouter(s.httpAPIServer.Engine)
 
 	s.initRedisStore()
 
@@ -78,7 +78,7 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 func (s preparedAPIServer) Run() error {
 	go s.gRPCAPIServer.Run()
 
-	return s.genericAPIServer.Run()
+	return s.httpAPIServer.Run()
 }
 
 type completedExtraConfig struct {
@@ -103,23 +103,13 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
 	grpcServer := grpc.NewServer(opts...)
 
-	//storeIns, _ := mysql.GetMySQLFactoryOr(c.mysqlOptions)
-
-	// store.SetClient(storeIns)
-	// cacheIns, err := cachev1.GetCacheInsOr(storeIns)
-	// if err != nil {
-	// 	log.Fatalf("Failed to get cache instance: %s", err.Error())
-	// }
-
-	// pb.RegisterCacheServer(grpcServer, cacheIns)
-
 	reflection.Register(grpcServer)
 
 	return &grpcAPIServer{grpcServer, c.Addr}, nil
 }
 
-func buildGenericConfig(cfg *config.Config) (genericConfig *genericapiserver.Config, lastErr error) {
-	genericConfig = genericapiserver.NewConfig()
+func buildGenericConfig(cfg *config.Config) (genericConfig *server.Config, lastErr error) {
+	genericConfig = server.NewConfig()
 	if lastErr = cfg.GenericServerRunOptions.ApplyTo(genericConfig); lastErr != nil {
 		return
 	}
@@ -152,7 +142,7 @@ func buildExtraConfig(cfg *config.Config) (*ExtraConfig, error) {
 func (s *apiServer) initRedisStore() {
 	ctx, _ := context.WithCancel(context.Background())
 
-	config := &storage.Config{
+	config := &cache.Config{
 		Host:                  s.redisOptions.Host,
 		Port:                  s.redisOptions.Port,
 		Addrs:                 s.redisOptions.Addrs,
@@ -169,5 +159,5 @@ func (s *apiServer) initRedisStore() {
 	}
 
 	// try to connect to redis
-	go storage.ConnectToRedisV2(ctx, config)
+	go cache.ConnectToRedisV2(ctx, config)
 }
