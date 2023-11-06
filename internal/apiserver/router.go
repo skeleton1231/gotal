@@ -2,6 +2,7 @@ package apiserver
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/skeleton1231/gotal/pkg/cache"
@@ -22,7 +23,11 @@ func installController(g *gin.Engine) *gin.Engine {
 
 func testController(g *gin.Engine) {
 
+	if gin.Mode() != "debug" {
+		return
+	}
 	g.GET("/api-test", func(c *gin.Context) {
+		time.Sleep(10 * time.Second) // Wait for 5 seconds
 		c.JSON(200, gin.H{
 			"message": "This is Test API",
 		})

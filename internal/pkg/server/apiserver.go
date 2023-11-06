@@ -134,7 +134,7 @@ func (s *APIServer) Run() error {
 	})
 
 	// Check server health (if enabled) before continuing
-	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), s.ShutdownTimeout)
 	defer cancel()
 	if s.healthz {
 		if err := s.ping(ctx); err != nil {
@@ -151,10 +151,17 @@ func (s *APIServer) Run() error {
 
 // Close gracefully shuts down both the insecure and secure servers.
 func (s *APIServer) Close() {
+	logrus.Infof("Time Duration is %v", s.ShutdownTimeout)
 	ctx, cancel := context.WithTimeout(context.Background(), s.ShutdownTimeout)
 	defer cancel()
-	_ = s.secureServer.Shutdown(ctx)
-	_ = s.insecureServer.Shutdown(ctx)
+
+	if err := s.secureServer.Shutdown(ctx); err != nil {
+		logrus.Warnf("Shutdown secure server failed: %s", err.Error())
+	}
+
+	if err := s.insecureServer.Shutdown(ctx); err != nil {
+		logrus.Warnf("Shutdown insecure server failed: %s", err.Error())
+	}
 }
 
 // ping checks the health of the server by sending a request to the /healthz endpoint.

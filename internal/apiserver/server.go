@@ -13,12 +13,15 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/cache"
+	"github.com/skeleton1231/gotal/pkg/shutdown"
+	posix "github.com/skeleton1231/gotal/pkg/shutdown/managers"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
 	"google.golang.org/grpc/reflection"
 )
 
 type apiServer struct {
+	gs            *shutdown.GracefulShutdown
 	redisOptions  *options.RedisOptions
 	httpAPIServer *server.APIServer
 	gRPCAPIServer *grpcAPIServer
@@ -37,6 +40,8 @@ type ExtraConfig struct {
 }
 
 func createAPIServer(cfg *config.Config) (*apiServer, error) {
+	gs := shutdown.New()
+	gs.AddShutdownManager(posix.NewPosixSignalManager())
 
 	genericConfig, err := buildGenericConfig(cfg)
 	if err != nil {
@@ -58,6 +63,7 @@ func createAPIServer(cfg *config.Config) (*apiServer, error) {
 	}
 
 	server := &apiServer{
+		gs:            gs,
 		redisOptions:  cfg.RedisOptions,
 		httpAPIServer: genericServer,
 		gRPCAPIServer: extraServer,
@@ -72,11 +78,24 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 
 	s.initRedisStore()
 
+	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
+
+		s.gRPCAPIServer.Close()
+		s.httpAPIServer.Close()
+
+		return nil
+	}))
+
 	return preparedAPIServer{s}
 }
 
 func (s preparedAPIServer) Run() error {
 	go s.gRPCAPIServer.Run()
+
+	// start shutdown managers
+	if err := s.gs.Start(); err != nil {
+		logrus.Fatalf("start shutdown manager failed: %s", err.Error())
+	}
 
 	return s.httpAPIServer.Run()
 }
@@ -140,7 +159,13 @@ func buildExtraConfig(cfg *config.Config) (*ExtraConfig, error) {
 }
 
 func (s *apiServer) initRedisStore() {
-	ctx, _ := context.WithCancel(context.Background())
+	ctx, cancel := context.WithCancel(context.Background())
+
+	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
+		cancel()
+
+		return nil
+	}))
 
 	config := &cache.Config{
 		Host:                  s.redisOptions.Host,

@@ -123,6 +123,7 @@ func (c CompletedConfig) New() (*APIServer, error) {
 		enableProfiling:     c.EnableProfiling,
 		middlewares:         c.Middlewares,
 		Engine:              gin.New(),
+		ShutdownTimeout:     30 * time.Second,
 	}
 
 	// Initialize the API server with the required setup.
