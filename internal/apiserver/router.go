@@ -2,9 +2,9 @@ package apiserver
 
 import (
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/skeleton1231/gotal/internal/pkg/middleware"
 	"github.com/skeleton1231/gotal/pkg/cache"
 )
 
@@ -26,8 +26,11 @@ func testController(g *gin.Engine) {
 	if gin.Mode() != "debug" {
 		return
 	}
+
+	// Apply the rate limiter middleware with parameters from Viper
+	g.Use(middleware.RateLimiter())
+
 	g.GET("/api-test", func(c *gin.Context) {
-		time.Sleep(10 * time.Second) // Wait for 5 seconds
 		c.JSON(200, gin.H{
 			"message": "This is Test API",
 		})

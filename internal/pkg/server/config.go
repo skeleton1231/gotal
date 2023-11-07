@@ -50,6 +50,7 @@ type Config struct {
 	Healthz         bool
 	EnableProfiling bool
 	EnableMetrics   bool
+	RateLimit       *RateLimit
 }
 
 // CertKey represents the certificate and key configuration for secure serving.
@@ -83,6 +84,13 @@ type JwtInfo struct {
 	MaxRefresh time.Duration
 }
 
+// RateLimitConfig represents the configuration for rate limiting.
+type RateLimit struct {
+	TokensPerSecond int  // Number of tokens generated per second.
+	Burst           int  // Maximum burst size.
+	Enabled         bool // Enable rate limiting.
+}
+
 // NewConfig creates and returns a new Config instance with default settings.
 func NewConfig() *Config {
 	return &Config{
@@ -95,6 +103,12 @@ func NewConfig() *Config {
 			Realm:      defaultConf.JwtRealm,
 			Timeout:    1 * time.Hour,
 			MaxRefresh: 1 * time.Hour,
+		},
+		// Default rate limit configurations
+		RateLimit: &RateLimit{
+			TokensPerSecond: 1,    // Example default value
+			Burst:           10,   // Example default value
+			Enabled:         true, // Enable by default
 		},
 	}
 }

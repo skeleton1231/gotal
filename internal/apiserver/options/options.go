@@ -24,6 +24,7 @@ type Options struct {
 	RedisOptions            *options.RedisOptions           `json:"redis"    mapstructure:"redis"`
 	JwtOptions              *options.JwtOptions             `json:"jwt"      mapstructure:"jwt"`
 	FeatureOptions          *options.FeatureOptions         `json:"feature"  mapstructure:"feature"`
+	RateLimitOptions        *options.RateLimitOptions       `json:"ratelimit"  mapstructure:"ratelimit"`
 }
 
 func NewOptions() *Options {
@@ -37,6 +38,7 @@ func NewOptions() *Options {
 		RedisOptions:            options.NewRedisOptions(),
 		JwtOptions:              options.NewJwtOptions(),
 		FeatureOptions:          options.NewFeatureOptions(),
+		RateLimitOptions:        options.NewRateLimitOptions(),
 	}
 }
 
@@ -53,7 +55,7 @@ func (o *Options) Flags() (fss flag.NamedFlagSets) {
 	o.FeatureOptions.AddFlags(fss.FlagSet("features"))
 	o.InsecureServing.AddFlags(fss.FlagSet("insecure serving"))
 	o.SecureServing.AddFlags(fss.FlagSet("secure serving"))
-
+	o.RateLimitOptions.AddFlags(fss.FlagSet("rate limit"))
 	return fss
 }
 
