@@ -69,6 +69,8 @@ func (s *APIServer) Setup() {
 // InstallMiddlewares sets up any global middlewares for the server.
 func (s *APIServer) InstallMiddlewares() {
 	// Potential spot to install any necessary middlewares
+	s.Use(middleware.RequestID())
+	s.Use(middleware.Context())
 
 	// install custom middlewares
 	for _, m := range s.middlewares {
