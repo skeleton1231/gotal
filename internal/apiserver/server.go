@@ -39,10 +39,11 @@ type ExtraConfig struct {
 	mysqlOptions *options.MySQLOptions
 }
 
-func createAPIServer(cfg *config.Config) (*apiServer, error) {
+func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 	gs := shutdown.New()
 	gs.AddShutdownManager(posix.NewPosixSignalManager())
 
+	// Assgin apiServer config to APIServer
 	genericConfig, err := buildGenericConfig(cfg)
 	if err != nil {
 		return nil, err

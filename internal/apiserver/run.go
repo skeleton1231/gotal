@@ -8,7 +8,7 @@ import "github.com/skeleton1231/gotal/internal/apiserver/config"
 
 // Run runs the specified APIServer. This should never exit.
 func Run(cfg *config.Config) error {
-	server, err := createAPIServer(cfg)
+	server, err := NewAPIServer(cfg)
 	if err != nil {
 		return err
 	}

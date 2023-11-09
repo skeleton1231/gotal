@@ -21,13 +21,13 @@ func NewRateLimitOptions() *RateLimitOptions {
 }
 
 // ApplyTo applies the current options to the provided server configuration.
-func (r *RateLimitOptions) ApplyTo(c *server.Config) error {
-	c.RateLimit = &server.RateLimit{
-		TokensPerSecond: r.RequestsPerSecond,
-		Burst:           r.BurstSize,
-	}
-	return nil
-}
+// func (r *RateLimitOptions) ApplyTo(c *server.Config) error {
+// 	c.RateLimit = &server.RateLimit{
+// 		TokensPerSecond: r.RequestsPerSecond,
+// 		Burst:           r.BurstSize,
+// 	}
+// 	return nil
+// }
 
 // Validate checks and validates the user-provided parameters during program startup.
 func (r *RateLimitOptions) Validate() []error {
