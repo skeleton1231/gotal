@@ -1,4 +1,4 @@
-// Copyright 2020 Talhuang <talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2023 Talhuang <talhuang1231@gmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
@@ -23,15 +23,15 @@ import (
 type apiServer struct {
 	gs            *shutdown.GracefulShutdown
 	redisOptions  *options.RedisOptions
-	httpAPIServer *server.APIServer
-	gRPCAPIServer *grpcAPIServer
+	httpAPIServer *server.APIServer // embedding internal/pkg/server
+	gRPCAPIServer *grpcAPIServer    // embedding grpcAPIServer
 }
 
 type preparedAPIServer struct {
 	*apiServer
 }
 
-// ExtraConfig defines extra configuration for the apiserver.
+// ExtraConfig defines extra configuration for the apiserver such as mysql and other options fields.
 type ExtraConfig struct {
 	Addr         string
 	MaxMsgSize   int
@@ -43,7 +43,7 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 	gs := shutdown.New()
 	gs.AddShutdownManager(posix.NewPosixSignalManager())
 
-	// Assgin apiServer config to APIServer
+	// Assgin apiServer config to APIServer, because we need build the internal/pkg/server/apiserver configs
 	genericConfig, err := buildGenericConfig(cfg)
 	if err != nil {
 		return nil, err
@@ -54,15 +54,18 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 		return nil, err
 	}
 
+	// New a internal/pkg/server/apiserver APIServer
 	genericServer, err := genericConfig.Complete().New()
 	if err != nil {
 		return nil, err
 	}
+
 	extraServer, err := extraConfig.complete().New()
 	if err != nil {
 		return nil, err
 	}
 
+	// Finish the apiServer
 	server := &apiServer{
 		gs:            gs,
 		redisOptions:  cfg.RedisOptions,
@@ -75,8 +78,10 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 
 func (s *apiServer) PrepareRun() preparedAPIServer {
 
+	// initialize the router
 	initRouter(s.httpAPIServer.Engine)
 
+	// initialize redis
 	s.initRedisStore()
 
 	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
@@ -91,6 +96,7 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 }
 
 func (s preparedAPIServer) Run() error {
+	// Start GRPC Server
 	go s.gRPCAPIServer.Run()
 
 	// start shutdown managers
@@ -98,6 +104,7 @@ func (s preparedAPIServer) Run() error {
 		logrus.Fatalf("start shutdown manager failed: %s", err.Error())
 	}
 
+	// Start Http/Https Server
 	return s.httpAPIServer.Run()
 }
 
