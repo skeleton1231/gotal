@@ -12,8 +12,8 @@ import (
 // RateLimiterMiddleware returns a new rate limiter middleware.
 func RateLimiter() gin.HandlerFunc {
 	// Read configuration values using Viper
-	rateLimit := viper.GetFloat64("rate_limit.requests-per-second") // Access nested configuration
-	burstSize := viper.GetInt("rate_limit.burst-size")              // Access nested configuration
+	rateLimit := viper.GetFloat64("ratelimit.requests-per-second") // Access nested configuration
+	burstSize := viper.GetInt("ratelimit.burst-size")              // Access nested configuration
 
 	logrus.Infof("rateLimit is %v", rateLimit)
 	logrus.Infof("burstSize is %v", burstSize)

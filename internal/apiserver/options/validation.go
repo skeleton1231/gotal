@@ -19,6 +19,7 @@ func (o *Options) Validate() []error {
 		o.RedisOptions,
 		o.JwtOptions,
 		o.FeatureOptions,
+		o.RateLimitOptions,
 	}
 
 	for _, validator := range validators {
