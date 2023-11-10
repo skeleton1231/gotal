@@ -4,8 +4,7 @@
 package app
 
 import (
-	sections "github.com/skeleton1231/gotal/pkg/util/flag"
-	"github.com/spf13/viper"
+	"github.com/skeleton1231/gotal/pkg/util/flag"
 )
 
 // CliOptions defines an interface for command-line options.
@@ -13,7 +12,7 @@ import (
 type CliOptions interface {
 	// Flags returns a set of named flag sets that can be used by the application.
 	// NamedFlagSets helps organize flags into logical groups for better CLI display.
-	Flags() (fss sections.NamedFlagSets)
+	Flags() (fss flag.NamedFlagSets)
 
 	// Validate checks the validity of the provided command-line options.
 	// It returns a list of errors encountered during validation.
@@ -23,11 +22,11 @@ type CliOptions interface {
 // ConfigurableOptions defines an interface for options that can be configured using viper.
 // Viper is a configuration solution for Go applications that supports setting defaults, reading
 // from JSON, TOML, YAML, and more.
-type ConfigurableOptions interface {
-	// ApplyFlags applies the values from the provided viper instance to the implementing struct.
-	// This allows the command-line flags to override values from other sources such as configuration files.
-	ApplyFlags(v *viper.Viper) []error
-}
+// type ConfigurableOptions interface {
+// 	// ApplyFlags applies the values from the provided viper instance to the implementing struct.
+// 	// This allows the command-line flags to override values from other sources such as configuration files.
+// 	ApplyFlags(v *viper.Viper) []error
+// }
 
 // CompleteableOptions defines an interface for options that require completion.
 // Some options might need additional setup or data fetching after being parsed and validated.
