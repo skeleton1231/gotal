@@ -49,18 +49,20 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 		return nil, err
 	}
 
+	// New a internal/pkg/server/apiserver APIServer
+	genericServer, err := server.NewCompletedConfig(genericConfig).New()
+	// genericServer, err := genericConfig.Complete().New()
+	if err != nil {
+		return nil, err
+	}
+
 	extraConfig, err := buildExtraConfig(cfg)
 	if err != nil {
 		return nil, err
 	}
 
-	// New a internal/pkg/server/apiserver APIServer
-	genericServer, err := genericConfig.Complete().New()
-	if err != nil {
-		return nil, err
-	}
-
-	extraServer, err := extraConfig.complete().New()
+	extraServer, err := newCompletedExtraConfig(extraConfig).New()
+	//extraServer, err := extraConfig.complete().New()
 	if err != nil {
 		return nil, err
 	}
@@ -112,14 +114,22 @@ type completedExtraConfig struct {
 	*ExtraConfig
 }
 
-// Complete fills in any fields not set that are required to have valid data and can be derived from other fields.
-func (c *ExtraConfig) complete() *completedExtraConfig {
+func newCompletedExtraConfig(c *ExtraConfig) *completedExtraConfig {
 	if c.Addr == "" {
 		c.Addr = "127.0.0.1:8081"
 	}
 
 	return &completedExtraConfig{c}
 }
+
+// Complete fills in any fields not set that are required to have valid data and can be derived from other fields.
+// func (c *ExtraConfig) complete() *completedExtraConfig {
+// 	if c.Addr == "" {
+// 		c.Addr = "127.0.0.1:8081"
+// 	}
+
+// 	return &completedExtraConfig{c}
+// }
 
 // New create a grpcAPIServer instance.
 func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
