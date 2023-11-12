@@ -22,9 +22,13 @@ require (
 	gorm.io/gorm v1.25.5
 )
 
-require github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
+require (
+	github.com/Azure/go-ansiterm v0.0.0-20210617225240-d185dfc1b5a1 // indirect
+	github.com/golang-jwt/jwt/v4 v4.4.3 // indirect
+)
 
 require (
+	github.com/appleboy/gin-jwt/v2 v2.9.1
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/bytedance/sonic v1.9.1 // indirect
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
