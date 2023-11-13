@@ -4,7 +4,10 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/skeleton1231/gotal/internal/pkg/code"
+	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
+	"github.com/skeleton1231/gotal/internal/pkg/response"
 	"github.com/skeleton1231/gotal/pkg/cache"
 )
 
@@ -68,4 +71,19 @@ func testController(g *gin.Engine) {
 			"retrieved_value": retrievedValue,
 		})
 	})
+
+	g.GET("/test-response", testHandler)
+
+}
+
+func testHandler(c *gin.Context) {
+	// Check for the existence of the 'error' query parameter
+	if _, exists := c.GetQuery("error"); exists {
+		// Simulating an error scenario
+		err := errors.WithCode(code.ErrValidation, "Simulated error message")
+		response.WriteResponse(c, err, nil)
+	} else {
+		// Simulating a success scenario
+		response.WriteResponse(c, nil, gin.H{"message": "Test successful"})
+	}
 }
