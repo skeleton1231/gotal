@@ -10,9 +10,6 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
 )
 
-// AuthzAudience defines the value of jwt audience field.
-const AuthzAudience = ""
-
 // JWTStrategy defines jwt bearer authentication strategy.
 type JWTStrategy struct {
 	ginjwt.GinJWTMiddleware
