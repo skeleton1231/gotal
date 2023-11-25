@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
+	"github.com/skeleton1231/gotal/pkg/log"
 )
 
 type APIResponse struct {
@@ -22,18 +22,22 @@ type APIErrorResponse struct {
 // WriteResponse writes the response (data or error) into the HTTP response body.
 func WriteResponse(c *gin.Context, err error, data interface{}) {
 	if err != nil {
-		logrus.Errorf("%#+v", err)
+		log.Errorf("%#+v", err)
 		coder := errors.ParseCoder(err)
-		c.JSON(coder.HTTPStatus(), APIErrorResponse{
+		errResponse := APIErrorResponse{
 			Code:    coder.Code(),
 			Message: coder.String(),
-		})
+		}
+		// c.Set("response", errResponse)
+		c.JSON(coder.HTTPStatus(), errResponse)
 		return
 	}
 
-	c.JSON(http.StatusOK, APIResponse{
+	response := APIResponse{
 		Code:    http.StatusOK,
 		Message: "Success",
 		Data:    data,
-	})
+	}
+	c.Set("response", response)
+	c.JSON(http.StatusOK, response)
 }

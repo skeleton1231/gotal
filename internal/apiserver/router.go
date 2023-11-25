@@ -18,6 +18,7 @@ func initRouter(g *gin.Engine) {
 }
 
 func installMiddleware(g *gin.Engine) {
+	g.Use(middleware.ResponseLogger())
 }
 
 func installController(g *gin.Engine) *gin.Engine {
