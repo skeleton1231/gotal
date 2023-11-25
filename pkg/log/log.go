@@ -124,15 +124,17 @@ func New(opts *Options) *zapLogger {
 	}
 
 	encoderConfig := zapcore.EncoderConfig{
-		MessageKey:    "message",
-		LevelKey:      "level",
-		TimeKey:       "timestamp",
-		NameKey:       "logger",
-		CallerKey:     "caller",
-		StacktraceKey: "stacktrace",
-		LineEnding:    zapcore.DefaultLineEnding,
-		EncodeLevel:   encodeLevel,
-		EncodeCaller:  zapcore.ShortCallerEncoder,
+		MessageKey:     "message",
+		LevelKey:       "level",
+		TimeKey:        "timestamp",
+		NameKey:        "logger",
+		CallerKey:      "caller",
+		StacktraceKey:  "stacktrace",
+		LineEnding:     zapcore.DefaultLineEnding,
+		EncodeLevel:    encodeLevel,
+		EncodeCaller:   zapcore.ShortCallerEncoder,
+		EncodeTime:     timeEncoder,
+		EncodeDuration: milliSecondsDurationEncoder,
 	}
 
 	loggerConfig := &zap.Config{

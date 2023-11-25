@@ -9,6 +9,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
 	"github.com/skeleton1231/gotal/internal/pkg/response"
 	"github.com/skeleton1231/gotal/pkg/cache"
+	"github.com/skeleton1231/gotal/pkg/log"
 )
 
 func initRouter(g *gin.Engine) {
@@ -34,6 +35,7 @@ func testController(g *gin.Engine) {
 	g.Use(middleware.RateLimiter())
 
 	g.GET("/api-test", func(c *gin.Context) {
+		log.Info("Logger testing")
 		c.JSON(200, gin.H{
 			"message": "This is Test API",
 		})
