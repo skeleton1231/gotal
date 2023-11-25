@@ -354,3 +354,5 @@ sripts/
 configs/
 logs/
 
+cmd/*/stdout
+cmd/*/apiserver

@@ -1,0 +1,7 @@
+2023-11-26 04:03:55.182	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "196.268µs [97;44mGET[0m /healthz" 	{"requestID": "73f2bdf6-c439-4f1e-8901-cb4de3548d62", "username": ""}
+2023-11-26 04:04:11.263	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/apiserver/router.go:86 (github.com/skeleton1231/gotal/internal/apiserver.testHandler)","code":100004,"error":"Simulated error message","message":"Validation failed"}]
+2023-11-26 04:04:11.264	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m400[0m - [127.0.0.1] "609.34µs [97;44mGET[0m /test-response?error=true" 	{"requestID": "de6b92d1-add6-4b06-aa43-6dbbf52e993a", "username": ""}
+2023-11-26 04:19:24.054	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "235.009µs [97;44mGET[0m /healthz" 	{"requestID": "f76b0cf5-b8b9-45c8-ae52-b520a229b3f6", "username": ""}
+2023-11-26 04:22:42.109	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 04:22:42.110	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.066979ms [97;44mGET[0m /test-response" 	{"requestID": "b342cc25-70a0-4233-985f-373340a07dac", "username": ""}
+2023-11-26 04:22:42.140	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [127.0.0.1] "351.181µs [97;44mGET[0m /favicon.ico" 	{"requestID": "13926ae8-cda8-4dc2-89cf-0697b7a67e90", "username": ""}
