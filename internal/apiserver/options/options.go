@@ -8,6 +8,7 @@ package options
 import (
 	"encoding/json"
 
+	"github.com/skeleton1231/gotal/pkg/log"
 	"github.com/skeleton1231/gotal/pkg/util/flag"
 
 	"github.com/skeleton1231/gotal/internal/pkg/options"
@@ -25,6 +26,7 @@ type Options struct {
 	JwtOptions              *options.JwtOptions             `json:"jwt"      mapstructure:"jwt"`
 	FeatureOptions          *options.FeatureOptions         `json:"feature"  mapstructure:"feature"`
 	RateLimitOptions        *options.RateLimitOptions       `json:"ratelimit"  mapstructure:"ratelimit"`
+	Log                     *log.Options                    `json:"log"      mapstructure:"log"`
 }
 
 func NewOptions() *Options {

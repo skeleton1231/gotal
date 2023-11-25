@@ -9,6 +9,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
 	"github.com/skeleton1231/gotal/internal/apiserver/options"
 	"github.com/skeleton1231/gotal/pkg/app"
+	"github.com/skeleton1231/gotal/pkg/log"
 )
 
 const serverName = "APISERVER"
@@ -31,6 +32,10 @@ func NewApp(basename string) *app.App {
 
 func run(opts *options.Options) app.RunFunc {
 	return func(basename string) error {
+
+		// logger Init
+		log.Init(opts.Log)
+		defer log.Flush()
 
 		cfg, err := config.CreateConfigFromOptions(opts)
 		if err != nil {
