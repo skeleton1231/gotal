@@ -62,7 +62,6 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 	}
 
 	extraServer, err := newCompletedExtraConfig(extraConfig).New()
-	//extraServer, err := extraConfig.complete().New()
 	if err != nil {
 		return nil, err
 	}
@@ -121,15 +120,6 @@ func newCompletedExtraConfig(c *ExtraConfig) *completedExtraConfig {
 
 	return &completedExtraConfig{c}
 }
-
-// Complete fills in any fields not set that are required to have valid data and can be derived from other fields.
-// func (c *ExtraConfig) complete() *completedExtraConfig {
-// 	if c.Addr == "" {
-// 		c.Addr = "127.0.0.1:8081"
-// 	}
-
-// 	return &completedExtraConfig{c}
-// }
 
 // New create a grpcAPIServer instance.
 func (c *completedExtraConfig) New() (*grpcAPIServer, error) {

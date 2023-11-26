@@ -57,7 +57,7 @@ func (o *Options) Flags() (fss flag.NamedFlagSets) {
 	o.FeatureOptions.AddFlags(fss.FlagSet("features"))
 	o.InsecureServing.AddFlags(fss.FlagSet("insecure serving"))
 	o.SecureServing.AddFlags(fss.FlagSet("secure serving"))
-	o.RateLimitOptions.AddFlags(fss.FlagSet("ratelimit"))
+	// o.RateLimitOptions.AddFlags(fss.FlagSet("ratelimit"))
 	return fss
 }
 

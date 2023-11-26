@@ -32,8 +32,8 @@ func testController(g *gin.Engine) {
 		return
 	}
 
-	// Apply the rate limiter middleware with parameters from Viper
-	g.Use(middleware.RateLimiter())
+	// // Apply the rate limiter middleware with parameters from Viper
+	// g.Use(middleware.RateLimiter())
 
 	g.GET("/api-test", func(c *gin.Context) {
 		log.Info("Logger testing")

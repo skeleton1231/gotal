@@ -29,6 +29,7 @@ type APIServer struct {
 	*gin.Engine
 	healthz, enableMetrics, enableProfiling bool
 	insecureServer, secureServer            *http.Server
+	RateLimit                               *RateLimitInfo
 }
 
 // initAPIServer initializes the API server with necessary settings and middlewares.
@@ -84,6 +85,10 @@ func (s *APIServer) InstallMiddlewares() {
 		logrus.Infof("install middleware: %s", m)
 		s.Use(mw)
 	}
+
+	// rateLimit := s.RateLimit
+
+	s.Use(middleware.RateLimiter())
 }
 
 // Run starts the API server. It sets up and runs both the insecure and secure servers.

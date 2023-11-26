@@ -21,3 +21,1178 @@
 2023-11-26 13:33:02.866	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 127.0.0.1:8082 stopped
 2023-11-26 13:33:11.118	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 127.0.0.1:8082
 2023-11-26 13:33:12.121	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "361.234µs [97;44mGET[0m /healthz" 	{"requestID": "902e2283-5740-4dd2-b9e5-5b3af016ac1a", "username": ""}
+2023-11-26 13:37:20.870	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 127.0.0.1:8082 stopped
+2023-11-26 13:37:27.381	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 13:37:28.384	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "217.15µs [97;44mGET[0m /healthz" 	{"requestID": "92575343-8474-4d23-aed4-0f89bc49e9b6", "username": ""}
+2023-11-26 13:37:33.233	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 13:37:33.233	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "587.363µs [97;44mGET[0m /test-response" 	{"requestID": "e31fbf6e-c1cd-4595-98c3-b6a1491da919", "username": ""}
+2023-11-26 15:05:11.173	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:08:16.428	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:08:16.429	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:08:16.429	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:08:16.429	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:08:16.429	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:08:16.430	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:08:16.430	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:08:16.430	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:08:17.431	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "260.979µs [97;44mGET[0m /healthz" 	{"requestID": "e1375ef8-b5a2-42c2-b4e4-513b77bc8c26", "username": ""}
+2023-11-26 15:08:17.432	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:09:25.393	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "182.075µs [97;44mGET[0m /test-response" 	{"requestID": "e2c43652-dc1f-447e-88d0-f95ed29b6e88", "username": ""}
+2023-11-26 15:09:25.407	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "151.894µs [97;44mGET[0m /test-response" 	{"requestID": "794068da-157b-4adc-8ff4-f4b957f66342", "username": ""}
+2023-11-26 15:09:25.420	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "148.52µs [97;44mGET[0m /test-response" 	{"requestID": "48851d6d-63ef-40ca-a5ae-1f03b2f8ccb6", "username": ""}
+2023-11-26 15:09:25.433	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "173.276µs [97;44mGET[0m /test-response" 	{"requestID": "77521a83-ecf3-4507-a133-25de819eb5db", "username": ""}
+2023-11-26 15:09:25.447	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "159.638µs [97;44mGET[0m /test-response" 	{"requestID": "b4a6d508-4503-434c-8386-5ecb1c80aa0f", "username": ""}
+2023-11-26 15:09:25.461	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "145.904µs [97;44mGET[0m /test-response" 	{"requestID": "017e5e82-f0d3-43c1-8081-46c86603d15b", "username": ""}
+2023-11-26 15:09:25.476	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "140.437µs [97;44mGET[0m /test-response" 	{"requestID": "9314122d-7791-4be9-ab02-f8eac5d215fc", "username": ""}
+2023-11-26 15:09:25.490	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "142.157µs [97;44mGET[0m /test-response" 	{"requestID": "91ef5fc2-b013-4b98-9385-f9027c858485", "username": ""}
+2023-11-26 15:09:25.504	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "192.867µs [97;44mGET[0m /test-response" 	{"requestID": "9608dd43-a0ce-4f57-8e8a-9cdc7f8d8cf5", "username": ""}
+2023-11-26 15:09:25.518	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "323.06µs [97;44mGET[0m /test-response" 	{"requestID": "93c282b5-9558-4c2f-9bb5-5b7ce47e1bfa", "username": ""}
+2023-11-26 15:09:25.532	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "263.514µs [97;44mGET[0m /test-response" 	{"requestID": "666792a9-e13a-4d30-bf05-36d02dba4b25", "username": ""}
+2023-11-26 15:09:25.547	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "137.422µs [97;44mGET[0m /test-response" 	{"requestID": "22faf143-9092-4bbc-96b4-0a798da202df", "username": ""}
+2023-11-26 15:09:25.561	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "148.298µs [97;44mGET[0m /test-response" 	{"requestID": "a54684e9-2cdc-4d8b-9dc5-1cdbe9626949", "username": ""}
+2023-11-26 15:09:25.575	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "140.014µs [97;44mGET[0m /test-response" 	{"requestID": "40999da0-da7e-46b0-b089-b2197591e741", "username": ""}
+2023-11-26 15:09:25.589	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "215.232µs [97;44mGET[0m /test-response" 	{"requestID": "c7836a30-6373-48df-bbc1-6bfe263b8993", "username": ""}
+2023-11-26 15:09:25.603	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "163.966µs [97;44mGET[0m /test-response" 	{"requestID": "45276fdb-0445-425c-9979-6a21de1076b3", "username": ""}
+2023-11-26 15:09:25.617	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "155.51µs [97;44mGET[0m /test-response" 	{"requestID": "ae5da161-dc92-4914-903c-5154ab74e030", "username": ""}
+2023-11-26 15:09:25.631	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "153.863µs [97;44mGET[0m /test-response" 	{"requestID": "a234d97b-5122-4700-bc72-b13f8a694d3e", "username": ""}
+2023-11-26 15:09:25.645	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "189.619µs [97;44mGET[0m /test-response" 	{"requestID": "be99df76-2c69-43d7-b117-326c96850afa", "username": ""}
+2023-11-26 15:09:25.659	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "148.333µs [97;44mGET[0m /test-response" 	{"requestID": "ec25f88e-17c6-42bd-bef9-548baf061791", "username": ""}
+2023-11-26 15:10:01.244	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "161.894µs [97;44mGET[0m /test-response" 	{"requestID": "90bad2d5-20c2-45c9-8f8b-000b44599a19", "username": ""}
+2023-11-26 15:10:01.259	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "188.447µs [97;44mGET[0m /test-response" 	{"requestID": "a0527176-3c27-4c8b-ad83-5a44ed9a2509", "username": ""}
+2023-11-26 15:10:01.273	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "126.336µs [97;44mGET[0m /test-response" 	{"requestID": "1380a2b5-7793-480c-859a-7ca597796695", "username": ""}
+2023-11-26 15:10:01.287	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "266.937µs [97;44mGET[0m /test-response" 	{"requestID": "f31ac307-7584-4093-bf86-9b37d22267dc", "username": ""}
+2023-11-26 15:10:01.302	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "289.163µs [97;44mGET[0m /test-response" 	{"requestID": "9260e49f-d44a-4a17-a9f8-05597a3c68e0", "username": ""}
+2023-11-26 15:10:01.316	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "171.374µs [97;44mGET[0m /test-response" 	{"requestID": "e4cfc6ec-5323-400e-bedc-a3e40d127657", "username": ""}
+2023-11-26 15:10:01.330	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "201.985µs [97;44mGET[0m /test-response" 	{"requestID": "eb4d7eca-5f39-40bc-b509-112de77c6cba", "username": ""}
+2023-11-26 15:10:01.344	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "151.241µs [97;44mGET[0m /test-response" 	{"requestID": "3dcb18b4-30bf-459d-9132-35df4312c3c6", "username": ""}
+2023-11-26 15:10:01.358	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "150.946µs [97;44mGET[0m /test-response" 	{"requestID": "20ec5a99-527a-44f5-a67a-1af453e609b5", "username": ""}
+2023-11-26 15:10:01.372	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "146.184µs [97;44mGET[0m /test-response" 	{"requestID": "8e381252-8bbb-4296-a6d1-a00f550dcc52", "username": ""}
+2023-11-26 15:10:01.386	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "167.107µs [97;44mGET[0m /test-response" 	{"requestID": "822b1f05-b2e9-41d6-8950-47f980cabc8f", "username": ""}
+2023-11-26 15:10:01.400	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "229.555µs [97;44mGET[0m /test-response" 	{"requestID": "bf8b9312-b0ea-4a87-bd78-c1877a000a7c", "username": ""}
+2023-11-26 15:10:01.413	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "649.929µs [97;44mGET[0m /test-response" 	{"requestID": "bf883e11-7cc7-464c-9a11-36be49488ca0", "username": ""}
+2023-11-26 15:10:01.428	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "138.019µs [97;44mGET[0m /test-response" 	{"requestID": "a16e0e03-fbca-4ccc-8e5f-f2d59efb53e6", "username": ""}
+2023-11-26 15:10:01.441	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "133.022µs [97;44mGET[0m /test-response" 	{"requestID": "bd5632a4-3693-49b8-8fc3-26976996e676", "username": ""}
+2023-11-26 15:10:01.455	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "146.692µs [97;44mGET[0m /test-response" 	{"requestID": "7a5ebf64-2267-4a70-9a62-d95d2ac9da7d", "username": ""}
+2023-11-26 15:10:01.469	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "156.851µs [97;44mGET[0m /test-response" 	{"requestID": "77c9990a-0583-4f88-859a-e862aa05eff1", "username": ""}
+2023-11-26 15:10:01.483	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "145.482µs [97;44mGET[0m /test-response" 	{"requestID": "53f43317-29b2-426e-8e3a-941760584fb7", "username": ""}
+2023-11-26 15:10:01.497	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "205.036µs [97;44mGET[0m /test-response" 	{"requestID": "57891eaa-7c9f-4bf8-bd79-7400f74106c5", "username": ""}
+2023-11-26 15:10:01.511	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "128.249µs [97;44mGET[0m /test-response" 	{"requestID": "46a5e0b9-5fd6-4f29-8d01-db588f880f81", "username": ""}
+2023-11-26 15:10:25.843	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "163.794µs [97;44mGET[0m /test-response" 	{"requestID": "f24e2a6e-cca9-45a0-a2cc-575ab838668e", "username": ""}
+2023-11-26 15:10:25.858	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "284.508µs [97;44mGET[0m /test-response" 	{"requestID": "7f218253-da07-46bb-9767-4f8056077534", "username": ""}
+2023-11-26 15:10:25.871	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "214.774µs [97;44mGET[0m /test-response" 	{"requestID": "d4ee1fb4-7ac2-4b9e-a95b-0c3e67c095f0", "username": ""}
+2023-11-26 15:10:25.885	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "140.141µs [97;44mGET[0m /test-response" 	{"requestID": "b92d027f-4b8e-46bd-856e-d00a47721276", "username": ""}
+2023-11-26 15:10:25.900	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "166.023µs [97;44mGET[0m /test-response" 	{"requestID": "f41815e2-4602-4f8a-8b6b-88108cefe50a", "username": ""}
+2023-11-26 15:10:25.914	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "173.036µs [97;44mGET[0m /test-response" 	{"requestID": "23cc97da-a028-415f-b713-e9ae27f570f7", "username": ""}
+2023-11-26 15:10:25.930	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "227.902µs [97;44mGET[0m /test-response" 	{"requestID": "16feac18-c66f-4f37-94d1-d504bcb9adff", "username": ""}
+2023-11-26 15:10:25.946	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "197.224µs [97;44mGET[0m /test-response" 	{"requestID": "16921727-45c3-446a-9662-a406b35a0d56", "username": ""}
+2023-11-26 15:10:25.960	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "184.613µs [97;44mGET[0m /test-response" 	{"requestID": "3d96c1dd-27bd-421a-a1cc-e711f6852871", "username": ""}
+2023-11-26 15:10:25.975	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "387.521µs [97;44mGET[0m /test-response" 	{"requestID": "9912d74b-fa25-42f6-bb49-24192e0ae447", "username": ""}
+2023-11-26 15:10:25.989	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "162.965µs [97;44mGET[0m /test-response" 	{"requestID": "a41af13c-47ca-4cf5-aa44-dbdc7a39d09a", "username": ""}
+2023-11-26 15:10:26.005	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "185.001µs [97;44mGET[0m /test-response" 	{"requestID": "105877d8-6860-40ec-8d60-7aa338f386b9", "username": ""}
+2023-11-26 15:10:26.019	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "133.724µs [97;44mGET[0m /test-response" 	{"requestID": "db1bb243-683e-456d-b893-efc751ae0787", "username": ""}
+2023-11-26 15:10:26.034	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "157.158µs [97;44mGET[0m /test-response" 	{"requestID": "c59131d0-4d98-48b7-898c-f18b50a2d385", "username": ""}
+2023-11-26 15:10:26.049	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "172.527µs [97;44mGET[0m /test-response" 	{"requestID": "2861763f-3f21-4cf4-907b-1e0d1be44e73", "username": ""}
+2023-11-26 15:10:26.064	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "271.511µs [97;44mGET[0m /test-response" 	{"requestID": "910e8753-bbce-44f9-a20d-006ec6120454", "username": ""}
+2023-11-26 15:10:26.079	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "170.945µs [97;44mGET[0m /test-response" 	{"requestID": "1ba31ca1-6a8a-4710-adbb-0b5c43d024e3", "username": ""}
+2023-11-26 15:10:26.094	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "172.105µs [97;44mGET[0m /test-response" 	{"requestID": "5dbaa084-305c-41e1-9da8-ecaea23df2d4", "username": ""}
+2023-11-26 15:10:26.109	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "241.367µs [97;44mGET[0m /test-response" 	{"requestID": "8a576002-f996-4b31-a37f-87a959d40255", "username": ""}
+2023-11-26 15:10:26.123	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "205.709µs [97;44mGET[0m /test-response" 	{"requestID": "7741e66f-2d66-4a8a-8401-9991dad59c12", "username": ""}
+2023-11-26 15:10:35.118	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "327.904µs [97;44mGET[0m /test-response" 	{"requestID": "dc491fd1-f01f-4e30-9f5c-0dd89b338be3", "username": ""}
+2023-11-26 15:10:36.071	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "327.022µs [97;44mGET[0m /test-response" 	{"requestID": "ebf1cda4-2f7b-4168-b7c5-eccbdcbaf4be", "username": ""}
+2023-11-26 15:10:36.250	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "323.247µs [97;44mGET[0m /test-response" 	{"requestID": "39d7c7fe-b991-4518-b7dd-c9815afb9c01", "username": ""}
+2023-11-26 15:10:36.432	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "265.656µs [97;44mGET[0m /test-response" 	{"requestID": "b44c4f6c-db92-4d40-bc83-a5cbf7d31bd8", "username": ""}
+2023-11-26 15:10:36.601	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "364.966µs [97;44mGET[0m /test-response" 	{"requestID": "2a04bac1-2364-42b5-a984-4d6521125c7a", "username": ""}
+2023-11-26 15:11:21.017	[34mINFO[0m	apiserver	apiserver/router.go:39	Logger testing
+2023-11-26 15:11:21.017	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "667.939µs [97;44mGET[0m /api-test" 	{"requestID": "8806cd16-3bcd-4161-b33d-3c791a6f7fee", "username": ""}
+2023-11-26 15:11:23.243	[34mINFO[0m	apiserver	apiserver/router.go:39	Logger testing
+2023-11-26 15:11:23.244	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "544.64µs [97;44mGET[0m /api-test" 	{"requestID": "272ff8fc-72c2-4dbd-b9f7-56fb75782f77", "username": ""}
+2023-11-26 15:14:21.595	[34mINFO[0m	apiserver	apiserver/router.go:39	Logger testing
+2023-11-26 15:14:21.595	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "458.922µs [97;44mGET[0m /api-test" 	{"requestID": "c7d4bb23-c99e-4e21-8311-e531f09aea1f", "username": ""}
+2023-11-26 15:14:26.025	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "348.032µs [97;44mGET[0m /test-response" 	{"requestID": "a908b0f1-c3b6-43d1-8a82-0e2838891d6c", "username": ""}
+2023-11-26 15:15:57.868	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:15:57.868	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:15:57.868	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:15:57.869	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:16:00.486	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:16:00.487	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:16:00.488	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:16:01.490	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "273.206µs [97;44mGET[0m /healthz" 	{"requestID": "febd559a-d018-41f3-9492-ca9cf278fa58", "username": ""}
+2023-11-26 15:16:01.490	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:16:01.626	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:16:01.626	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:16:01.626	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:16:01.626	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:16:08.113	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:16:08.114	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:16:08.115	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:20	viper customLimiters is map[/test-response:%!s(*rate.Limiter=&{{0 0} 0 0 0 {0 0 <nil>} {0 0 <nil>}})]
+2023-11-26 15:16:08.115	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:16:08.115	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:16:08.115	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:16:08.116	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:16:08.116	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:16:08.117	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:16:08.116	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:16:09.119	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "200.244µs [97;44mGET[0m /healthz" 	{"requestID": "ff1c0774-031f-4142-9407-a6ff0b9a3e18", "username": ""}
+2023-11-26 15:16:09.119	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:17:00.452	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "832.686µs [97;44mGET[0m /test-response" 	{"requestID": "cc46ce48-71e4-4054-9b04-5ffe80b3d84d", "username": ""}
+2023-11-26 15:19:03.081	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:19:03.081	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:19:03.081	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:19:03.081	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:19:10.352	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:19:10.353	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:19:10.354	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:19:10.354	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:19:10.354	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:19:10.354	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:19:11.355	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "206.927µs [97;44mGET[0m /healthz" 	{"requestID": "c71212f8-e53f-469a-b641-4beda5cb3cf4", "username": ""}
+2023-11-26 15:19:11.355	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:19:38.685	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "486.135µs [97;44mGET[0m /test-response" 	{"requestID": "fd09a52e-1321-4100-825f-c83388553505", "username": ""}
+2023-11-26 15:20:04.650	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:20:04.650	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:20:04.650	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:20:04.650	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:20:08.018	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:20:08.019	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:20:08.020	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:20:08.020	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:20:08.020	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:20:08.020	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:20:08.020	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:20:08.021	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:20:08.021	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:20:09.025	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "195.111µs [97;44mGET[0m /healthz" 	{"requestID": "7f1715e0-6de2-47a2-90df-b1cbfecad83b", "username": ""}
+2023-11-26 15:20:09.025	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:20:33.508	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "379.759µs [97;44mGET[0m /test-response" 	{"requestID": "904181a8-e771-441f-abf9-ffc838fa3825", "username": ""}
+2023-11-26 15:24:09.956	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:24:09.957	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:24:09.957	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:24:09.957	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:24:17.793	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:24:17.794	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:24:17.795	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:24:17.795	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:24:17.796	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:24:17.796	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:24:17.796	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:24:17.796	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:24:17.797	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:24:18.798	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "193.784µs [97;44mGET[0m /healthz" 	{"requestID": "cadc0b71-039e-41fa-b117-cbbf2baaa75e", "username": ""}
+2023-11-26 15:24:18.798	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:24:54.936	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "357.177µs [97;44mGET[0m /test-response" 	{"requestID": "0185704a-6aed-4553-ada6-c513822f3075", "username": ""}
+2023-11-26 15:25:59.728	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:25:59.728	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:25:59.728	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:25:59.728	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:26:05.212	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:26:05.213	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:26:05.213	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:26:05.213	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:26:05.214	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:26:05.214	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:26:05.214	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:26:05.214	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:26:06.220	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "199.913µs [97;44mGET[0m /healthz" 	{"requestID": "81a72adf-aa26-46a3-801a-ac13a850277d", "username": ""}
+2023-11-26 15:26:06.220	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:26:48.056	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "385.253µs [97;44mGET[0m /test-response" 	{"requestID": "6c27e9ad-56af-4912-b264-3ed3b485f37e", "username": ""}
+2023-11-26 15:27:54.761	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:27:54.761	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:27:54.761	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:27:54.761	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:28:00.897	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:28:00.897	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:28:00.897	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:28:00.897	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:28:00.898	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:28:00.899	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:28:00.899	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:28:00.899	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:28:00.899	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:28:00.899	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:28:00.900	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:28:00.902	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.082377ms [97;44mGET[0m /healthz" 	{"requestID": "afc6f608-d767-42d7-ac99-9da399e445b8", "username": ""}
+2023-11-26 15:28:00.902	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:28:40.470	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:28:40.470	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:28:40.470	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:28:46.280	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:28:46.281	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:28:46.282	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:28:46.282	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:28:46.282	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:28:46.282	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:28:46.283	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:28:46.283	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:28:46.283	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:28:47.286	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "513.33µs [97;44mGET[0m /healthz" 	{"requestID": "7bdfd2ed-364b-4b7c-9d3b-8b2fbf615a27", "username": ""}
+2023-11-26 15:28:47.286	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:29:33.377	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:29:33.378	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:29:33.378	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:29:33.378	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:29:38.966	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:29:38.967	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:29:38.968	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:29:38.968	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:29:38.968	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:29:38.968	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:29:38.968	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:29:38.969	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:29:38.969	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:29:39.972	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "269.154µs [97;44mGET[0m /healthz" 	{"requestID": "2f9b3419-3215-4eb0-a45d-42c5863c94a5", "username": ""}
+2023-11-26 15:29:39.972	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:30:23.487	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:30:23.487	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:30:23.487	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:30:28.881	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:30:28.882	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:30:28.883	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:30:28.883	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:30:28.883	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:30:28.883	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:30:28.884	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:30:28.884	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:30:28.884	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:30:29.885	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "234.908µs [97;44mGET[0m /healthz" 	{"requestID": "2584233c-c9f7-478a-8d7b-4f6d61107a41", "username": ""}
+2023-11-26 15:30:29.885	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:30:37.783	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "479.836µs [97;44mGET[0m /test-response" 	{"requestID": "7ae5b9a4-9198-46a4-9bd5-1ca14048ce51", "username": ""}
+2023-11-26 15:31:53.127	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:31:53.127	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:31:53.128	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:31:53.128	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:31:58.264	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:31:58.265	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:31:58.265	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:31:58.265	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:31:58.265	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:31:58.265	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:31:58.266	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:31:58.266	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:31:58.266	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:31:58.266	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:31:59.267	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "181.459µs [97;44mGET[0m /healthz" 	{"requestID": "59795643-98a7-4804-8a89-11498b33e150", "username": ""}
+2023-11-26 15:31:59.267	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:32:05.120	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [::1] "487.696µs [97;44mGET[0m /test-response" 	{"requestID": "e188bdee-1b18-4745-884d-ae9fca348dfa", "username": ""}
+2023-11-26 15:39:40.841	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:39:40.841	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:39:40.841	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:39:40.841	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:39:46.573	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:39:46.574	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:39:46.575	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:39:47.580	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "214.151µs [97;44mGET[0m /healthz" 	{"requestID": "e7ee7f51-0a17-4b04-b1d6-7b156fea8683", "username": ""}
+2023-11-26 15:39:47.581	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:40:16.625	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 15:40:16.625	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "894.809µs [97;44mGET[0m /test-response" 	{"requestID": "b6b3a265-b159-47a2-8592-072d70ea9e28", "username": ""}
+2023-11-26 15:43:02.106	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:43:02.107	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:43:02.107	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:43:02.107	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:43:09.829	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:43:09.830	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:43:09.830	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:43:09.830	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:43:09.830	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:43:09.831	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:43:09.831	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:43:09.831	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:43:10.837	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "450.629µs [97;44mGET[0m /healthz" 	{"requestID": "fc57dd14-fc2d-42d6-bcea-544bfa3b284b", "username": ""}
+2023-11-26 15:43:10.837	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:43:17.801	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 15:43:17.801	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "600.322µs [97;44mGET[0m /test-response" 	{"requestID": "8e40e5e9-53fe-4c31-af75-fb735fef62ab", "username": ""}
+2023-11-26 15:45:11.101	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:45:11.101	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:45:11.101	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:45:11.101	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:45:17.518	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:45:17.519	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:45:17.520	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:45:18.522	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "199.419µs [97;44mGET[0m /healthz" 	{"requestID": "05c812c1-cc10-416b-a22c-6426a550dc2d", "username": ""}
+2023-11-26 15:45:18.522	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:48:44.672	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:48:44.672	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:48:44.672	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:48:44.672	[34mINFO[0m	apiserver	server/apiserver.go:113	HTTP Server on 0.0.0.0:8884 stopped
+2023-11-26 15:48:50.617	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:48:50.618	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:48:50.619	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:48:50.619	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:48:50.619	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:48:50.620	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:48:50.620	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:48:50.620	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:48:50.620	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:48:50.620	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:48:50.621	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:48:50.623	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:48:51.626	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "180.653µs [97;44mGET[0m /healthz" 	{"requestID": "8ead24bd-6e49-4e11-a7c7-69f4df85b890", "username": ""}
+2023-11-26 15:48:51.626	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:55:44.652	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 15:55:44.652	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 15:55:44.652	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: recovery
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: logger
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: secure
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: nocache
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: cors
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:84	install middleware: dump
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /healthz --> github.com/skeleton1231/gotal/internal/pkg/server.(*APIServer).InstallAPIs.func1 (9 handlers)
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /metrics --> github.com/zsais/go-gin-prometheus.(*Prometheus).SetMetricsPath.prometheusHandler.func2 (10 handlers)
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/ --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func1 (10 handlers)
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/cmdline --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func2 (10 handlers)
+2023-11-26 15:55:51.025	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/profile --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func3 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	POST   /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func4 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/symbol --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func5 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/trace --> github.com/gin-contrib/pprof.RouteRegister.WrapF.func6 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/allocs --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func7 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/block --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func8 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/goroutine --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func9 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/heap --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func10 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/mutex --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func11 (10 handlers)
+2023-11-26 15:55:51.026	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /debug/pprof/threadcreate --> github.com/gin-contrib/pprof.RouteRegister.WrapH.func12 (10 handlers)
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /api-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func1 (12 handlers)
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /redis-test --> github.com/skeleton1231/gotal/internal/apiserver.testController.func2 (12 handlers)
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:64	GET    /test-response --> github.com/skeleton1231/gotal/internal/apiserver.testHandler (12 handlers)
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:107	Start to listening the incoming requests on http address: 0.0.0.0:8884
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:184	Waiting for the router, if fail will retry in 1 second.
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	server/apiserver.go:125	Start to listening the incoming requests on https address: 0.0.0.0:8445
+2023-11-26 15:55:51.027	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 15:55:52.029	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "535.689µs [97;44mGET[0m /healthz" 	{"requestID": "003e8f7f-4bf6-4a39-a357-e99b3261fd0f", "username": ""}
+2023-11-26 15:55:52.029	[34mINFO[0m	apiserver	server/apiserver.go:179	The router has been deployed successfully.
+2023-11-26 15:55:58.771	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 15:55:58.771	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "850.023µs [97;44mGET[0m /test-response" 	{"requestID": "841373c5-5f58-4a05-9151-217aa8c2e831", "username": ""}
+2023-11-26 16:13:28.036	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 16:13:28.036	[34mINFO[0m	apiserver	server/apiserver.go:156	Time Duration is 30s
+2023-11-26 16:13:28.036	[34mINFO[0m	apiserver	server/apiserver.go:133	HTTPS Server on 0.0.0.0:8445 stopped
+2023-11-26 16:13:34.997	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 16:13:35.997	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "179.767µs [97;44mGET[0m /healthz" 	{"requestID": "61be8453-0145-4889-b507-49b1acb103e2", "username": ""}
+2023-11-26 16:13:56.125	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:13:56.126	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "806.269µs [97;44mGET[0m /test-response" 	{"requestID": "9dd86973-daec-4c7d-b882-af79f381d0fa", "username": ""}
+2023-11-26 16:15:17.026	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 16:15:22.862	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 16:15:23.866	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "197.269µs [97;44mGET[0m /healthz" 	{"requestID": "2f428778-3a8d-4cb4-861b-84bc793ba83d", "username": ""}
+2023-11-26 16:15:30.114	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:15:30.114	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "654.928µs [97;44mGET[0m /test-response" 	{"requestID": "481103b2-f4e4-4121-9bff-c8ddaba61f6e", "username": ""}
+2023-11-26 16:16:26.272	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 16:16:31.308	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 16:16:32.309	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "211.368µs [97;44mGET[0m /healthz" 	{"requestID": "da7fd938-90b7-4ce7-970c-0771c52cdc47", "username": ""}
+2023-11-26 16:16:35.339	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:16:35.339	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "635.23µs [97;44mGET[0m /test-response" 	{"requestID": "630c6411-73b3-49ba-bef3-5a6db4bedf26", "username": ""}
+2023-11-26 16:17:14.980	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:14.980	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "522.056µs [97;44mGET[0m /test-response" 	{"requestID": "7712f625-1fbb-45f0-8223-5e26db141251", "username": ""}
+2023-11-26 16:17:15.064	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.064	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "394.593µs [97;44mGET[0m /test-response" 	{"requestID": "a469f6a4-3aac-4f5d-866d-973817e32c1a", "username": ""}
+2023-11-26 16:17:15.100	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.100	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "387.663µs [97;44mGET[0m /test-response" 	{"requestID": "7d6b2ac5-a2b5-4660-a792-b9c66d086d97", "username": ""}
+2023-11-26 16:17:15.116	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.116	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "377.942µs [97;44mGET[0m /test-response" 	{"requestID": "b462d0ec-8ba1-4763-a21e-a88d6ca6e0ca", "username": ""}
+2023-11-26 16:17:15.133	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.133	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "407.923µs [97;44mGET[0m /test-response" 	{"requestID": "91851324-1b16-4420-887a-a74535985ec6", "username": ""}
+2023-11-26 16:17:15.151	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.151	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "540.901µs [97;44mGET[0m /test-response" 	{"requestID": "50401905-51c3-4cc2-a346-a50a038e1424", "username": ""}
+2023-11-26 16:17:15.171	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.171	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "508.398µs [97;44mGET[0m /test-response" 	{"requestID": "93530b58-215e-4458-a265-01fe89f533dd", "username": ""}
+2023-11-26 16:17:15.186	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.186	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "583.844µs [97;44mGET[0m /test-response" 	{"requestID": "0ec559c2-b760-499f-8836-8fba2e4f733e", "username": ""}
+2023-11-26 16:17:15.200	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.201	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "379.666µs [97;44mGET[0m /test-response" 	{"requestID": "cb52d9c3-b441-4079-909c-f8e7692f8b95", "username": ""}
+2023-11-26 16:17:15.216	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.216	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "282.952µs [97;44mGET[0m /test-response" 	{"requestID": "8d30d69e-311f-4a20-88d4-b2da8ab129e6", "username": ""}
+2023-11-26 16:17:15.231	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.231	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "358.093µs [97;44mGET[0m /test-response" 	{"requestID": "564f1ded-094e-46ae-b075-3774702b294e", "username": ""}
+2023-11-26 16:17:15.246	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.246	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "281.272µs [97;44mGET[0m /test-response" 	{"requestID": "8d2e69fc-0958-4da8-98dd-f0da77eeeb66", "username": ""}
+2023-11-26 16:17:15.316	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.324	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "8.267795ms [97;44mGET[0m /test-response" 	{"requestID": "1698450b-3e07-400c-aa62-761ff979fb7c", "username": ""}
+2023-11-26 16:17:15.357	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.357	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "493.314µs [97;44mGET[0m /test-response" 	{"requestID": "a520b054-d184-4f77-9280-2e35ad668039", "username": ""}
+2023-11-26 16:17:15.372	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.373	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "324.823µs [97;44mGET[0m /test-response" 	{"requestID": "710dc891-b5dc-4217-9a88-b4fbdbd04049", "username": ""}
+2023-11-26 16:17:15.388	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.388	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "351.511µs [97;44mGET[0m /test-response" 	{"requestID": "fd77276e-cb19-42ee-9242-de51ce7a7850", "username": ""}
+2023-11-26 16:17:15.401	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.402	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "427.865µs [97;44mGET[0m /test-response" 	{"requestID": "126b38b8-cc0f-4261-b275-d6875baf19b3", "username": ""}
+2023-11-26 16:17:15.417	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.417	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "333.746µs [97;44mGET[0m /test-response" 	{"requestID": "1e86ffef-f5bb-43ad-a78e-fc9fd4a3cb36", "username": ""}
+2023-11-26 16:17:15.432	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.433	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "289.351µs [97;44mGET[0m /test-response" 	{"requestID": "cf8c3af1-4a7a-4d3c-9988-8e8654f8ceda", "username": ""}
+2023-11-26 16:17:15.447	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:17:15.447	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "309.968µs [97;44mGET[0m /test-response" 	{"requestID": "25be873a-ea8d-4cf0-bcb1-5f80ec0166e1", "username": ""}
+2023-11-26 16:17:49.737	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 16:17:53.796	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 16:17:54.800	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "234.305µs [97;44mGET[0m /healthz" 	{"requestID": "48643360-911d-4681-a09e-5d3e619d7087", "username": ""}
+2023-11-26 16:18:03.795	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.796	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "630.757µs [97;44mGET[0m /test-response" 	{"requestID": "39c23007-a1e0-4811-a8f7-96cc9f8b90e2", "username": ""}
+2023-11-26 16:18:03.811	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.811	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "333.094µs [97;44mGET[0m /test-response" 	{"requestID": "c753922c-20f8-44ff-ae1e-cb857f12d793", "username": ""}
+2023-11-26 16:18:03.824	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.824	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "468.002µs [97;44mGET[0m /test-response" 	{"requestID": "7bfab313-8d77-4abe-8cf5-38ee9c2ac3d1", "username": ""}
+2023-11-26 16:18:03.838	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.838	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "292.704µs [97;44mGET[0m /test-response" 	{"requestID": "96715bd5-d19c-40c9-92cd-a2eb9286620c", "username": ""}
+2023-11-26 16:18:03.852	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.852	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "406.77µs [97;44mGET[0m /test-response" 	{"requestID": "08b6f044-a416-4c23-a966-0f243cb25e26", "username": ""}
+2023-11-26 16:18:03.866	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.867	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "305.416µs [97;44mGET[0m /test-response" 	{"requestID": "caeb5770-5adf-4342-ae1b-3f73ad868d8a", "username": ""}
+2023-11-26 16:18:03.881	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.881	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "485.414µs [97;44mGET[0m /test-response" 	{"requestID": "a8b08fbd-3ec9-44c3-a32f-d2204fc6a5a9", "username": ""}
+2023-11-26 16:18:03.950	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.950	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "433.954µs [97;44mGET[0m /test-response" 	{"requestID": "8d12148a-4bd6-4dc2-8316-fab521a9cb73", "username": ""}
+2023-11-26 16:18:03.976	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.976	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "339.466µs [97;44mGET[0m /test-response" 	{"requestID": "2f8f13b9-eb04-477c-b3b7-e33a4e305dee", "username": ""}
+2023-11-26 16:18:03.993	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:03.993	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "721.388µs [97;44mGET[0m /test-response" 	{"requestID": "8e0c413b-106b-463c-8a12-a2a72c97d993", "username": ""}
+2023-11-26 16:18:04.008	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.009	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "482.334µs [97;44mGET[0m /test-response" 	{"requestID": "24e9bee8-4ca9-4f22-a59c-1485d384c556", "username": ""}
+2023-11-26 16:18:04.023	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.023	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "346.254µs [97;44mGET[0m /test-response" 	{"requestID": "e28331ed-0175-4c58-9680-3898d7ff4d8c", "username": ""}
+2023-11-26 16:18:04.038	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.038	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "267.849µs [97;44mGET[0m /test-response" 	{"requestID": "2c6bc138-4da0-4dd2-b39e-875f787473df", "username": ""}
+2023-11-26 16:18:04.054	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.054	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "283.122µs [97;44mGET[0m /test-response" 	{"requestID": "d88a6c7f-ce82-48e3-a85f-904f80da81f2", "username": ""}
+2023-11-26 16:18:04.070	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.070	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "328.958µs [97;44mGET[0m /test-response" 	{"requestID": "4b9cf95d-4db4-4b5c-80ad-c17d2dccf3ca", "username": ""}
+2023-11-26 16:18:04.087	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.087	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "325.409µs [97;44mGET[0m /test-response" 	{"requestID": "e8b4930f-dd56-4702-a504-86e4bff5e1da", "username": ""}
+2023-11-26 16:18:04.101	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.102	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "311.91µs [97;44mGET[0m /test-response" 	{"requestID": "a2cbe1da-63a8-420b-9fd0-c3928f9c2918", "username": ""}
+2023-11-26 16:18:04.116	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.117	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "477.889µs [97;44mGET[0m /test-response" 	{"requestID": "a315361f-29f0-47f2-bf97-ff26b407a8e3", "username": ""}
+2023-11-26 16:18:04.132	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.132	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "423.432µs [97;44mGET[0m /test-response" 	{"requestID": "29df909f-f634-4050-b306-fa40899aa40f", "username": ""}
+2023-11-26 16:18:04.146	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:18:04.147	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "403.175µs [97;44mGET[0m /test-response" 	{"requestID": "cb2baf76-451e-48a6-8c79-7f8f5c34bc78", "username": ""}
+2023-11-26 16:18:57.259	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 16:19:01.825	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 16:19:02.827	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "291.425µs [97;44mGET[0m /healthz" 	{"requestID": "c7394cb8-d03f-4dd8-84b9-555e79661571", "username": ""}
+2023-11-26 16:19:15.313	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.313	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "428.043µs [97;44mGET[0m /test-response" 	{"requestID": "19041027-f760-476d-9995-7bd738164670", "username": ""}
+2023-11-26 16:19:15.328	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.329	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "302.616µs [97;44mGET[0m /test-response" 	{"requestID": "f59d154c-0044-4991-a2a2-8712e92a635c", "username": ""}
+2023-11-26 16:19:15.343	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.343	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "259.395µs [97;44mGET[0m /test-response" 	{"requestID": "b48e3ac2-39e5-47c6-b669-90d589e2ddce", "username": ""}
+2023-11-26 16:19:15.356	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.356	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "484.672µs [97;44mGET[0m /test-response" 	{"requestID": "4a7d38f5-8551-4694-bcd4-461c98e9cf4a", "username": ""}
+2023-11-26 16:19:15.371	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.371	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "306.073µs [97;44mGET[0m /test-response" 	{"requestID": "0a49406b-602a-49b7-b14c-f7761b0989ba", "username": ""}
+2023-11-26 16:19:15.384	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.385	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "446.424µs [97;44mGET[0m /test-response" 	{"requestID": "224838f9-6924-4c0a-abd7-92e1ece70f63", "username": ""}
+2023-11-26 16:19:15.398	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.399	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "307.23µs [97;44mGET[0m /test-response" 	{"requestID": "ce966a59-bfcb-4599-add3-a2613b177c4c", "username": ""}
+2023-11-26 16:19:15.414	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.414	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "299.245µs [97;44mGET[0m /test-response" 	{"requestID": "826c1a1a-b953-43c0-907b-15dbc0d2ccd2", "username": ""}
+2023-11-26 16:19:15.429	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.429	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "244.513µs [97;44mGET[0m /test-response" 	{"requestID": "a4f1f829-4468-4b9b-abd3-32feb456ac16", "username": ""}
+2023-11-26 16:19:15.443	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.443	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "335.88µs [97;44mGET[0m /test-response" 	{"requestID": "93b0c68d-fc7e-44d4-adc4-6c2b5a1d80c3", "username": ""}
+2023-11-26 16:19:15.458	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.458	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "360.403µs [97;44mGET[0m /test-response" 	{"requestID": "b1d4aa1b-c496-42fa-b044-92292c23315b", "username": ""}
+2023-11-26 16:19:15.473	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.473	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "384.527µs [97;44mGET[0m /test-response" 	{"requestID": "7e1629a2-a973-4f84-8c52-1c3c3dbcf52e", "username": ""}
+2023-11-26 16:19:15.488	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.488	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "385.622µs [97;44mGET[0m /test-response" 	{"requestID": "24aac6ec-bbd0-4275-b148-3510f0229cc1", "username": ""}
+2023-11-26 16:19:15.502	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.502	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "347.762µs [97;44mGET[0m /test-response" 	{"requestID": "10935812-718b-4450-bbe1-7ba2b6f79e5d", "username": ""}
+2023-11-26 16:19:15.516	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.516	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "318.435µs [97;44mGET[0m /test-response" 	{"requestID": "3c08ae6e-252a-4d42-86d1-6c132429d3be", "username": ""}
+2023-11-26 16:19:15.530	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.530	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "310.653µs [97;44mGET[0m /test-response" 	{"requestID": "40b636a2-9481-4c6a-a596-c4fb604ba333", "username": ""}
+2023-11-26 16:19:15.545	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.545	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "299.716µs [97;44mGET[0m /test-response" 	{"requestID": "37494b20-5e4f-480f-8071-1e7d5c7fcfcb", "username": ""}
+2023-11-26 16:19:15.559	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.559	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "262.297µs [97;44mGET[0m /test-response" 	{"requestID": "47d7d768-10d1-43e3-846f-773a59752a2a", "username": ""}
+2023-11-26 16:19:15.574	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.574	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "456.169µs [97;44mGET[0m /test-response" 	{"requestID": "f9ce123d-2c1b-49f5-b8b9-d299e8fae2f9", "username": ""}
+2023-11-26 16:19:15.588	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 16:19:15.588	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "315.212µs [97;44mGET[0m /test-response" 	{"requestID": "5d0f6cf4-bac2-4279-ad95-af8543f010b7", "username": ""}
+2023-11-26 19:52:14.316	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:14.317	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.786191ms [97;44mGET[0m /test-response" 	{"requestID": "80bf3af9-f767-48bf-81e0-ee6a9e6eda49", "username": ""}
+2023-11-26 19:52:24.525	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.525	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "684.346µs [97;44mGET[0m /test-response" 	{"requestID": "3f4e1205-3561-42e2-bab6-8004e5fa289d", "username": ""}
+2023-11-26 19:52:24.541	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.542	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.03578ms [97;44mGET[0m /test-response" 	{"requestID": "33770376-c811-4d77-b305-2ce936d84ab2", "username": ""}
+2023-11-26 19:52:24.558	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.558	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "441.266µs [97;44mGET[0m /test-response" 	{"requestID": "2a4401f4-a78f-4c2a-840e-11602e5189ae", "username": ""}
+2023-11-26 19:52:24.578	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.578	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "352.42µs [97;44mGET[0m /test-response" 	{"requestID": "1a5aeaac-033f-49d4-a6bf-8bb6049abe5a", "username": ""}
+2023-11-26 19:52:24.594	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.594	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "380.21µs [97;44mGET[0m /test-response" 	{"requestID": "d9cf28c2-912c-488c-a824-b9505615d995", "username": ""}
+2023-11-26 19:52:24.613	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.613	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "295.674µs [97;44mGET[0m /test-response" 	{"requestID": "41a7d811-2d2b-4f12-9cc9-79a5fae37b47", "username": ""}
+2023-11-26 19:52:24.629	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.630	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "359.632µs [97;44mGET[0m /test-response" 	{"requestID": "9f88e1c1-d74d-4e81-8c59-8eda87a1a067", "username": ""}
+2023-11-26 19:52:24.646	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.646	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "353.025µs [97;44mGET[0m /test-response" 	{"requestID": "98e05c71-10d2-4b27-ab4c-6868bc81cabb", "username": ""}
+2023-11-26 19:52:24.665	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.665	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "412.323µs [97;44mGET[0m /test-response" 	{"requestID": "7244d440-7fb7-420c-bfe8-e894e07db770", "username": ""}
+2023-11-26 19:52:24.687	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.687	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "545.978µs [97;44mGET[0m /test-response" 	{"requestID": "538b51a5-99b5-4462-bd1b-1b485e04bbeb", "username": ""}
+2023-11-26 19:52:24.706	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.706	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "470.435µs [97;44mGET[0m /test-response" 	{"requestID": "3c63aed1-3b68-47c9-8122-2b3aa3d6ea2f", "username": ""}
+2023-11-26 19:52:24.728	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.729	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "329.844µs [97;44mGET[0m /test-response" 	{"requestID": "bf9629e7-6a00-4fd0-8b03-dc2c65ac4dd6", "username": ""}
+2023-11-26 19:52:24.747	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.747	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "348.776µs [97;44mGET[0m /test-response" 	{"requestID": "96e15745-0d42-4f5b-9855-645f0848529d", "username": ""}
+2023-11-26 19:52:24.764	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.764	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "342.44µs [97;44mGET[0m /test-response" 	{"requestID": "828d9b9a-7896-4d66-ac9e-ec49f5d466f2", "username": ""}
+2023-11-26 19:52:24.780	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.780	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "336.471µs [97;44mGET[0m /test-response" 	{"requestID": "450ac855-d1b2-4858-b865-a9c0b489155b", "username": ""}
+2023-11-26 19:52:24.797	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.797	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "337.591µs [97;44mGET[0m /test-response" 	{"requestID": "4d90604d-e8d2-4f15-b0a4-ce498d3e0468", "username": ""}
+2023-11-26 19:52:24.812	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.812	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "366.801µs [97;44mGET[0m /test-response" 	{"requestID": "93e6cb87-c302-4d6f-84aa-cc1ec6fdf52c", "username": ""}
+2023-11-26 19:52:24.827	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.827	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "342.886µs [97;44mGET[0m /test-response" 	{"requestID": "0ebc6fa8-feb7-42d6-bf8c-8c73b325890f", "username": ""}
+2023-11-26 19:52:24.847	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.847	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "377.779µs [97;44mGET[0m /test-response" 	{"requestID": "7edc56c9-1594-4641-80ee-616ce84fb15f", "username": ""}
+2023-11-26 19:52:24.867	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:52:24.868	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "644.379µs [97;44mGET[0m /test-response" 	{"requestID": "63ecdc69-babe-480d-aaf5-1753b0c3583d", "username": ""}
+2023-11-26 19:55:36.452	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 19:55:38.536	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 19:55:39.541	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "218.853µs [97;44mGET[0m /healthz" 	{"requestID": "b3c45e35-1adf-448a-9b55-536d61fe3b6c", "username": ""}
+2023-11-26 19:55:39.602	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 19:55:49.238	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 19:55:50.241	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "249.202µs [97;44mGET[0m /healthz" 	{"requestID": "ee3325b3-149e-4938-b1fe-6a774aa75e22", "username": ""}
+2023-11-26 19:55:56.721	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:55:56.721	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "782.425µs [97;44mGET[0m /test-response" 	{"requestID": "7bfa5e79-0c8b-4f9f-bcd4-6bc475cd6ece", "username": ""}
+2023-11-26 19:56:14.946	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:14.946	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "345.99µs [97;44mGET[0m /test-response" 	{"requestID": "aa37569b-bb3a-4e8e-a900-2b72d67b14b6", "username": ""}
+2023-11-26 19:56:14.959	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:14.960	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "366.038µs [97;44mGET[0m /test-response" 	{"requestID": "eaf0feaa-464b-486a-992d-c0bb78c76217", "username": ""}
+2023-11-26 19:56:14.972	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:14.972	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "399.582µs [97;44mGET[0m /test-response" 	{"requestID": "aced19c1-be4c-4323-8e1f-f1f548561714", "username": ""}
+2023-11-26 19:56:14.986	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:14.986	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "343.622µs [97;44mGET[0m /test-response" 	{"requestID": "591ac195-085d-427d-9d3a-e8cc423699f2", "username": ""}
+2023-11-26 19:56:14.999	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.000	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "331.221µs [97;44mGET[0m /test-response" 	{"requestID": "334622ab-fd56-456f-8943-add746c89e90", "username": ""}
+2023-11-26 19:56:15.013	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.013	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "259.481µs [97;44mGET[0m /test-response" 	{"requestID": "252fe695-9a19-4da2-b2b3-93ff4be6f765", "username": ""}
+2023-11-26 19:56:15.026	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.026	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "233.857µs [97;44mGET[0m /test-response" 	{"requestID": "5f41e8dd-7d67-417b-bc91-8442841ba9a1", "username": ""}
+2023-11-26 19:56:15.039	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.039	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "349.397µs [97;44mGET[0m /test-response" 	{"requestID": "33eb20e7-6a63-4343-9cdb-7648915ee983", "username": ""}
+2023-11-26 19:56:15.052	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.053	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "350.027µs [97;44mGET[0m /test-response" 	{"requestID": "9996e2a5-5835-480a-acbb-4cf59dbea2d1", "username": ""}
+2023-11-26 19:56:15.066	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.066	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "326.039µs [97;44mGET[0m /test-response" 	{"requestID": "13a57b79-e740-4084-9fe3-e7a61258712c", "username": ""}
+2023-11-26 19:56:15.080	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.080	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "260.681µs [97;44mGET[0m /test-response" 	{"requestID": "a7b757eb-4a49-4b35-9d63-6c7a9f5139ac", "username": ""}
+2023-11-26 19:56:15.094	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.094	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "258.049µs [97;44mGET[0m /test-response" 	{"requestID": "15e28e91-f59b-4783-b56b-22714820abd9", "username": ""}
+2023-11-26 19:56:15.108	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.108	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "251.11µs [97;44mGET[0m /test-response" 	{"requestID": "36698482-174d-48e3-b2ee-979f744fb723", "username": ""}
+2023-11-26 19:56:15.122	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.122	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "387.696µs [97;44mGET[0m /test-response" 	{"requestID": "a8bb3dd3-db5e-498d-bfbe-85aad78cafec", "username": ""}
+2023-11-26 19:56:15.135	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.135	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "293.714µs [97;44mGET[0m /test-response" 	{"requestID": "0406531d-1d25-4374-b8c8-fccb39544680", "username": ""}
+2023-11-26 19:56:15.148	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.148	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "346.76µs [97;44mGET[0m /test-response" 	{"requestID": "ec877553-e448-461b-a1e0-99014ee5c884", "username": ""}
+2023-11-26 19:56:15.162	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.162	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "278.004µs [97;44mGET[0m /test-response" 	{"requestID": "92c31ff4-d8b5-4fae-89e6-b21ae31c6cfc", "username": ""}
+2023-11-26 19:56:15.175	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.175	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "299.727µs [97;44mGET[0m /test-response" 	{"requestID": "36460518-6d7d-492e-b7a2-84fc59856b38", "username": ""}
+2023-11-26 19:56:15.189	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.189	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "416.519µs [97;44mGET[0m /test-response" 	{"requestID": "4f8626e7-3702-4da9-ab6d-7a9450a4d2c5", "username": ""}
+2023-11-26 19:56:15.202	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:15.203	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "297.901µs [97;44mGET[0m /test-response" 	{"requestID": "8df774a6-3355-4d94-890c-8d66e360f46c", "username": ""}
+2023-11-26 19:56:36.242	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.243	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "336.642µs [97;44mGET[0m /test-response" 	{"requestID": "dbe746ec-4c3a-49e5-82d9-1c34701436b0", "username": ""}
+2023-11-26 19:56:36.257	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.258	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "288.091µs [97;44mGET[0m /test-response" 	{"requestID": "0576559b-2cad-4f2f-b4cb-14eb2553d5c3", "username": ""}
+2023-11-26 19:56:36.271	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.271	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "362.537µs [97;44mGET[0m /test-response" 	{"requestID": "760d4b0e-a722-489e-92bc-c79f83871574", "username": ""}
+2023-11-26 19:56:36.284	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.284	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "454.862µs [97;44mGET[0m /test-response" 	{"requestID": "f90760a1-8daa-42c9-8607-1130fcec1d6a", "username": ""}
+2023-11-26 19:56:36.298	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.299	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "303.904µs [97;44mGET[0m /test-response" 	{"requestID": "385de35e-a8fb-487a-9f6f-355d5ddea868", "username": ""}
+2023-11-26 19:56:36.313	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.313	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "263.314µs [97;44mGET[0m /test-response" 	{"requestID": "f67ed752-3079-4a8f-8bab-d4193cc28815", "username": ""}
+2023-11-26 19:56:36.327	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.327	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "281.596µs [97;44mGET[0m /test-response" 	{"requestID": "5449cf49-78b0-4659-a32e-7c23cbcaeb36", "username": ""}
+2023-11-26 19:56:36.341	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.341	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "274.448µs [97;44mGET[0m /test-response" 	{"requestID": "4b8d5feb-a20f-42f0-b661-6c47eb4136e9", "username": ""}
+2023-11-26 19:56:36.355	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.355	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "386.531µs [97;44mGET[0m /test-response" 	{"requestID": "0ee65a2f-0eda-412b-8303-969d5d76f5e9", "username": ""}
+2023-11-26 19:56:36.368	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.368	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "453.118µs [97;44mGET[0m /test-response" 	{"requestID": "58c02239-bfee-4828-bf9c-4cc60e563376", "username": ""}
+2023-11-26 19:56:36.383	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.383	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "336.902µs [97;44mGET[0m /test-response" 	{"requestID": "da9926e8-99b6-490e-be9b-463ed64b2622", "username": ""}
+2023-11-26 19:56:36.397	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.398	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "360.782µs [97;44mGET[0m /test-response" 	{"requestID": "eedb0b47-ab27-447b-9966-579833abf9d8", "username": ""}
+2023-11-26 19:56:36.411	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.412	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "283.367µs [97;44mGET[0m /test-response" 	{"requestID": "b980c451-9689-44d7-96a7-3d275923a71c", "username": ""}
+2023-11-26 19:56:36.426	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.426	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "426.807µs [97;44mGET[0m /test-response" 	{"requestID": "636e4076-6298-4cf3-bfb0-c59fa0970809", "username": ""}
+2023-11-26 19:56:36.440	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.440	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "336.71µs [97;44mGET[0m /test-response" 	{"requestID": "4792c222-bf68-47cd-b9a7-80b683eca3a5", "username": ""}
+2023-11-26 19:56:36.454	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.454	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "379.144µs [97;44mGET[0m /test-response" 	{"requestID": "cfe912c0-1c99-4c75-b87c-1bef2da968fb", "username": ""}
+2023-11-26 19:56:36.467	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.467	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "284.906µs [97;44mGET[0m /test-response" 	{"requestID": "caea341d-6255-4252-9eb8-fb930c699ee1", "username": ""}
+2023-11-26 19:56:36.481	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.481	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "272.079µs [97;44mGET[0m /test-response" 	{"requestID": "72902435-88e6-48dd-97c0-24adf9efadf0", "username": ""}
+2023-11-26 19:56:36.495	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.495	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "254.342µs [97;44mGET[0m /test-response" 	{"requestID": "35724ea6-cdd8-41f4-9a28-358129f35d05", "username": ""}
+2023-11-26 19:56:36.509	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.510	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.282141ms [97;44mGET[0m /test-response" 	{"requestID": "090e6dc1-b83b-463d-99d1-c5209d904988", "username": ""}
+2023-11-26 19:56:36.523	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.523	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "355.625µs [97;44mGET[0m /test-response" 	{"requestID": "8cdde56d-4f2d-4ca4-a5c1-793f0e4c8119", "username": ""}
+2023-11-26 19:56:36.538	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.538	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "420.875µs [97;44mGET[0m /test-response" 	{"requestID": "2dcb5b06-adb6-4d4d-a9c1-1c178af46ea2", "username": ""}
+2023-11-26 19:56:36.552	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.552	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "438.818µs [97;44mGET[0m /test-response" 	{"requestID": "8916340d-db45-48db-8677-6a9cb9d66bb8", "username": ""}
+2023-11-26 19:56:36.567	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.567	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "436.304µs [97;44mGET[0m /test-response" 	{"requestID": "57e61de4-1811-4fd9-9411-6b16a2370603", "username": ""}
+2023-11-26 19:56:36.582	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.582	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "316.695µs [97;44mGET[0m /test-response" 	{"requestID": "36194ff5-8f08-440b-94f7-ce355c7eda8b", "username": ""}
+2023-11-26 19:56:36.596	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.596	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "263.997µs [97;44mGET[0m /test-response" 	{"requestID": "396012b0-5b4f-45c1-bc83-5256592cbcf3", "username": ""}
+2023-11-26 19:56:36.610	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.610	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "236.451µs [97;44mGET[0m /test-response" 	{"requestID": "3b9e941c-885e-4018-b00a-eac983f9a3d8", "username": ""}
+2023-11-26 19:56:36.624	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.624	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "422.378µs [97;44mGET[0m /test-response" 	{"requestID": "99953ec2-1bc3-48b9-b56f-381804505edf", "username": ""}
+2023-11-26 19:56:36.639	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.639	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "287.591µs [97;44mGET[0m /test-response" 	{"requestID": "14b92acc-a1a3-44d2-a994-7df6386d6dda", "username": ""}
+2023-11-26 19:56:36.652	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 19:56:36.652	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "322.526µs [97;44mGET[0m /test-response" 	{"requestID": "1c399d17-fdfc-4148-8d5f-f84c9e6ae130", "username": ""}
+2023-11-26 20:44:58.727	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 20:45:04.775	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 20:45:05.780	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "215.601µs [97;44mGET[0m /healthz" 	{"requestID": "f2c7f888-c05a-484c-8ea5-a239e2c88495", "username": ""}
+2023-11-26 20:45:26.481	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:26.482	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "797.713µs [97;44mGET[0m /test-response" 	{"requestID": "0302a9f9-ef77-43cf-8234-f12d2c304d21", "username": ""}
+2023-11-26 20:45:27.004	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:27.006	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.744455ms [97;44mGET[0m /test-response" 	{"requestID": "3fbe4c87-c8f9-437c-9d83-a3f147db61e1", "username": ""}
+2023-11-26 20:45:46.123	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.123	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "380.821µs [97;44mGET[0m /test-response" 	{"requestID": "82fa3309-ba8c-4169-8f1b-39d74a579ceb", "username": ""}
+2023-11-26 20:45:46.137	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.137	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "287.932µs [97;44mGET[0m /test-response" 	{"requestID": "39f06102-7742-4058-bce8-6268a316c4c5", "username": ""}
+2023-11-26 20:45:46.150	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.150	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "241.581µs [97;44mGET[0m /test-response" 	{"requestID": "c507dcf8-2e5c-46a6-b6d8-c5dcbaeca7ba", "username": ""}
+2023-11-26 20:45:46.163	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.163	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "334.967µs [97;44mGET[0m /test-response" 	{"requestID": "fdced916-d598-4082-a39d-fddc89469802", "username": ""}
+2023-11-26 20:45:46.176	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.176	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "505.433µs [97;44mGET[0m /test-response" 	{"requestID": "cd9fba7b-59e3-40ee-ac93-78da7d6fd566", "username": ""}
+2023-11-26 20:45:46.190	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.190	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "236.715µs [97;44mGET[0m /test-response" 	{"requestID": "e7444b09-40af-4c58-94b3-ce0812f8f2ee", "username": ""}
+2023-11-26 20:45:46.204	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.204	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "248.423µs [97;44mGET[0m /test-response" 	{"requestID": "404dd14f-26a0-4b4d-a7a7-c120066ab6b4", "username": ""}
+2023-11-26 20:45:46.218	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.219	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "296.905µs [97;44mGET[0m /test-response" 	{"requestID": "7d58dd19-ebfd-4dad-b8be-cfabbce662ab", "username": ""}
+2023-11-26 20:45:46.233	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.234	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "376.683µs [97;44mGET[0m /test-response" 	{"requestID": "ef0f13fe-7275-465a-832a-554ae8dd2554", "username": ""}
+2023-11-26 20:45:46.248	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.249	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "895.057µs [97;44mGET[0m /test-response" 	{"requestID": "48b0b17d-fa45-418c-a4ec-c03c172e1fe7", "username": ""}
+2023-11-26 20:45:46.264	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.264	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "354.609µs [97;44mGET[0m /test-response" 	{"requestID": "a8ffcc3a-37a4-4da4-a70e-beb4e32e8e8e", "username": ""}
+2023-11-26 20:45:46.278	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.278	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "360.016µs [97;44mGET[0m /test-response" 	{"requestID": "2e2a8c12-3dc2-47e3-84a8-82383b5b6b90", "username": ""}
+2023-11-26 20:45:46.293	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.294	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "520.101µs [97;44mGET[0m /test-response" 	{"requestID": "9bb158aa-8bf2-449c-8171-91e9dcf8c20b", "username": ""}
+2023-11-26 20:45:46.308	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.308	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "378.41µs [97;44mGET[0m /test-response" 	{"requestID": "f00c4b1a-fbe3-453b-a8f4-8b204c4992c5", "username": ""}
+2023-11-26 20:45:46.322	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.322	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "283.706µs [97;44mGET[0m /test-response" 	{"requestID": "781c496e-e3fc-4f09-916b-d8bbb6fda4f8", "username": ""}
+2023-11-26 20:45:46.336	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.337	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "245.932µs [97;44mGET[0m /test-response" 	{"requestID": "43a303e8-14af-407f-bfbd-1616fe3e4147", "username": ""}
+2023-11-26 20:45:46.351	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.351	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "304.167µs [97;44mGET[0m /test-response" 	{"requestID": "dbe9e833-f385-4982-b591-316028ef4d7d", "username": ""}
+2023-11-26 20:45:46.365	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.366	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "389.525µs [97;44mGET[0m /test-response" 	{"requestID": "462bf4df-c8bd-4774-90da-23272606292a", "username": ""}
+2023-11-26 20:45:46.381	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.381	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "355.049µs [97;44mGET[0m /test-response" 	{"requestID": "a3afe2ef-ae96-4e5c-abeb-f3bc2768e01e", "username": ""}
+2023-11-26 20:45:46.395	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.395	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "388.697µs [97;44mGET[0m /test-response" 	{"requestID": "a4737b3e-bae2-432d-9008-b13b19bcc12c", "username": ""}
+2023-11-26 20:45:46.409	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.409	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "469.748µs [97;44mGET[0m /test-response" 	{"requestID": "1bd291b1-8edd-460c-8040-4dff680718da", "username": ""}
+2023-11-26 20:45:46.422	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.422	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "240.578µs [97;44mGET[0m /test-response" 	{"requestID": "e5c23912-d2cc-41cf-879f-2ebba6c5b9c1", "username": ""}
+2023-11-26 20:45:46.436	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.437	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "364.691µs [97;44mGET[0m /test-response" 	{"requestID": "6153cf7c-a44e-48b3-899f-df78774a94c3", "username": ""}
+2023-11-26 20:45:46.451	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.451	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "249.735µs [97;44mGET[0m /test-response" 	{"requestID": "845bd3b1-7167-41b5-9b0b-a71869b8c463", "username": ""}
+2023-11-26 20:45:46.465	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.465	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "356.669µs [97;44mGET[0m /test-response" 	{"requestID": "b225c641-c2db-442b-a9f3-45d2e3124bc8", "username": ""}
+2023-11-26 20:45:46.479	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.479	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "379.266µs [97;44mGET[0m /test-response" 	{"requestID": "21554e65-ea57-4398-9152-5d8133ee1a2d", "username": ""}
+2023-11-26 20:45:46.492	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.493	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "466.832µs [97;44mGET[0m /test-response" 	{"requestID": "bc2baed0-f16e-47dd-b700-3bbfef597ab3", "username": ""}
+2023-11-26 20:45:46.506	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.506	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "254.874µs [97;44mGET[0m /test-response" 	{"requestID": "f4c5eebb-a61c-40d3-84fd-114a167b7a8a", "username": ""}
+2023-11-26 20:45:46.520	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.520	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "637.747µs [97;44mGET[0m /test-response" 	{"requestID": "31b2fb10-3218-4cc4-96e9-07fc0d382cde", "username": ""}
+2023-11-26 20:45:46.534	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 20:45:46.534	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "249.693µs [97;44mGET[0m /test-response" 	{"requestID": "33175b22-9edc-4122-8ae5-eda4a3f052f6", "username": ""}
+2023-11-26 21:01:17.532	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:01:23.634	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:01:24.635	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "226.367µs [97;44mGET[0m /healthz" 	{"requestID": "86801807-2dd6-4a82-83e3-694885016d12", "username": ""}
+2023-11-26 21:01:36.003	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:01:36.003	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "602.295µs [97;44mGET[0m /test-response" 	{"requestID": "5c8015e5-3cf9-4e87-bf5c-217ff2381ac1", "username": ""}
+2023-11-26 21:02:42.188	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:02:48.361	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:02:49.363	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "203.6µs [97;44mGET[0m /healthz" 	{"requestID": "72a0a510-37db-4712-ab4c-4e615a918a4f", "username": ""}
+2023-11-26 21:02:51.422	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:02:51.423	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.322175ms [97;44mGET[0m /test-response" 	{"requestID": "2dae1139-0133-4eeb-b68e-dc68a7aaca21", "username": ""}
+2023-11-26 21:04:09.429	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.429	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "304.238µs [97;44mGET[0m /test-response" 	{"requestID": "0cf3f30d-b415-4e29-a4b0-0daf65e0c8a1", "username": ""}
+2023-11-26 21:04:09.444	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.444	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "412.288µs [97;44mGET[0m /test-response" 	{"requestID": "736fa002-0dbd-47c1-8b60-1d05634d92f2", "username": ""}
+2023-11-26 21:04:09.457	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.458	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "376.511µs [97;44mGET[0m /test-response" 	{"requestID": "bf1a8f6e-ea18-455c-ad38-c34525ea13d7", "username": ""}
+2023-11-26 21:04:09.471	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.471	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "372.952µs [97;44mGET[0m /test-response" 	{"requestID": "1d9d311d-f297-42cb-84cb-3443b640bebe", "username": ""}
+2023-11-26 21:04:09.485	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.486	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "397.416µs [97;44mGET[0m /test-response" 	{"requestID": "7bc1b30b-c03e-4e25-a6ec-62056e35386b", "username": ""}
+2023-11-26 21:04:09.500	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.500	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "253.394µs [97;44mGET[0m /test-response" 	{"requestID": "57f4c333-216c-46f9-9d44-cd5a0bbe9b01", "username": ""}
+2023-11-26 21:04:09.515	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.515	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "292.129µs [97;44mGET[0m /test-response" 	{"requestID": "8e2b262c-f4db-48e0-9332-b2d19492ae73", "username": ""}
+2023-11-26 21:04:09.530	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.530	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "306.501µs [97;44mGET[0m /test-response" 	{"requestID": "e46000ca-ad6d-4837-9d32-2fd165890a69", "username": ""}
+2023-11-26 21:04:09.545	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.545	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "337.61µs [97;44mGET[0m /test-response" 	{"requestID": "b94a6179-e2d2-48fb-a392-55a28dd91c0c", "username": ""}
+2023-11-26 21:04:09.560	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.560	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "292.168µs [97;44mGET[0m /test-response" 	{"requestID": "0698d794-7c2f-4699-b884-952b528b93d2", "username": ""}
+2023-11-26 21:04:09.574	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.575	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "412.848µs [97;44mGET[0m /test-response" 	{"requestID": "ec94ec75-efc5-4d95-a64e-19f8d1abe3dd", "username": ""}
+2023-11-26 21:04:09.590	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.590	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "317.216µs [97;44mGET[0m /test-response" 	{"requestID": "ae1ea504-12d0-41ee-bc6e-6066e1e8b783", "username": ""}
+2023-11-26 21:04:09.604	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.604	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "324.188µs [97;44mGET[0m /test-response" 	{"requestID": "fde3edad-d5c4-416a-ab41-92e54045f5f0", "username": ""}
+2023-11-26 21:04:09.618	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.618	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "349.446µs [97;44mGET[0m /test-response" 	{"requestID": "2537819a-f64f-4f84-a1cb-fa42f4477bfe", "username": ""}
+2023-11-26 21:04:09.633	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.633	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "255.545µs [97;44mGET[0m /test-response" 	{"requestID": "44f925e4-0c58-4533-8984-ff60f8003197", "username": ""}
+2023-11-26 21:04:09.648	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.648	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "305.804µs [97;44mGET[0m /test-response" 	{"requestID": "5d410631-2941-47e4-b149-7d0b59a0ce64", "username": ""}
+2023-11-26 21:04:09.663	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.663	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "356.688µs [97;44mGET[0m /test-response" 	{"requestID": "27b2e97e-9b3b-4bd6-912d-682560926b64", "username": ""}
+2023-11-26 21:04:09.678	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.678	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "324.955µs [97;44mGET[0m /test-response" 	{"requestID": "746574e5-54d4-498f-ae36-26bf4c4eea13", "username": ""}
+2023-11-26 21:04:09.694	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.694	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "408.433µs [97;44mGET[0m /test-response" 	{"requestID": "7b25056f-1889-4300-9df1-bdcd5f228a7c", "username": ""}
+2023-11-26 21:04:09.709	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.710	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "472.703µs [97;44mGET[0m /test-response" 	{"requestID": "bbc3384c-2836-4e0d-af8b-0a198caed599", "username": ""}
+2023-11-26 21:04:09.724	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.724	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "365.992µs [97;44mGET[0m /test-response" 	{"requestID": "1464b627-3eb3-4d28-a6d4-621a24e43d0e", "username": ""}
+2023-11-26 21:04:09.739	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.739	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "673.973µs [97;44mGET[0m /test-response" 	{"requestID": "6e46885b-d161-4097-a922-80e548569ef7", "username": ""}
+2023-11-26 21:04:09.753	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.754	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "535.76µs [97;44mGET[0m /test-response" 	{"requestID": "4062fdf0-00cc-4e5a-b2d1-ce163c970f49", "username": ""}
+2023-11-26 21:04:09.768	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.768	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "343.417µs [97;44mGET[0m /test-response" 	{"requestID": "d2d3e482-4873-410d-83bf-eba6a48933cc", "username": ""}
+2023-11-26 21:04:09.783	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.783	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "245.822µs [97;44mGET[0m /test-response" 	{"requestID": "b2887dcc-67a4-483a-ad22-1e4c67b67225", "username": ""}
+2023-11-26 21:04:09.798	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.798	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "330.283µs [97;44mGET[0m /test-response" 	{"requestID": "a1c7091a-1eca-4ed6-b37f-ffa74b5181d5", "username": ""}
+2023-11-26 21:04:09.812	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.812	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "286.906µs [97;44mGET[0m /test-response" 	{"requestID": "a81cf642-ffe5-48ee-83ab-36753b9eeff9", "username": ""}
+2023-11-26 21:04:09.827	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.827	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "338.704µs [97;44mGET[0m /test-response" 	{"requestID": "d140fbea-6bbf-42c7-9048-3ac64407c9c6", "username": ""}
+2023-11-26 21:04:09.844	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.844	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "276.687µs [97;44mGET[0m /test-response" 	{"requestID": "e81fa54e-9d28-46a1-a620-8e65192eebaf", "username": ""}
+2023-11-26 21:04:09.859	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:04:09.860	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "624.818µs [97;44mGET[0m /test-response" 	{"requestID": "e31e856f-b5a7-4c41-bfbe-542b95da3a82", "username": ""}
+2023-11-26 21:06:21.966	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:06:27.385	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:06:28.387	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "252.12µs [97;44mGET[0m /healthz" 	{"requestID": "992b7623-eff5-409f-8363-4ba5cce2e816", "username": ""}
+2023-11-26 21:14:32.206	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:14:38.277	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:14:39.279	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "403.253µs [97;44mGET[0m /healthz" 	{"requestID": "254ef5a0-9014-4164-9b4c-977b2e23ac07", "username": ""}
+2023-11-26 21:15:24.090	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:15:24.090	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "645.303µs [97;44mGET[0m /test-response" 	{"requestID": "38190251-7a69-4e46-ae09-501fbaff712a", "username": ""}
+2023-11-26 21:15:24.900	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:15:24.900	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "706.529µs [97;44mGET[0m /test-response" 	{"requestID": "ff866f83-5072-4159-afc3-5f81c1206d0a", "username": ""}
+2023-11-26 21:17:03.536	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:17:08.605	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:17:09.606	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "257.274µs [97;44mGET[0m /healthz" 	{"requestID": "f29b7a60-412d-4468-aacd-3207c49ecfbc", "username": ""}
+2023-11-26 21:21:04.351	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:21:09.556	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:21:10.558	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "310.593µs [97;44mGET[0m /healthz" 	{"requestID": "27dccd62-8cc9-4937-aff0-41ba6d0316fc", "username": ""}
+2023-11-26 21:24:20.031	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:26:49.494	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:26:50.495	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "193.757µs [97;44mGET[0m /healthz" 	{"requestID": "cbc2d1ee-8932-4ca7-99ca-803d7b4ec7a5", "username": ""}
+2023-11-26 21:28:37.566	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:28:45.100	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:28:46.103	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "195.409µs [97;44mGET[0m /healthz" 	{"requestID": "bd092653-8851-4fc7-99c3-ca9175e610dc", "username": ""}
+2023-11-26 21:29:00.063	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:00.063	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "786.746µs [97;44mGET[0m /test-response" 	{"requestID": "d50de4e0-cec9-4f26-9cb7-ba15029620d1", "username": ""}
+2023-11-26 21:29:10.146	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:10.146	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "288.461µs [97;44mGET[0m /test-response" 	{"requestID": "75ff4c36-a31e-4960-a6bc-d0bd3faec81f", "username": ""}
+2023-11-26 21:29:10.161	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:10.161	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "243.039µs [97;44mGET[0m /test-response" 	{"requestID": "eb0b19d8-1a3e-4b17-a4b8-b273902e4c19", "username": ""}
+2023-11-26 21:29:10.174	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:10.174	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "284.798µs [97;44mGET[0m /test-response" 	{"requestID": "c27eb707-e9a1-4b05-9bc4-469556229fde", "username": ""}
+2023-11-26 21:29:10.188	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:10.188	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "394.383µs [97;44mGET[0m /test-response" 	{"requestID": "22c9ec2a-56a3-4835-9fa5-15df148799cb", "username": ""}
+2023-11-26 21:29:10.202	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:29:10.202	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "210.204µs [97;44mGET[0m /test-response" 	{"requestID": "b05e1767-4f3a-4f90-9481-c73463745081", "username": ""}
+2023-11-26 21:29:10.216	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "149.331µs [97;44mGET[0m /test-response" 	{"requestID": "fed73506-2382-4b22-bca3-41d2dc52fccf", "username": ""}
+2023-11-26 21:29:10.230	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "128.37µs [97;44mGET[0m /test-response" 	{"requestID": "c5ab1614-79d0-4649-89c5-0b91c3e6520b", "username": ""}
+2023-11-26 21:29:10.244	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "187.541µs [97;44mGET[0m /test-response" 	{"requestID": "cf35248b-7778-4fa4-bc3b-17c6b519743e", "username": ""}
+2023-11-26 21:29:10.257	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "182.488µs [97;44mGET[0m /test-response" 	{"requestID": "f959603e-0fe7-4dcf-8705-3dd5c8f6b4e7", "username": ""}
+2023-11-26 21:29:10.270	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "208.883µs [97;44mGET[0m /test-response" 	{"requestID": "549b0a41-dba7-4c27-afed-1dbd1ae507e2", "username": ""}
+2023-11-26 21:29:10.284	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "138.955µs [97;44mGET[0m /test-response" 	{"requestID": "289501ae-2324-4297-8351-7f4bb9b67db9", "username": ""}
+2023-11-26 21:29:10.298	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "159.681µs [97;44mGET[0m /test-response" 	{"requestID": "5634ef23-d047-46fa-9082-5d5b594a2e37", "username": ""}
+2023-11-26 21:29:10.311	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "146.429µs [97;44mGET[0m /test-response" 	{"requestID": "02cbb1f4-4c1f-4a0d-996c-8e52afdce128", "username": ""}
+2023-11-26 21:29:10.325	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "166.893µs [97;44mGET[0m /test-response" 	{"requestID": "bb0b451b-5d27-492b-9db8-6802bd01a5e3", "username": ""}
+2023-11-26 21:29:10.338	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "280.01µs [97;44mGET[0m /test-response" 	{"requestID": "90b5d08b-1ef0-47bb-9e2f-0a375d15d5cd", "username": ""}
+2023-11-26 21:29:10.352	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "125.308µs [97;44mGET[0m /test-response" 	{"requestID": "6e988888-1323-40a1-a0c4-8f753dd81162", "username": ""}
+2023-11-26 21:29:10.366	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "132.514µs [97;44mGET[0m /test-response" 	{"requestID": "99b20488-c403-4f3c-a047-89061cca8dc3", "username": ""}
+2023-11-26 21:29:10.380	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "153.479µs [97;44mGET[0m /test-response" 	{"requestID": "36f3b818-e9c0-44ab-a531-e320688f934a", "username": ""}
+2023-11-26 21:29:10.393	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "207.093µs [97;44mGET[0m /test-response" 	{"requestID": "1620726e-4e82-47fc-9421-0fa534d8761f", "username": ""}
+2023-11-26 21:29:10.407	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "154.15µs [97;44mGET[0m /test-response" 	{"requestID": "6c736d57-23aa-4216-9caa-a8081848c057", "username": ""}
+2023-11-26 21:29:10.420	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "186.063µs [97;44mGET[0m /test-response" 	{"requestID": "06d75219-6eea-45c2-8231-ee53b1d6b263", "username": ""}
+2023-11-26 21:29:10.434	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "131.864µs [97;44mGET[0m /test-response" 	{"requestID": "2e0ab52a-8f1c-4a31-9d77-1450da4fabb4", "username": ""}
+2023-11-26 21:29:10.448	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "150.534µs [97;44mGET[0m /test-response" 	{"requestID": "7ea9014b-5bc1-4558-9223-3dc6a69f96cf", "username": ""}
+2023-11-26 21:29:10.461	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "159.35µs [97;44mGET[0m /test-response" 	{"requestID": "c41e41e8-2096-4ec5-95df-178ffda8096c", "username": ""}
+2023-11-26 21:29:10.475	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "185.336µs [97;44mGET[0m /test-response" 	{"requestID": "70d0b7e9-8d13-4ceb-981b-e2fd72754a40", "username": ""}
+2023-11-26 21:29:10.543	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "305.744µs [97;44mGET[0m /test-response" 	{"requestID": "6d8d0ded-3fb6-4285-98da-adc151c669b0", "username": ""}
+2023-11-26 21:29:10.571	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "241.603µs [97;44mGET[0m /test-response" 	{"requestID": "55b9248c-4d6a-4efa-a804-a4a67e57325e", "username": ""}
+2023-11-26 21:29:10.587	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "275.388µs [97;44mGET[0m /test-response" 	{"requestID": "e0267580-5c51-4309-a99c-d91086fa53b9", "username": ""}
+2023-11-26 21:29:10.601	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "126.375µs [97;44mGET[0m /test-response" 	{"requestID": "c667ed17-bc0f-4bee-991d-1abf85b49a17", "username": ""}
+2023-11-26 21:29:10.616	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "139.947µs [97;44mGET[0m /test-response" 	{"requestID": "d97384e1-7083-4c0c-bdfc-dae4684a5858", "username": ""}
+2023-11-26 21:29:43.986	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:32:25.174	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:32:26.176	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "422.991µs [97;44mGET[0m /healthz" 	{"requestID": "33f3f403-6c38-475b-ae0a-eaec760945a8", "username": ""}
+2023-11-26 21:33:07.310	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-26 21:33:12.853	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-26 21:33:13.854	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "220.739µs [97;44mGET[0m /healthz" 	{"requestID": "6e2b076c-6e98-4b7b-a4fc-5c0dad8c946c", "username": ""}
+2023-11-26 21:33:35.601	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:33:35.602	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.264926ms [97;44mGET[0m /test-response" 	{"requestID": "0a7f2d30-68ad-4a47-bd02-bcb385bc7c94", "username": ""}
+2023-11-26 21:33:35.616	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:33:35.616	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "214.837µs [97;44mGET[0m /test-response" 	{"requestID": "d4e000ae-4245-43b9-93c8-7166b3598468", "username": ""}
+2023-11-26 21:33:35.629	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:33:35.629	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "282.378µs [97;44mGET[0m /test-response" 	{"requestID": "28fadbeb-8b6f-4e03-9b5f-acfafd395a30", "username": ""}
+2023-11-26 21:33:35.643	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:33:35.643	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "296.96µs [97;44mGET[0m /test-response" 	{"requestID": "da360ad2-7147-4672-81fc-2b14263691e8", "username": ""}
+2023-11-26 21:33:35.656	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 21:33:35.656	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "318.933µs [97;44mGET[0m /test-response" 	{"requestID": "a4cf1532-dcaa-4911-84cb-efd88d4a7e87", "username": ""}
+2023-11-26 21:33:35.671	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "126.38µs [97;44mGET[0m /test-response" 	{"requestID": "3c8a0417-061b-4799-a033-1888d32671aa", "username": ""}
+2023-11-26 21:33:35.684	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "126.959µs [97;44mGET[0m /test-response" 	{"requestID": "d4225a06-3845-4f7d-9e79-21967e9c23f8", "username": ""}
+2023-11-26 21:33:35.698	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "142.172µs [97;44mGET[0m /test-response" 	{"requestID": "1aedcfba-4b8b-474b-817d-8b2ad2140696", "username": ""}
+2023-11-26 21:33:35.711	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "302.809µs [97;44mGET[0m /test-response" 	{"requestID": "72876723-2ad0-435c-941d-f046ac046076", "username": ""}
+2023-11-26 21:33:35.725	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "231.364µs [97;44mGET[0m /test-response" 	{"requestID": "9daa5af7-867d-4994-8bec-52a4394c2b97", "username": ""}
+2023-11-26 21:33:35.738	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "129.685µs [97;44mGET[0m /test-response" 	{"requestID": "fa794ae0-b196-49e6-8652-0b49eb0510f1", "username": ""}
+2023-11-26 21:33:35.751	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "124.093µs [97;44mGET[0m /test-response" 	{"requestID": "3e4bd3fa-c75a-4f17-b0f7-91f56f60ba3e", "username": ""}
+2023-11-26 21:33:35.765	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "133.523µs [97;44mGET[0m /test-response" 	{"requestID": "8a4ef31a-6945-4f9b-9165-ef4872548227", "username": ""}
+2023-11-26 21:33:35.779	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "202.293µs [97;44mGET[0m /test-response" 	{"requestID": "579748f2-1ecf-4ee1-bc07-69b6fe00241d", "username": ""}
+2023-11-26 21:33:35.792	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "151.633µs [97;44mGET[0m /test-response" 	{"requestID": "fa1732b0-316a-4558-aa69-bd47cf1ef224", "username": ""}
+2023-11-26 21:33:35.805	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "121.313µs [97;44mGET[0m /test-response" 	{"requestID": "772f697d-0370-4ddd-9330-7a999c76ef45", "username": ""}
+2023-11-26 21:33:35.819	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "118.463µs [97;44mGET[0m /test-response" 	{"requestID": "0d1aa71e-1968-49a3-a20c-aebe0bbce37f", "username": ""}
+2023-11-26 21:33:35.833	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "131.734µs [97;44mGET[0m /test-response" 	{"requestID": "73690377-f6ef-46c2-a967-2a8e52bcfb0b", "username": ""}
+2023-11-26 21:33:35.847	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "140.058µs [97;44mGET[0m /test-response" 	{"requestID": "4be92761-8fc1-419b-b08b-d3059c88f065", "username": ""}
+2023-11-26 21:33:35.861	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "147.672µs [97;44mGET[0m /test-response" 	{"requestID": "a509c447-a09d-4d5f-97c3-c8baee44b1a9", "username": ""}
+2023-11-26 21:33:35.874	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "316.421µs [97;44mGET[0m /test-response" 	{"requestID": "86aa288e-9023-444a-bf17-806327091b0e", "username": ""}
+2023-11-26 21:33:35.887	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "129.349µs [97;44mGET[0m /test-response" 	{"requestID": "e6b2ffe3-d2d1-4c8a-bcd1-b2e605715fe7", "username": ""}
+2023-11-26 21:33:35.901	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "132.484µs [97;44mGET[0m /test-response" 	{"requestID": "c0626e2f-c970-4440-9155-1bf1c85a92d5", "username": ""}
+2023-11-26 21:33:35.914	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "159.465µs [97;44mGET[0m /test-response" 	{"requestID": "3cf9ec57-8977-4c39-ab23-0a13672b0cab", "username": ""}
+2023-11-26 21:33:35.928	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "209.614µs [97;44mGET[0m /test-response" 	{"requestID": "e30b932d-6ae2-4e0e-b2d3-4ff0cbe31edd", "username": ""}
+2023-11-26 21:33:35.942	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "240.956µs [97;44mGET[0m /test-response" 	{"requestID": "136d8046-5663-4638-abe2-9aeb9e30f513", "username": ""}
+2023-11-26 21:33:35.955	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "123.777µs [97;44mGET[0m /test-response" 	{"requestID": "44c2039a-46ce-442f-9988-0d1140271ab9", "username": ""}
+2023-11-26 21:33:35.968	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "118.509µs [97;44mGET[0m /test-response" 	{"requestID": "d749d52e-fe49-4841-a60c-5b1fb5b6456f", "username": ""}
+2023-11-26 21:33:35.983	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "152.206µs [97;44mGET[0m /test-response" 	{"requestID": "c8168f5a-832a-4d90-b844-99396d0c94e5", "username": ""}
+2023-11-26 21:33:35.997	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "176.456µs [97;44mGET[0m /test-response" 	{"requestID": "a2f5497c-2aa0-4125-93a3-328dde19d1ce", "username": ""}

@@ -50,7 +50,7 @@ type Config struct {
 	Healthz         bool
 	EnableProfiling bool
 	EnableMetrics   bool
-	RateLimit       *RateLimit
+	RateLimit       *RateLimitInfo
 }
 
 // CertKey represents the certificate and key configuration for secure serving.
@@ -85,11 +85,16 @@ type JwtInfo struct {
 }
 
 // RateLimitConfig represents the configuration for rate limiting.
-type RateLimit struct {
-	TokensPerSecond int  // Number of tokens generated per second.
-	Burst           int  // Maximum burst size.
-	Enabled         bool // Enable rate limiting.
+type RateLimitInfo struct {
+	RequsetPerSecond float64 // Number of tokens generated per second.
+	Burst            int     // Maximum burst size.
 }
+
+// // CustomRateLimit defines rate limit settings for a specific path.
+// type CustomRateLimit struct {
+// 	RequestsPerSecond int // Number of requests allowed per second.
+// 	BurstSize         int // Maximum burst size.
+// }
 
 // NewConfig creates and returns a new Config instance with default settings.
 func NewConfig() *Config {
@@ -105,10 +110,9 @@ func NewConfig() *Config {
 			MaxRefresh: 1 * time.Hour,
 		},
 		// Default rate limit configurations
-		RateLimit: &RateLimit{
-			TokensPerSecond: 1,    // Example default value
-			Burst:           10,   // Example default value
-			Enabled:         true, // Enable by default
+		RateLimit: &RateLimitInfo{
+			RequsetPerSecond: 1.0, // Example default value
+			Burst:            10,  // Example default value
 		},
 	}
 }
@@ -142,6 +146,7 @@ func (c CompletedConfig) New() (*APIServer, error) {
 		middlewares:         c.Middlewares,
 		Engine:              gin.New(),
 		ShutdownTimeout:     30 * time.Second,
+		RateLimit:           c.RateLimit,
 	}
 
 	// Initialize the API server with the required setup.
