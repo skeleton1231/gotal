@@ -24,7 +24,12 @@ func InitFlags(flags *pflag.FlagSet) {
 }
 
 func PrintFlags(flags *pflag.FlagSet) {
+	fmt.Println("Current Flag Values:")
 	flags.VisitAll(func(flag *pflag.Flag) {
-		fmt.Println("flags log")
+		fmt.Printf("--%s=\"%s\"\t(Default: \"%s\")\t%s\n",
+			flag.Name,
+			flag.Value.String(),
+			flag.DefValue,
+			flag.Usage)
 	})
 }

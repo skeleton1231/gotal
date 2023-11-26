@@ -7,8 +7,8 @@ package apiserver
 import (
 	"context"
 	"fmt"
+	"log"
 
-	"github.com/sirupsen/logrus"
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
@@ -103,7 +103,7 @@ func (s preparedAPIServer) Run() error {
 
 	// start shutdown managers
 	if err := s.gs.Start(); err != nil {
-		logrus.Fatalf("start shutdown manager failed: %s", err.Error())
+		log.Fatalf("start shutdown manager failed: %s", err.Error())
 	}
 
 	// Start Http/Https Server
@@ -135,7 +135,7 @@ func newCompletedExtraConfig(c *ExtraConfig) *completedExtraConfig {
 func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	creds, err := credentials.NewServerTLSFromFile(c.ServerCert.CertKey.CertFile, c.ServerCert.CertKey.KeyFile)
 	if err != nil {
-		logrus.Fatalf("Failed to generate credentials %s", err.Error())
+		log.Fatalf("Failed to generate credentials %s", err.Error())
 	}
 	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
 	grpcServer := grpc.NewServer(opts...)
@@ -160,6 +160,10 @@ func buildGenericConfig(cfg *config.Config) (genericConfig *server.Config, lastE
 	}
 
 	if lastErr = cfg.InsecureServing.ApplyTo(genericConfig); lastErr != nil {
+		return
+	}
+
+	if lastErr = cfg.RateLimitOptions.ApplyTo(genericConfig); lastErr != nil {
 		return
 	}
 

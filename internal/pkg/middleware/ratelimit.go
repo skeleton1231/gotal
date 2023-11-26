@@ -4,7 +4,6 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/sirupsen/logrus"
 	"github.com/spf13/viper"
 	"golang.org/x/time/rate"
 )
@@ -14,9 +13,6 @@ func RateLimiter() gin.HandlerFunc {
 	// Read configuration values using Viper
 	rateLimit := viper.GetFloat64("ratelimit.requests-per-second") // Access nested configuration
 	burstSize := viper.GetInt("ratelimit.burst-size")              // Access nested configuration
-
-	logrus.Infof("rateLimit is %v", rateLimit)
-	logrus.Infof("burstSize is %v", burstSize)
 
 	// Convert rateLimit to a proper rate.Limit type
 	r := rate.Limit(rateLimit)

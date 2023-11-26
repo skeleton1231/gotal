@@ -5,3 +5,19 @@
 2023-11-26 04:22:42.109	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
 2023-11-26 04:22:42.110	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.066979ms [97;44mGET[0m /test-response" 	{"requestID": "b342cc25-70a0-4233-985f-373340a07dac", "username": ""}
 2023-11-26 04:22:42.140	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [127.0.0.1] "351.181µs [97;44mGET[0m /favicon.ico" 	{"requestID": "13926ae8-cda8-4dc2-89cf-0697b7a67e90", "username": ""}
+2023-11-26 13:06:22.792	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 13:06:22.793	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "819.217µs [97;44mGET[0m /test-response" 	{"requestID": "895fd031-1e4e-439a-a3e0-4bffccf98450", "username": ""}
+2023-11-26 13:06:23.343	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 13:06:23.343	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "455.176µs [97;44mGET[0m /test-response" 	{"requestID": "b4ccd572-1d66-439b-a6aa-1d386cd83c7b", "username": ""}
+2023-11-26 13:06:23.928	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 13:06:23.928	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "456.502µs [97;44mGET[0m /test-response" 	{"requestID": "6bb4feb5-72f2-4238-99c7-79a4d8c3aba2", "username": ""}
+2023-11-26 13:07:05.597	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-26 13:07:05.597	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "463.916µs [97;44mGET[0m /test-response" 	{"requestID": "ce223fe4-fbd2-45c2-b44b-04f2cc8dc2fe", "username": ""}
+2023-11-26 13:28:33.013	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 127.0.0.1:8082
+2023-11-26 13:28:33.015	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "1.004786ms [97;44mGET[0m /healthz" 	{"requestID": "0a218512-495e-4817-87ec-4bf768273736", "username": ""}
+2023-11-26 13:32:57.027	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 127.0.0.1:8082 stopped
+2023-11-26 13:32:59.891	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 127.0.0.1:8082
+2023-11-26 13:32:59.893	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "387.168µs [97;44mGET[0m /healthz" 	{"requestID": "2358db96-e015-4742-802f-934bc9e8d245", "username": ""}
+2023-11-26 13:33:02.866	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 127.0.0.1:8082 stopped
+2023-11-26 13:33:11.118	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 127.0.0.1:8082
+2023-11-26 13:33:12.121	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "361.234µs [97;44mGET[0m /healthz" 	{"requestID": "902e2283-5740-4dd2-b9e5-5b3af016ac1a", "username": ""}
