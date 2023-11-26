@@ -5,9 +5,15 @@ import (
 )
 
 type RateLimitOptions struct {
-	RequestsPerSecond float64                `json:"requests-per-second" mapstructure:"requests-per-second"`
-	BurstSize         int                    `json:"burst-size" mapstructure:"burst-size"`
-	CustomLimits      map[string]interface{} `json:"custom-limits" mapstructure:"custom-limits"`
+	RequestsPerSecond float64              `json:"requests-per-second" mapstructure:"requests-per-second"`
+	BurstSize         int                  `json:"burst-size" mapstructure:"burst-size"`
+	CustomLimits      map[string]RateLimit `json:"custom-limits" mapstructure:"custom-limits"`
+}
+
+// RateLimit struct defines the settings for rate limiting.
+type RateLimit struct {
+	RequestsPerSecond float64 `json:"requests-per-second" mapstruct　ure:"requests-per-second"`
+	BurstSize         int     `json:"burst-size" mapstructure:"burst-size"`
 }
 
 func NewRateLimitOptions() *RateLimitOptions {
@@ -15,6 +21,7 @@ func NewRateLimitOptions() *RateLimitOptions {
 	return &RateLimitOptions{
 		RequestsPerSecond: defaults.RateLimit.RequsetPerSecond,
 		BurstSize:         defaults.RateLimit.Burst,
+		CustomLimits:      make(map[string]RateLimit),
 	}
 }
 
