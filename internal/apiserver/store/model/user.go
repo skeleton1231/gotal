@@ -22,3 +22,15 @@ type User struct {
 func (User) TableName() string {
 	return "users"
 }
+
+// UserList is the whole list of all users which have been stored in stroage.
+type UserList struct {
+	// May add TypeMeta in the future.
+	// metav1.TypeMeta `json:",inline"`
+
+	// Standard list metadata.
+	// +optional
+	ListMeta `json:",inline"`
+
+	Items []*User `json:"items"`
+}
