@@ -26,9 +26,6 @@ func NewRateLimitOptions() *RateLimitOptions {
 }
 
 func (r *RateLimitOptions) ApplyTo(c *server.Config) error {
-	// 将默认速率限制设置应用到 server.Config
-	// c.RateLimit.RequsetPerSecond = r.RequestsPerSecond
-	// c.RateLimit.Burst = r.BurstSize
 
 	return nil
 }

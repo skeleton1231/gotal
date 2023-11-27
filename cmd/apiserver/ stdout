@@ -1294,3 +1294,5 @@
 2023-11-26 22:17:06.555	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "153.662µs [97;44mGET[0m /test-response" 	{"requestID": "75275c04-e70c-478e-8fe0-27e95c320d84", "username": ""}
 2023-11-26 22:17:06.569	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "256.86µs [97;44mGET[0m /test-response" 	{"requestID": "23a2125b-3622-4461-924d-696cc6f3245f", "username": ""}
 2023-11-26 22:17:06.582	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "219.217µs [97;44mGET[0m /test-response" 	{"requestID": "0e69cfa5-e6b3-41df-986c-9742b6b7e9a6", "username": ""}
+2023-11-27 17:48:17.625	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-27 17:48:17.630	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "10.443083ms [97;44mGET[0m /test-response" 	{"requestID": "d33e478f-561d-44e5-b13f-5878065a19e0", "username": ""}
