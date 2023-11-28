@@ -43,6 +43,8 @@ type ObjectMeta struct {
 	UpdatedAt time.Time `json:"updatedAt,omitempty" gorm:"column:updated_at"`
 
 	DeletedAt gorm.DeletedAt `json:"-" gorm:"column:deleted_at;index:idx_deleted_at"`
+
+	Status int `json:"status" gorm:"column:status" validate:"omitempty"`
 }
 
 func (obj *ObjectMeta) BeforeCreate(tx *gorm.DB) error {

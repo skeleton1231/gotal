@@ -3,6 +3,7 @@ package service
 import "github.com/skeleton1231/gotal/internal/apiserver/store"
 
 type Service interface {
+	Users() UserSrv
 }
 
 type service struct {

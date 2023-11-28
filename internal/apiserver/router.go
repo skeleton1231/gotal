@@ -4,6 +4,8 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
+	"github.com/skeleton1231/gotal/internal/apiserver/controller/v1/user"
+	"github.com/skeleton1231/gotal/internal/apiserver/store/database"
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
@@ -23,6 +25,19 @@ func installMiddleware(g *gin.Engine) {
 
 func installController(g *gin.Engine) *gin.Engine {
 	testController(g)
+
+	storeIns, _ := database.GetMySQLFactoryOr(nil)
+
+	v1 := g.Group("/v1")
+	{
+		// user RESTful resource
+		userv1 := v1.Group("/users")
+		{
+			userController := user.NewUserController(storeIns)
+
+			userv1.POST("", userController.Create)
+		}
+	}
 	return g
 }
 

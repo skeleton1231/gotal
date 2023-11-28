@@ -5,6 +5,7 @@ import (
 )
 
 type User struct {
+	ObjectMeta
 	Name            string     `gorm:"size:255;not null" json:"name"`
 	Email           *string    `gorm:"size:255" json:"email"`
 	EmailVerifiedAt *time.Time `json:"emailVerifiedAt"`

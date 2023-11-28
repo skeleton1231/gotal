@@ -3,6 +3,8 @@ package common
 import (
 	"crypto/rand"
 	"encoding/hex"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 // GenerateSecretKey generates a random secret key of specified length.
@@ -14,4 +16,10 @@ func GenerateSecretKey(length int) (string, error) {
 	}
 
 	return hex.EncodeToString(bytes), nil
+}
+
+// Encrypt encrypts the plain text with bcrypt.
+func Encrypt(source string) (string, error) {
+	hashedBytes, err := bcrypt.GenerateFromPassword([]byte(source), bcrypt.DefaultCost)
+	return string(hashedBytes), err
 }

@@ -22,12 +22,14 @@ type userService struct {
 	store store.Factory
 }
 
+var _ UserSrv = (*userService)(nil)
+
 func newUsers(srv *service) *userService {
 	return &userService{store: srv.store}
 }
 
 // ChangePassword implements UserSrv.
-func (*userService) ChangePassword(ctx context.Context, user *model.User) error {
+func (u *userService) ChangePassword(ctx context.Context, user *model.User) error {
 	panic("unimplemented")
 }
 
@@ -60,5 +62,3 @@ func (*userService) List(ctx context.Context, opts model.ListOptions) (*model.Us
 func (*userService) Update(ctx context.Context, user *model.User, opts model.UpdateOptions) error {
 	panic("unimplemented")
 }
-
-var _ UserSrv = (*userService)(nil)
