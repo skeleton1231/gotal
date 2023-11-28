@@ -1457,3 +1457,26 @@
 2023-11-28 15:53:31.338	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/apiserver/controller/v1/user/create.go:19 (github.com/skeleton1231/gotal/internal/apiserver/controller/v1/user.(*UserController).Create)","code":100003,"error":"invalid character '}' looking for beginning of object key string","message":"Error occurred while binding the request body to the struct"}]
 2023-11-28 15:53:31.338	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m400[0m - [::1] "746.222µs [97;46mPOST[0m /v1/users" 	{"requestID": "ff79b727-4c91-420b-bf66-552f2a590a5d", "username": ""}
 2023-11-28 15:58:05.361	[34mINFO[0m	apiserver	user/create.go:14	user create function called.	{"requestID": "548661db-7114-4315-8078-9f3dd325dea2", "username": ""}
+2023-11-28 16:02:40.545	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 16:02:54.148	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc000216000}:
+2023-11-28 16:02:54.149	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 16:02:54.156	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "2.569995ms [97;44mGET[0m /healthz" 	{"requestID": "253a97d7-90bb-4287-a884-8c13f22889bf", "username": ""}
+2023-11-28 16:05:21.119	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-28 16:05:32.700	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 16:05:37.381	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc0001604b0}:
+2023-11-28 16:05:37.382	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 16:05:38.388	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "637.334µs [97;44mGET[0m /healthz" 	{"requestID": "8fc1b353-3cde-4f10-acce-dc5e541e742b", "username": ""}
+2023-11-28 16:06:12.097	[34mINFO[0m	apiserver	apiserver/router.go:54	Logger testing
+2023-11-28 16:06:12.097	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "866.888µs [97;44mGET[0m /api-test" 	{"requestID": "9a2cafea-a34b-4270-a074-96854d9e9ddf", "username": ""}
+2023-11-28 16:06:12.213	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "275.39µs [97;44mGET[0m /favicon.ico" 	{"requestID": "1c0cdf16-ef49-44fb-93ef-09c6b09a2969", "username": ""}
+2023-11-28 16:06:23.593	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.494026ms [97;44mGET[0m /redis-test" 	{"requestID": "2de58724-dd94-4457-ac16-d43ebcb1bf58", "username": ""}
+2023-11-28 16:09:44.390	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-28 16:09:49.974	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 16:09:52.469	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc0000374d0}:
+2023-11-28 16:09:52.470	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 16:09:53.472	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "329.303µs [97;44mGET[0m /healthz" 	{"requestID": "78254463-e0e6-4ae2-988a-64fe21447e58", "username": ""}
+2023-11-28 16:14:16.183	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
+2023-11-28 16:14:16.184	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "922.804µs [97;44mGET[0m /test-response" 	{"requestID": "0a1d83af-615d-4755-87ee-f20748d9f0e1", "username": ""}
+2023-11-28 16:14:20.935	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "411.33µs [97;44mGET[0m /v1/users/" 	{"requestID": "a87a0db1-cd62-463c-b306-7c09544ab3ca", "username": ""}
+2023-11-28 16:14:23.038	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "348.419µs [97;44mGET[0m /v1/users" 	{"requestID": "50f8effc-72e3-4b5e-ba58-126b44eb19c5", "username": ""}
+2023-11-28 16:14:44.771	[34mINFO[0m	apiserver	user/create.go:14	user create function called.	{"requestID": "5bcc91f5-2682-4f4a-9cba-221af61cb1a9", "username": ""}

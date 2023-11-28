@@ -34,9 +34,9 @@ type ListMeta struct {
 type ObjectMeta struct {
 	ID uint64 `json:"id,omitempty" gorm:"primary_key;AUTO_INCREMENT;column:id"`
 
-	Extend Extend `json:"extend,omitempty" gorm:"-"`
+	Extend Extend `json:"extend,omitempty" gorm:"-" validate:"omitempty"`
 
-	ExtendShadow string `json:"-" gorm:"column:extendShadow"`
+	ExtendShadow string `json:"-" gorm:"column:extendShadow" validate:"omitempty"`
 
 	CreatedAt time.Time `json:"createdAt,omitempty" gorm:"column:created_at"`
 
