@@ -7,7 +7,6 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"gorm.io/gorm"
-	"k8s.io/apimachinery/pkg/fields"
 )
 
 type users struct {
@@ -31,10 +30,6 @@ func (u *users) Update(ctx context.Context, user *model.User, opts model.UpdateO
 // Delete deletes the user by the user identifier.
 func (u *users) Delete(ctx context.Context, username string, opts model.DeleteOptions) error {
 
-	if opts.Unscoped {
-		u.db = u.db.Unscoped()
-	}
-
 	err := u.db.Where("name = ?", username).Delete(&model.User{}).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return errors.WithCode(code.ErrDatabase, err.Error())
@@ -45,10 +40,6 @@ func (u *users) Delete(ctx context.Context, username string, opts model.DeleteOp
 
 // DeleteCollection batch deletes the users.
 func (u *users) DeleteCollection(ctx context.Context, usernames []string, opts model.DeleteOptions) error {
-
-	if opts.Unscoped {
-		u.db = u.db.Unscoped()
-	}
 
 	return u.db.Where("name in (?)", usernames).Delete(&model.User{}).Error
 }
@@ -73,36 +64,13 @@ func (u *users) List(ctx context.Context, opts model.ListOptions) (*model.UserLi
 	ret := &model.UserList{}
 	ol := model.Unpointer(opts.Offset, opts.Limit)
 
-	selector, _ := fields.ParseSelector(opts.FieldSelector)
-	username, _ := selector.RequiresExactMatch("name")
-	d := u.db.Where("name like ? and status = 1", "%"+username+"%").
-		Offset(ol.Offset).
-		Limit(ol.Limit).
-		Order("id desc").
-		Find(&ret.Items).
-		Offset(-1).
-		Limit(-1).
-		Count(&ret.TotalCount)
-
-	return ret, d.Error
-}
-
-// ListOptional show a more graceful query method.
-func (u *users) ListOptional(ctx context.Context, opts model.ListOptions) (*model.UserList, error) {
-	ret := &model.UserList{}
-	ol := model.Unpointer(opts.Offset, opts.Limit)
-
-	where := model.User{}
-
-	selector, _ := fields.ParseSelector(opts.FieldSelector)
-	username, found := selector.RequiresExactMatch("name")
-	if found {
-		where.Name = username
+	query, err := ApplyFieldSelectors[model.User](u.db, model.User{}, opts.FieldSelector)
+	if err != nil {
+		return nil, err
 	}
 
-	d := u.db.Where(where).
-		// Not(whereNot).
-		Offset(ol.Offset).
+	// Apply pagination and execute the query
+	d := query.Offset(ol.Offset).
 		Limit(ol.Limit).
 		Order("id desc").
 		Find(&ret.Items).

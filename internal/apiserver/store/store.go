@@ -3,6 +3,7 @@ package store
 var client Factory
 
 type Factory interface {
+	Close() error
 }
 
 func Client() Factory {

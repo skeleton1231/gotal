@@ -1296,3 +1296,6 @@
 2023-11-26 22:17:06.582	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m429[0m - [127.0.0.1] "219.217µs [97;44mGET[0m /test-response" 	{"requestID": "0e69cfa5-e6b3-41df-986c-9742b6b7e9a6", "username": ""}
 2023-11-27 17:48:17.625	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success map[message:Test successful]}
 2023-11-27 17:48:17.630	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "10.443083ms [97;44mGET[0m /test-response" 	{"requestID": "d33e478f-561d-44e5-b13f-5878065a19e0", "username": ""}
+2023-11-28 09:12:46.159	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 09:12:48.023	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 09:12:48.126	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "319.309µs [97;44mGET[0m /healthz" 	{"requestID": "a3aaeb9a-8f0e-4451-8ae9-d10c75f00b64", "username": ""}

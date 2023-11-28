@@ -10,6 +10,8 @@ import (
 	"log"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
+	"github.com/skeleton1231/gotal/internal/apiserver/store"
+	"github.com/skeleton1231/gotal/internal/apiserver/store/database"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/cache"
@@ -87,6 +89,11 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 
 	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
 
+		mysqlStore, _ := database.GetMySQLFactoryOr(nil)
+		if mysqlStore != nil {
+			_ = mysqlStore.Close()
+		}
+
 		s.gRPCAPIServer.Close()
 		s.httpAPIServer.Close()
 
@@ -129,6 +136,10 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	}
 	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
 	grpcServer := grpc.NewServer(opts...)
+
+	storeIns, _ := database.GetMySQLFactoryOr(c.mysqlOptions)
+
+	store.SetClient(storeIns)
 
 	reflection.Register(grpcServer)
 
