@@ -34,9 +34,9 @@ type ListMeta struct {
 type ObjectMeta struct {
 	ID uint64 `json:"id,omitempty" gorm:"primary_key;AUTO_INCREMENT;column:id"`
 
-	Extend Extend `json:"extend,omitempty" gorm:"-" validate:"omitempty"`
+	Extend Extend `json:"extend,omitempty" gorm:"-"`
 
-	ExtendShadow string `json:"-" gorm:"column:extendShadow" validate:"omitempty"`
+	ExtendShadow string `json:"-" gorm:"column:extendShadow"`
 
 	CreatedAt time.Time `json:"createdAt,omitempty" gorm:"column:created_at"`
 
@@ -44,7 +44,7 @@ type ObjectMeta struct {
 
 	DeletedAt gorm.DeletedAt `json:"-" gorm:"column:deleted_at;index:idx_deleted_at"`
 
-	Status int `json:"status" gorm:"column:status" validate:"omitempty"`
+	Status int `json:"status,omitempty" gorm:"column:status;default:0"`
 }
 
 func (obj *ObjectMeta) BeforeCreate(tx *gorm.DB) error {

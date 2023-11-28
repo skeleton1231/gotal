@@ -7,7 +7,6 @@ package apiserver
 import (
 	"context"
 	"fmt"
-	"log"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
@@ -15,6 +14,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/cache"
+	"github.com/skeleton1231/gotal/pkg/log"
 	"github.com/skeleton1231/gotal/pkg/shutdown"
 	posix "github.com/skeleton1231/gotal/pkg/shutdown/managers"
 	"google.golang.org/grpc"
@@ -138,6 +138,8 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	grpcServer := grpc.NewServer(opts...)
 
 	storeIns, _ := database.GetMySQLFactoryOr(c.mysqlOptions)
+
+	log.Debugf("Store Connections %v:", storeIns)
 
 	store.SetClient(storeIns)
 

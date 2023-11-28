@@ -18,7 +18,7 @@ const (
 func Cors() gin.HandlerFunc {
 	return cors.New(cors.Config{
 		// Specify the actual domains in production
-		AllowOrigins:  []string{"https://example.com", "https://api.example.com"},
+		AllowOrigins:  []string{"*"},
 		AllowMethods:  []string{"PUT", "PATCH", "GET", "POST", "OPTIONS", "DELETE"},
 		AllowHeaders:  []string{"Origin", "Authorization", "Content-Type", "Accept"},
 		ExposeHeaders: []string{"Content-Length"},

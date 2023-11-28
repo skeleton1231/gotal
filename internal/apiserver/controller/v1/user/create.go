@@ -22,7 +22,6 @@ func (u *UserController) Create(c *gin.Context) {
 	}
 
 	user.Password, _ = common.Encrypt(user.Password)
-	user.Status = 1
 
 	if err := u.srv.Users().Create(c, &user, model.CreateOptions{}); err != nil {
 		response.WriteResponse(c, err, nil)

@@ -25,7 +25,7 @@ func installMiddleware(g *gin.Engine) {
 
 func installController(g *gin.Engine) *gin.Engine {
 	testController(g)
-
+	
 	storeIns, _ := database.GetMySQLFactoryOr(nil)
 
 	v1 := g.Group("/v1")
