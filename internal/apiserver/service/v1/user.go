@@ -2,9 +2,12 @@ package service
 
 import (
 	"context"
+	"regexp"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
+	"github.com/skeleton1231/gotal/internal/pkg/code"
+	"github.com/skeleton1231/gotal/internal/pkg/errors"
 )
 
 // UserSrv defines functions used to handle user request.
@@ -34,8 +37,16 @@ func (u *userService) ChangePassword(ctx context.Context, user *model.User) erro
 }
 
 // Create implements UserSrv.
-func (*userService) Create(ctx context.Context, user *model.User, opts model.CreateOptions) error {
-	panic("unimplemented")
+func (u *userService) Create(ctx context.Context, user *model.User, opts model.CreateOptions) error {
+	if err := u.store.Users().Create(ctx, user, opts); err != nil {
+		if match, _ := regexp.MatchString("Duplicate entry '.*' for key 'idx_name'", err.Error()); match {
+			return errors.WithCode(code.ErrUserAlreadyExist, err.Error())
+		}
+
+		return errors.WithCode(code.ErrDatabase, err.Error())
+	}
+
+	return nil
 }
 
 // Delete implements UserSrv.

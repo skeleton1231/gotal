@@ -1480,3 +1480,24 @@
 2023-11-28 16:14:20.935	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "411.33µs [97;44mGET[0m /v1/users/" 	{"requestID": "a87a0db1-cd62-463c-b306-7c09544ab3ca", "username": ""}
 2023-11-28 16:14:23.038	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "348.419µs [97;44mGET[0m /v1/users" 	{"requestID": "50f8effc-72e3-4b5e-ba58-126b44eb19c5", "username": ""}
 2023-11-28 16:14:44.771	[34mINFO[0m	apiserver	user/create.go:14	user create function called.	{"requestID": "5bcc91f5-2682-4f4a-9cba-221af61cb1a9", "username": ""}
+2023-11-28 16:33:06.847	[34mINFO[0m	apiserver	user/create.go:14	user create function called.	{"requestID": "da1f7534-5ed2-42ee-8132-24b00c13df11", "username": ""}
+2023-11-28 16:33:13.142	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-28 16:33:19.512	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 16:33:21.151	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc0003a9a70}:
+2023-11-28 16:33:21.152	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 16:33:22.158	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "287.973µs [97;44mGET[0m /healthz" 	{"requestID": "b9021e5c-2ba4-43f7-a785-abe231835b49", "username": ""}
+2023-11-28 16:33:24.037	[34mINFO[0m	apiserver	user/create.go:14	user create function called.	{"requestID": "84e1819d-a806-4329-967e-70da3da1026d", "username": ""}
+2023-11-28 16:33:25.217	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/apiserver/service/v1/user.go:46 (github.com/skeleton1231/gotal/internal/apiserver/service/v1.(*userService).Create)","code":100101,"error":"Error 1292 (22007): Incorrect datetime value: '0000-00-00' for column 'email_verified_at' at row 1","message":"Database error"}]
+2023-11-28 16:33:25.218	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;41m500[0m - [::1] "1.181089171s [97;46mPOST[0m /v1/users" 	{"requestID": "84e1819d-a806-4329-967e-70da3da1026d", "username": ""}
+2023-11-28 16:49:56.204	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "346.027µs [97;44mGET[0m /v1/users" 	{"requestID": "92ee7188-b9ec-4884-84c5-82baead2c7bf", "username": ""}
+2023-11-28 17:09:47.368	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-11-28 17:09:54.219	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-11-28 17:09:58.861	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc00038a990}:
+2023-11-28 17:09:58.862	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-11-28 17:09:59.868	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "284.753µs [97;44mGET[0m /healthz" 	{"requestID": "83bfe3b1-83f4-4c06-85fe-58065697e3d2", "username": ""}
+2023-11-28 17:10:05.071	[34mINFO[0m	apiserver	user/create.go:16	user create function called.	{"requestID": "ae83a14f-c754-46da-b3de-34fff6203d13", "username": ""}
+2023-11-28 17:10:06.652	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success {{7131779461535502338 null null 2023-11-28 17:10:05.366 +0800 CST 2023-11-28 17:10:05.366 +0800 CST {0001-01-01 00:00:00 +0000 UTC false} 1} John1231 John1231@example.com 1970-01-01 00:00:00 +0000 UTC $2a$10$vJRNoHgY3FzjpIptSIe5z.iYOp95w3IEvfAoZXY0PUVcLKI9i9Ps.   1234567890   1970-01-01 00:00:00 +0000 UTC 0}}
+2023-11-28 17:10:06.652	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.581727s [97;46mPOST[0m /v1/users" 	{"requestID": "ae83a14f-c754-46da-b3de-34fff6203d13", "username": ""}
+2023-11-28 17:11:09.984	[34mINFO[0m	apiserver	user/create.go:16	user create function called.	{"requestID": "71ee457c-c989-4b02-93ca-530a7f35a8b4", "username": ""}
+2023-11-28 17:11:14.046	[35mDEBUG[0m	apiserver	middleware/response.go:18	Request processed: status=200, data={200 Success {{7131779461535502339 null null 2023-11-28 17:11:12.304 +0800 CST 2023-11-28 17:11:12.304 +0800 CST {0001-01-01 00:00:00 +0000 UTC false} 1} John1231 John1231@example.com 1970-01-01 00:00:00 +0000 UTC $2a$10$wwQAjiYd5p96bWiHpevfHedzdiMNzI5aMFpM00vuuy3ti209i.Dka   1234567890   1970-01-01 00:00:00 +0000 UTC 0}}
+2023-11-28 17:11:14.047	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "4.063508343s [97;46mPOST[0m /v1/users" 	{"requestID": "71ee457c-c989-4b02-93ca-530a7f35a8b4", "username": ""}
