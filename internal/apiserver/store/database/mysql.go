@@ -19,6 +19,11 @@ type datastore struct {
 	// writerDb *gorm.DB
 }
 
+// Users implements store.Factory.
+func (ds *datastore) Users() store.UserStore {
+	return newUsers(ds)
+}
+
 func (ds *datastore) Close() error {
 	db, err := ds.db.DB()
 	if err != nil {

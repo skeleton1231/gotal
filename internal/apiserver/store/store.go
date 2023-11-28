@@ -3,6 +3,7 @@ package store
 var client Factory
 
 type Factory interface {
+	Users() UserStore
 	Close() error
 }
 

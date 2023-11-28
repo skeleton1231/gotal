@@ -14,3 +14,7 @@ func NewService(store store.Factory) Service {
 		store: store,
 	}
 }
+
+func (s *service) Users() UserSrv {
+	return newUsers(s)
+}
