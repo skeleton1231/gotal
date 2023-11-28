@@ -28,9 +28,9 @@ func (u *users) Update(ctx context.Context, user *model.User, opts model.UpdateO
 }
 
 // Delete deletes the user by the user identifier.
-func (u *users) Delete(ctx context.Context, username string, opts model.DeleteOptions) error {
+func (u *users) Delete(ctx context.Context, userId uint64, opts model.DeleteOptions) error {
 
-	err := u.db.Where("name = ?", username).Delete(&model.User{}).Error
+	err := u.db.Where("id = ?", userId).Delete(&model.User{}).Error
 	if err != nil && !errors.Is(err, gorm.ErrRecordNotFound) {
 		return errors.WithCode(code.ErrDatabase, err.Error())
 	}
@@ -39,15 +39,15 @@ func (u *users) Delete(ctx context.Context, username string, opts model.DeleteOp
 }
 
 // DeleteCollection batch deletes the users.
-func (u *users) DeleteCollection(ctx context.Context, usernames []string, opts model.DeleteOptions) error {
+func (u *users) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
 
-	return u.db.Where("name in (?)", usernames).Delete(&model.User{}).Error
+	return u.db.Where("id in (?)", userIds).Delete(&model.User{}).Error
 }
 
 // Get return an user by the user identifier.
-func (u *users) Get(ctx context.Context, username string, opts model.GetOptions) (*model.User, error) {
+func (u *users) Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error) {
 	user := &model.User{}
-	err := u.db.Where("name = ? and status = 1", username).First(&user).Error
+	err := u.db.Where("id = ? and status = 1", userId).First(&user).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(code.ErrUserNotFound, err.Error())

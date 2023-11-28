@@ -14,9 +14,9 @@ import (
 type UserSrv interface {
 	Create(ctx context.Context, user *model.User, opts model.CreateOptions) error
 	Update(ctx context.Context, user *model.User, opts model.UpdateOptions) error
-	Delete(ctx context.Context, username string, opts model.DeleteOptions) error
-	DeleteCollection(ctx context.Context, usernames []string, opts model.DeleteOptions) error
-	Get(ctx context.Context, username string, opts model.GetOptions) (*model.User, error)
+	Delete(ctx context.Context, userId uint64, opts model.DeleteOptions) error
+	DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error
+	Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error)
 	List(ctx context.Context, opts model.ListOptions) (*model.UserList, error)
 	ChangePassword(ctx context.Context, user *model.User) error
 }
@@ -33,7 +33,12 @@ func newUsers(srv *service) *userService {
 
 // ChangePassword implements UserSrv.
 func (u *userService) ChangePassword(ctx context.Context, user *model.User) error {
-	panic("unimplemented")
+	// Save Password changed fields.
+	if err := u.store.Users().Update(ctx, user, model.UpdateOptions{}); err != nil {
+		return errors.WithCode(code.ErrDatabase, err.Error())
+	}
+
+	return nil
 }
 
 // Create implements UserSrv.
@@ -50,26 +55,41 @@ func (u *userService) Create(ctx context.Context, user *model.User, opts model.C
 }
 
 // Delete implements UserSrv.
-func (*userService) Delete(ctx context.Context, username string, opts model.DeleteOptions) error {
-	panic("unimplemented")
+func (u *userService) Delete(ctx context.Context, userId uint64, opts model.DeleteOptions) error {
+	if err := u.store.Users().Delete(ctx, userId, opts); err != nil {
+		return err
+	}
+	return nil
 }
 
 // DeleteCollection implements UserSrv.
-func (*userService) DeleteCollection(ctx context.Context, usernames []string, opts model.DeleteOptions) error {
-	panic("unimplemented")
+func (u *userService) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
+	if err := u.store.Users().DeleteCollection(ctx, userIds, opts); err != nil {
+		return errors.WithCode(code.ErrDatabase, err.Error())
+	}
+	return nil
 }
 
 // Get implements UserSrv.
-func (*userService) Get(ctx context.Context, username string, opts model.GetOptions) (*model.User, error) {
-	panic("unimplemented")
+func (u *userService) Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error) {
+	user, err := u.store.Users().Get(ctx, userId, opts)
+	if err != nil {
+		return nil, err
+	}
+	return user, nil
 }
 
 // List implements UserSrv.
-func (*userService) List(ctx context.Context, opts model.ListOptions) (*model.UserList, error) {
+func (u *userService) List(ctx context.Context, opts model.ListOptions) (*model.UserList, error) {
 	panic("unimplemented")
 }
 
 // Update implements UserSrv.
-func (*userService) Update(ctx context.Context, user *model.User, opts model.UpdateOptions) error {
-	panic("unimplemented")
+func (u *userService) Update(ctx context.Context, user *model.User, opts model.UpdateOptions) error {
+
+	if err := u.store.Users().Update(ctx, user, opts); err != nil {
+		return errors.WithCode(code.ErrDatabase, err.Error())
+	}
+
+	return nil
 }
