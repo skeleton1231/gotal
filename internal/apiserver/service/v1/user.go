@@ -3,11 +3,13 @@ package service
 import (
 	"context"
 	"regexp"
+	"sync"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
+	"github.com/skeleton1231/gotal/pkg/log"
 )
 
 // UserSrv defines functions used to handle user request.
@@ -80,8 +82,65 @@ func (u *userService) Get(ctx context.Context, userId uint64, opts model.GetOpti
 }
 
 // List implements UserSrv.
+// List returns user list in the storage. This function has a good performance.
 func (u *userService) List(ctx context.Context, opts model.ListOptions) (*model.UserList, error) {
-	panic("unimplemented")
+	users, err := u.store.Users().List(ctx, opts)
+	if err != nil {
+		log.Record(ctx).Errorf("list users from storage failed: %s", err.Error())
+
+		return nil, errors.WithCode(code.ErrDatabase, err.Error())
+	}
+	wg := sync.WaitGroup{}
+	errChan := make(chan error, 1)
+	finished := make(chan bool, 1)
+
+	var m sync.Map
+
+	for _, user := range users.Items {
+		wg.Add(1)
+
+		go func(user *model.User) {
+			defer wg.Done()
+
+			m.Store(
+				user.ID,
+				&model.User{
+					ObjectMeta: model.ObjectMeta{
+						ID:        user.ID,
+						Extend:    user.Extend,
+						CreatedAt: user.CreatedAt,
+						UpdatedAt: user.UpdatedAt,
+						Status:    user.Status,
+					},
+					Name:         user.Name,
+					Email:        user.Email,
+					StripeID:     user.StripeID,
+					DiscordID:    user.DiscordID,
+					TotalCredits: user.TotalCredits,
+				})
+		}(user)
+	}
+
+	go func() {
+		wg.Wait()
+		close(finished)
+	}()
+
+	select {
+	case <-finished:
+	case err := <-errChan:
+		return nil, err
+	}
+
+	infos := make([]*model.User, 0, len(users.Items))
+	for _, user := range users.Items {
+		info, _ := m.Load(user.ID)
+		infos = append(infos, info.(*model.User))
+	}
+
+	log.Record(ctx).Debugf("get %d users from backend storage.", len(infos))
+
+	return &model.UserList{ListMeta: users.ListMeta, Items: infos}, nil
 }
 
 // Update implements UserSrv.

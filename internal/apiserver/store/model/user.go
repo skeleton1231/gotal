@@ -9,14 +9,14 @@ type User struct {
 	Name  string `gorm:"size:255;not null" json:"name"`
 	Email string `gorm:"size:255" json:"email"`
 	// 	CreatedAt time.Time `json:"createdAt,omitempty" gorm:"column:created_at"`
-	EmailVerifiedAt time.Time `gorm:"column:email_verified_at" json:"emailVerifiedAt,omitempty"`
+	EmailVerifiedAt time.Time `gorm:"column:email_verified_at" json:"-"`
 	Password        string    `gorm:"size:255;not null" json:"-"`
 	RememberToken   string    `gorm:"size:100" json:"-"`
 	StripeID        string    `gorm:"size:255" json:"stripeId"`
 	DiscordID       uint64    `gorm:"default:0" json:"discordId"`
-	PMType          string    `gorm:"size:255" json:"pmType"`
-	PMLastFour      string    `gorm:"size:4" json:"pmLastFour"`
-	TrialEndsAt     time.Time `gorm:"column:trial_ends_at" json:"trialEndsAt,omitempty"`
+	PMType          string    `gorm:"size:255" json:"-"`
+	PMLastFour      string    `gorm:"size:4" json:"-"`
+	TrialEndsAt     time.Time `gorm:"column:trial_ends_at" json:"-"`
 	TotalCredits    int       `gorm:"default:0" json:"totalCredits"`
 }
 

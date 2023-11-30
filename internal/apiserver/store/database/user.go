@@ -2,11 +2,14 @@ package database
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
+	"github.com/skeleton1231/gotal/pkg/log"
 	"gorm.io/gorm"
+	"k8s.io/apimachinery/pkg/fields"
 )
 
 type users struct {
@@ -64,13 +67,16 @@ func (u *users) List(ctx context.Context, opts model.ListOptions) (*model.UserLi
 	ret := &model.UserList{}
 	ol := model.Unpointer(opts.Offset, opts.Limit)
 
-	query, err := ApplyFieldSelectors[model.User](u.db, model.User{}, opts.FieldSelector)
+	// Apply field selectors to the query
+	query, err := userApplyFieldSelectors(u.db.Where("status = 1"), opts.FieldSelector)
 	if err != nil {
-		return nil, err
+		log.Errorf("user query error: %v", err)
+		return nil, err // Return immediately if there's an error
 	}
 
 	// Apply pagination and execute the query
-	d := query.Offset(ol.Offset).
+	d := query.
+		Offset(ol.Offset).
 		Limit(ol.Limit).
 		Order("id desc").
 		Find(&ret.Items).
@@ -79,4 +85,29 @@ func (u *users) List(ctx context.Context, opts model.ListOptions) (*model.UserLi
 		Count(&ret.TotalCount)
 
 	return ret, d.Error
+}
+
+func userApplyFieldSelectors(query *gorm.DB, fieldSelector string) (*gorm.DB, error) {
+	selector, err := fields.ParseSelector(fieldSelector)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, req := range selector.Requirements() {
+		switch req.Field {
+		case "name":
+			query = query.Where("name like ?", fmt.Sprintf("%%%s%%", req.Value))
+		case "email":
+			query = query.Where("email like ?", fmt.Sprintf("%%%s%%", req.Value))
+		case "discordId":
+			query = query.Where("discord_id = ?", req.Value)
+		case "stripeId":
+			query = query.Where("stripe_id = ?", req.Value)
+		case "status":
+			query = query.Where("status = ?", req.Value)
+			// Add more cases as needed for other fields
+		}
+	}
+
+	return query, nil
 }

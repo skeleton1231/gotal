@@ -10,7 +10,6 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/pkg/db"
 	"gorm.io/gorm"
-	"k8s.io/apimachinery/pkg/fields"
 )
 
 type datastore struct {
@@ -65,19 +64,4 @@ func GetMySQLFactoryOr(opts *options.MySQLOptions) (store.Factory, error) {
 	}
 
 	return mysqlFactory, nil
-}
-
-// ApplyFieldSelectors applies field selectors to a GORM query.
-func ApplyFieldSelectors[T any](db *gorm.DB, model T, fieldSelector string) (*gorm.DB, error) {
-	selector, err := fields.ParseSelector(fieldSelector)
-	if err != nil {
-		return nil, err
-	}
-
-	query := db.Model(model)
-	for _, requirement := range selector.Requirements() {
-		query = query.Where(fmt.Sprintf("%s = ?", requirement.Field), requirement.Value)
-	}
-
-	return query, nil
 }

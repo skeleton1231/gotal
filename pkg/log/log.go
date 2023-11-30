@@ -333,6 +333,19 @@ func NewLogger(l *zap.Logger) Logger {
 	}
 }
 
+// StdInfoLogger returns logger of standard library which writes to supplied zap
+// logger at info level.
+func StdInfoLogger() *log.Logger {
+	if logger == nil {
+		return nil
+	}
+	if l, err := zap.NewStdLogAt(logger.zapLogger, zapcore.InfoLevel); err == nil {
+		return l
+	}
+
+	return nil
+}
+
 // LoggerForLevel returns a logger for the specified logging level.
 func LoggerForLevel(level Level) InfoLogger { return logger.LoggerForLevel(level) }
 
