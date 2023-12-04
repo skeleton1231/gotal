@@ -9,6 +9,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
+	"github.com/skeleton1231/gotal/internal/pkg/middleware/auth"
 	"github.com/skeleton1231/gotal/internal/pkg/response"
 	"github.com/skeleton1231/gotal/pkg/cache"
 	"github.com/skeleton1231/gotal/pkg/log"
@@ -24,9 +25,22 @@ func installMiddleware(g *gin.Engine) {
 }
 
 func installController(g *gin.Engine) *gin.Engine {
-	testController(g)
+
+	// Middlewares.
+	jwtStrategy, _ := newJWTAuth().(auth.JWTStrategy)
+	g.POST("/login", jwtStrategy.LoginHandler)
+	g.POST("/logout", jwtStrategy.LogoutHandler)
+	// Refresh time can be longer than token timeout
+	g.POST("/refresh", jwtStrategy.RefreshHandler)
+
+	auto := newAutoAuth()
+	g.NoRoute(auto.AuthFunc(), func(c *gin.Context) {
+		response.WriteResponse(c, errors.WithCode(code.ErrPageNotFound, "Page not found."), nil)
+	})
 
 	storeIns, _ := database.GetMySQLFactoryOr(nil)
+
+	// testController(g)
 
 	v1 := g.Group("/v1")
 	{

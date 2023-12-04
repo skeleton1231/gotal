@@ -18,8 +18,8 @@ import (
 )
 
 type loginInfo struct {
-	Username string `form:"username" json:"username" binding:"required,username"`
-	Password string `form:"password" json:"password" binding:"required,password"`
+	Username string `json:"username" binding:"required"`
+	Password string `json:"password" binding:"required"`
 }
 
 func newBasicAuth() middleware.AuthStrategy {
