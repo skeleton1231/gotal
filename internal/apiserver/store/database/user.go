@@ -62,6 +62,21 @@ func (u *users) Get(ctx context.Context, userId uint64, opts model.GetOptions) (
 	return user, nil
 }
 
+// Get return an user by the user identifier.
+func (u *users) GetByUsername(ctx context.Context, username string, opts model.GetOptions) (*model.User, error) {
+	user := &model.User{}
+	err := u.db.Where("name = ? and status = 1", username).First(&user).Error
+	if err != nil {
+		if errors.Is(err, gorm.ErrRecordNotFound) {
+			return nil, errors.WithCode(code.ErrUserNotFound, err.Error())
+		}
+
+		return nil, errors.WithCode(code.ErrDatabase, err.Error())
+	}
+
+	return user, nil
+}
+
 // List return all users.
 func (u *users) List(ctx context.Context, opts model.ListOptions) (*model.UserList, error) {
 	ret := &model.UserList{}

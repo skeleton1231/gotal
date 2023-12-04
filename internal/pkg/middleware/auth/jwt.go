@@ -1,4 +1,4 @@
-// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2020 Lingfei Kong <colin404@foxmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
@@ -17,10 +17,12 @@ type JWTStrategy struct {
 
 var _ middleware.AuthStrategy = &JWTStrategy{}
 
-func NewJWTStrategy(gjwt ginjwt.GinJWTMiddleware) *JWTStrategy {
-	return &JWTStrategy{gjwt}
+// NewJWTStrategy create jwt bearer strategy with GinJWTMiddleware.
+func NewJWTStrategy(gjwt ginjwt.GinJWTMiddleware) JWTStrategy {
+	return JWTStrategy{gjwt}
 }
 
-func (j *JWTStrategy) AuthFunc() gin.HandlerFunc {
+// AuthFunc defines jwt bearer strategy as the gin authentication middleware.
+func (j JWTStrategy) AuthFunc() gin.HandlerFunc {
 	return j.MiddlewareFunc()
 }

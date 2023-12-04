@@ -13,5 +13,6 @@ type UserStore interface {
 	Delete(ctx context.Context, userId uint64, opts model.DeleteOptions) error
 	DeleteCollection(ctx context.Context, userId []uint64, opts model.DeleteOptions) error
 	Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error)
+	GetByUsername(ctx context.Context, username string, opts model.GetOptions) (*model.User, error)
 	List(ctx context.Context, opts model.ListOptions) (*model.UserList, error)
 }

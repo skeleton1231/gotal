@@ -1,10 +1,12 @@
-// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2020 Lingfei Kong <colin404@foxmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
 package middleware
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-gonic/gin"
+)
 
 // AuthStrategy defines the set of methods used to do resource authentication.
 type AuthStrategy interface {
@@ -14,12 +16,6 @@ type AuthStrategy interface {
 // AuthOperator used to switch between different authentication strategy.
 type AuthOperator struct {
 	strategy AuthStrategy
-}
-
-func NewAuthOperator(strategy AuthStrategy) *AuthOperator {
-	return &AuthOperator{
-		strategy: strategy,
-	}
 }
 
 // SetStrategy used to set to another authentication strategy.

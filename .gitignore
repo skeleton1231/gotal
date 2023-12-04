@@ -353,6 +353,7 @@ dist
 sripts/
 configs/
 logs/
+cert/
 
 cmd/*/stdout
 cmd/*/apiserver

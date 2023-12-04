@@ -1,7 +1,10 @@
 package model
 
 import (
+	"fmt"
 	"time"
+
+	"github.com/skeleton1231/gotal/pkg/util/common"
 )
 
 type User struct {
@@ -35,4 +38,12 @@ type UserList struct {
 	ListMeta `json:",inline"`
 
 	Items []*User `json:"items"`
+}
+
+func (u *User) Compare(pwd string) error {
+	if err := common.Compare(u.Password, pwd); err != nil {
+		return fmt.Errorf("failed to compile password: %w", err)
+	}
+
+	return nil
 }

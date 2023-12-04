@@ -1,15 +1,17 @@
-// Copyright 2023 Talhuang<talhuang1231@gmail.com>. All rights reserved.
+// Copyright 2020 Lingfei Kong <colin404@foxmail.com>. All rights reserved.
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
 package auth
 
 import (
-	"net/http"
 	"strings"
 
 	"github.com/gin-gonic/gin"
+	"github.com/skeleton1231/gotal/internal/pkg/code"
+	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
+	"github.com/skeleton1231/gotal/internal/pkg/response"
 )
 
 const authHeaderCount = 2
@@ -38,11 +40,11 @@ func (a AutoStrategy) AuthFunc() gin.HandlerFunc {
 		authHeader := strings.SplitN(c.Request.Header.Get("Authorization"), " ", 2)
 
 		if len(authHeader) != authHeaderCount {
-			c.JSON(http.StatusUnauthorized, gin.H{
-				"error": "Authorization header format is wrong.",
-				"code":  50001,
-			})
-
+			response.WriteResponse(
+				c,
+				errors.WithCode(code.ErrInvalidAuthHeader, "Authorization header format is wrong."),
+				nil,
+			)
 			c.Abort()
 
 			return
@@ -54,10 +56,7 @@ func (a AutoStrategy) AuthFunc() gin.HandlerFunc {
 		case "Bearer":
 			operator.SetStrategy(a.jwt)
 		default:
-			c.JSON(http.StatusUnauthorized, gin.H{
-				"error": "unrecognized Authorization header.",
-				"code":  50003,
-			})
+			response.WriteResponse(c, errors.WithCode(code.ErrSignatureInvalid, "unrecognized Authorization header."), nil)
 			c.Abort()
 
 			return
