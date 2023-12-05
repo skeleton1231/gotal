@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/go-playground/validator/v10"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
@@ -23,11 +24,22 @@ func (u *UserController) Create(c *gin.Context) {
 		return
 	}
 
+	// Validate the user struct
+	if err := validate.Struct(user); err != nil {
+		// Handle validation errors
+		var validationErrors []string
+		for _, err := range err.(validator.ValidationErrors) {
+			validationErrors = append(validationErrors, err.Error())
+		}
+		response.WriteResponse(c, errors.WithCode(code.ErrValidation, "Validation error"), validationErrors)
+		return
+	}
+
 	defaultTime := time.Date(1970, time.January, 1, 0, 0, 0, 0, time.UTC)
 	user.Password, _ = common.Encrypt(user.Password)
 	user.Status = 1
-	user.EmailVerifiedAt = defaultTime // Make sure this field is a *time.Time
-	user.TrialEndsAt = defaultTime     // Make sure this field is a *time.Time
+	user.EmailVerifiedAt = defaultTime
+	user.TrialEndsAt = defaultTime
 
 	if err := u.srv.Users().Create(c, &user, model.CreateOptions{}); err != nil {
 		response.WriteResponse(c, err, nil)

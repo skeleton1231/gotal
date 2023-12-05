@@ -1919,3 +1919,71 @@ runtime.main
 2023-12-04 18:46:34.044	[34mINFO[0m	http/server.go:1900	http: TLS handshake error from [::1]:59568: remote error: tls: unknown certificate
 2023-12-04 18:46:34.554	[34mINFO[0m	apiserver	gorm@v1.25.5/callbacks.go:134	database/user.go:68 SLOW SQL >= 200ms[505.253ms] [rows:1] SELECT * FROM `users` WHERE (name = 'skeleton1231' and status = 1) AND `users`.`deleted_at` IS NULL ORDER BY `users`.`id` LIMIT 1
 2023-12-04 18:46:34.627	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "578.190898ms [97;46mPOST[0m /login" 	{"requestID": "fc2cc9c5-bde3-4b0b-b89c-a88e53820fe8", "username": ""}
+2023-12-04 18:47:18.202	[34mINFO[0m	http/server.go:1900	http: TLS handshake error from [::1]:59626: remote error: tls: unknown certificate
+2023-12-04 18:47:18.206	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-04 18:47:18.206	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "732.041µs [97;44mGET[0m /login" 	{"requestID": "e9e89e37-8903-466b-beb8-a8f8d90eaab2", "username": ""}
+2023-12-04 18:56:59.478	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-04 18:56:59.479	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "702.595µs [97;44mGET[0m /login" 	{"requestID": "45539e5f-4142-4d48-97ca-1d27c55baa12", "username": ""}
+2023-12-04 18:59:11.698	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-04 18:59:11.699	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "993.344µs [97;44mGET[0m /login" 	{"requestID": "c406884f-d2db-416e-a2c5-48ee04b3ff93", "username": ""}
+2023-12-04 18:59:26.762	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-04 18:59:26.762	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "568.171µs [97;44mGET[0m /api-test" 	{"requestID": "51b246c8-b27f-43cf-80a8-7783f6be2eee", "username": ""}
+2023-12-04 18:59:53.293	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-12-04 18:59:59.835	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-12-04 19:00:01.719	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc00038c8d0}:
+2023-12-04 19:00:01.721	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-12-04 19:00:02.726	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "334.96µs [97;44mGET[0m /healthz" 	{"requestID": "e9946eb1-8620-4d15-b0d2-538ec86877bf", "username": ""}
+2023-12-04 19:00:40.526	[34mINFO[0m	http/server.go:1900	http: TLS handshake error from [::1]:61055: remote error: tls: unknown certificate
+2023-12-04 19:00:40.533	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-04 19:00:40.534	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "785.173µs [97;44mGET[0m /api-test" 	{"requestID": "ca44692b-cb50-4e74-aa1c-3effcd552573", "username": ""}
+2023-12-04 19:01:13.583	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-04 19:01:13.583	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "558.906µs [97;44mGET[0m /api-test" 	{"requestID": "6f7b1aa8-b776-49b4-b64c-720112becf87", "username": ""}
+2023-12-04 19:01:13.690	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-04 19:01:13.690	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "562.376µs [97;44mGET[0m /favicon.ico" 	{"requestID": "5e14e3f9-cde5-4b39-83e4-c589c8add0fc", "username": ""}
+2023-12-04 19:01:51.742	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-04 19:01:51.742	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "818.538µs [97;44mGET[0m /api-test" 	{"requestID": "bc820c95-53c6-44d5-b0f2-eab992b2425f", "username": ""}
+2023-12-04 19:02:02.700	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-04 19:02:02.701	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "460.973µs [97;44mGET[0m /api-test" 	{"requestID": "5cf53692-9cca-4b9e-acf1-c15dab202a3f", "username": ""}
+2023-12-05 08:39:03.318	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:39:03.324	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "9.365985ms [97;44mGET[0m /api-test" 	{"requestID": "7247569e-cf57-4b0d-9b4f-258801064701", "username": ""}
+2023-12-05 08:39:03.362	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-05 08:39:03.364	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "4.654438ms [97;44mGET[0m /favicon.ico" 	{"requestID": "b7eb76d0-e277-44ad-b002-ae6a4bfc1a9d", "username": ""}
+2023-12-05 08:48:13.008	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:48:13.009	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "548.444µs [97;44mGET[0m /api-test" 	{"requestID": "9a622b8d-b5ac-4266-82e6-10018ed82ca7", "username": ""}
+2023-12-05 08:48:13.030	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-05 08:48:13.030	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "402.622µs [97;44mGET[0m /favicon.ico" 	{"requestID": "015781ae-56b3-48ba-98a3-09a83f36decf", "username": ""}
+2023-12-05 08:48:26.269	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:48:26.270	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "528.515µs [97;44mGET[0m /api-test" 	{"requestID": "3357e9e3-fbb6-4755-b786-a6c057c726e9", "username": ""}
+2023-12-05 08:48:26.294	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-05 08:48:26.294	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "485.147µs [97;44mGET[0m /favicon.ico" 	{"requestID": "437bff91-0c44-4b04-948e-c404b630eb2f", "username": ""}
+2023-12-05 08:48:41.451	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-12-05 08:48:47.625	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-12-05 08:49:24.281	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-12-05 08:53:45.818	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-12-05 08:53:47.352	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc000121380}:
+2023-12-05 08:53:47.354	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-12-05 08:53:47.356	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "174.554µs [97;44mGET[0m /healthz" 	{"requestID": "99679477-f415-4351-8beb-8cb41d6bdcc9", "username": ""}
+2023-12-05 08:53:53.318	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:53:53.318	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "648.901µs [97;44mGET[0m /api-test" 	{"requestID": "2b46ee30-418e-4595-9c21-dffe70935c50", "username": ""}
+2023-12-05 08:53:53.340	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-05 08:53:53.341	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "1.273266ms [97;44mGET[0m /favicon.ico" 	{"requestID": "9e3708f0-2d95-499c-8c81-5bb54a44f918", "username": ""}
+2023-12-05 08:54:08.165	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:54:08.166	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "584.131µs [97;44mGET[0m /api-test" 	{"requestID": "0db31c54-110f-43fa-a61b-82166ad4db0a", "username": ""}
+2023-12-05 08:54:08.187	[31mERROR[0m	apiserver	response/response.go:25	[{"caller":"#0 /Users/huanghaitao/gotal/internal/pkg/middleware/auth/auto.go:45 (github.com/skeleton1231/gotal/internal/pkg/middleware/auth.(*AutoStrategy).AuthFunc.AutoStrategy.AuthFunc.func1)","code":100204,"error":"Authorization header format is wrong.","message":"Invalid authorization header"}]
+2023-12-05 08:54:08.187	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m401[0m - [::1] "372.674µs [97;44mGET[0m /favicon.ico" 	{"requestID": "49b37b7d-f444-46bd-a589-c836505ad0e5", "username": ""}
+2023-12-05 08:54:28.664	[34mINFO[0m	http/server.go:1900	http: TLS handshake error from [::1]:62020: remote error: tls: unknown certificate
+2023-12-05 08:54:28.670	[34mINFO[0m	apiserver	apiserver/router.go:69	Logger testing
+2023-12-05 08:54:28.671	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "778.932µs [97;44mGET[0m /api-test" 	{"requestID": "4b1825cf-4129-4416-a73f-f546b96cfe09", "username": ""}
+2023-12-05 08:55:39.854	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped
+2023-12-05 08:55:48.440	[35mDEBUG[0m	apiserver	middleware/ratelimit.go:45	Custom limiter for path /test-response: requests-per-second: 1.5, burst-size: 10
+2023-12-05 08:55:49.912	[35mDEBUG[0m	apiserver	apiserver/server.go:142	Store Connections &{0xc000412120}:
+2023-12-05 08:55:49.914	[34mINFO[0m	apiserver	apiserver/grpc.go:32	start grpc server at 0.0.0.0:8082
+2023-12-05 08:55:49.916	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [127.0.0.1] "323.161µs [97;44mGET[0m /healthz" 	{"requestID": "5bc2391f-cefd-4c0e-83e0-62c38f71b776", "username": ""}
+2023-12-05 08:55:53.755	[34mINFO[0m	apiserver	apiserver/router.go:68	Logger testing
+2023-12-05 08:55:53.757	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "2.343427ms [97;44mGET[0m /api-test" 	{"requestID": "fd517d00-6b5f-4df2-806d-c24eb3f49f2e", "username": ""}
+2023-12-05 08:55:53.777	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "236.028µs [97;44mGET[0m /favicon.ico" 	{"requestID": "c4e9fc82-ae6a-4ff2-bd02-8c450fe6eee9", "username": ""}
+2023-12-05 08:59:33.623	[34mINFO[0m	apiserver	middleware/logger.go:132	[90;43m404[0m - [::1] "424.64µs [97;44mGET[0m /" 	{"requestID": "00a6b701-3b52-47f9-8cc6-accae6f78f0a", "username": ""}
+2023-12-05 09:03:23.028	[34mINFO[0m	apiserver	apiserver/router.go:68	Logger testing
+2023-12-05 09:03:23.029	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.026806ms [97;44mGET[0m /api-test" 	{"requestID": "0c2ca07e-3152-4e05-8350-2aea2da2dac9", "username": ""}
+2023-12-05 09:40:54.221	[34mINFO[0m	apiserver	apiserver/router.go:68	Logger testing
+2023-12-05 09:40:54.221	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "564.1µs [97;44mGET[0m /api-test" 	{"requestID": "f36754a5-5184-4a19-8f3f-c817a127ccba", "username": ""}

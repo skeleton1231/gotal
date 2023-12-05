@@ -40,7 +40,7 @@ func installController(g *gin.Engine) *gin.Engine {
 
 	storeIns, _ := database.GetMySQLFactoryOr(nil)
 
-	// testController(g)
+	testController(g)
 
 	v1 := g.Group("/v1")
 	{
