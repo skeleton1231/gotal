@@ -1987,3 +1987,4 @@ runtime.main
 2023-12-05 09:03:23.029	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "1.026806ms [97;44mGET[0m /api-test" 	{"requestID": "0c2ca07e-3152-4e05-8350-2aea2da2dac9", "username": ""}
 2023-12-05 09:40:54.221	[34mINFO[0m	apiserver	apiserver/router.go:68	Logger testing
 2023-12-05 09:40:54.221	[34mINFO[0m	apiserver	middleware/logger.go:132	[97;42m200[0m - [::1] "564.1µs [97;44mGET[0m /api-test" 	{"requestID": "f36754a5-5184-4a19-8f3f-c817a127ccba", "username": ""}
+2023-12-06 09:47:44.594	[34mINFO[0m	apiserver	apiserver/grpc.go:37	GRPC server on 0.0.0.0:8082 stopped

@@ -92,6 +92,8 @@ func authenticator() func(c *gin.Context) (interface{}, error) {
 			return "", jwt.ErrFailedAuthentication
 		}
 
+		log.Debugf("loginInfo username is %s, password is %s", login.Username, login.Password)
+
 		// Get the user information by the login username.
 		user, err := store.Client().Users().GetByUsername(c, login.Username, model.GetOptions{})
 		if err != nil {
@@ -102,11 +104,9 @@ func authenticator() func(c *gin.Context) (interface{}, error) {
 
 		// Compare the login password with the user password.
 		if err := user.Compare(login.Password); err != nil {
+			log.Errorf("password compare error is %s", err.Error())
 			return "", jwt.ErrFailedAuthentication
 		}
-
-		// user.LoginedAt = time.Now()
-		// _ = store.Client().Users().Update(c, user, model.UpdateOptions{})
 
 		return user, nil
 	}
@@ -128,6 +128,7 @@ func parseWithHeader(c *gin.Context) (loginInfo, error) {
 	}
 
 	pair := strings.SplitN(string(payload), ":", 2)
+
 	if len(pair) != 2 {
 		log.Errorf("parse payload failed")
 

@@ -9,11 +9,11 @@ import (
 
 type User struct {
 	ObjectMeta
-	Name  string `gorm:"size:255;not null" json:"name"`
-	Email string `gorm:"size:255" json:"email"`
-	// 	CreatedAt time.Time `json:"createdAt,omitempty" gorm:"column:created_at"`
+	Name string `json:"name,omitempty" gorm:"column:name;type:varchar(255);not null" validate:"required"`
+	// Required: true
+	Email           string    `json:"email" gorm:"column:email" validate:"required,email,min=1,max=100"`
 	EmailVerifiedAt time.Time `gorm:"column:email_verified_at" json:"-"`
-	Password        string    `gorm:"size:255;not null" json:"-"`
+	Password        string    `json:"password,omitempty" gorm:"column:password" validate:"required"`
 	RememberToken   string    `gorm:"size:100" json:"-"`
 	StripeID        string    `gorm:"size:255" json:"stripeId"`
 	DiscordID       uint64    `gorm:"default:0" json:"discordId"`
