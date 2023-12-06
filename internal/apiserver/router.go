@@ -39,20 +39,27 @@ func installController(g *gin.Engine) *gin.Engine {
 	})
 
 	storeIns, _ := database.GetMySQLFactoryOr(nil)
-
+	userController := user.NewUserController(storeIns)
 	testController(g)
 
-	v1 := g.Group("/v1")
+	authGroup := g.Group("/v1")
+	authGroup.Use(auto.AuthFunc())
 	{
 		// user RESTful resource
-		userv1 := v1.Group("/users")
+		userv1 := authGroup.Group("/users")
 		{
-			userController := user.NewUserController(storeIns)
-
-			userv1.POST("", userController.Create)
-			userv1.GET("", userController.List)
+			userv1.PUT("/:id", userController.Update)
+			userv1.DELETE("/:id", userController.Delete)
 		}
 	}
+
+	noAuthGroup := g.Group("/v1")
+	{
+		noAuthGroup.POST("/users", userController.Create)
+		noAuthGroup.GET("/users/:id", userController.Get)
+
+	}
+
 	return g
 }
 

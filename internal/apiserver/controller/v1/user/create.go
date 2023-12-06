@@ -24,12 +24,8 @@ func (u *UserController) Create(c *gin.Context) {
 		return
 	}
 
-	log.Debugf("user password is %s", user.Password)
-	user.Password, _ = common.Encrypt(user.Password)
-	log.Debugf("user encrypt password is %s", user.Password)
-
+	user.Password, _ = common.Encrypt(c.Param("password"))
 	user.Status = 1
-
 	defaultTime := time.Date(1970, time.January, 1, 0, 0, 0, 0, time.UTC)
 	user.EmailVerifiedAt = defaultTime
 	user.TrialEndsAt = defaultTime
