@@ -26,7 +26,6 @@ func NewUserController(store store.Factory) *UserController {
 }
 
 func validateUser(user *model.User) ([]string, error) {
-	validate := validator.New() // Initialize the validator
 	if err := validate.Struct(user); err != nil {
 		var validationErrors []string
 		for _, err := range err.(validator.ValidationErrors) {
