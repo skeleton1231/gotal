@@ -8,6 +8,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/response"
+	"github.com/skeleton1231/gotal/internal/pkg/validation"
 	"github.com/skeleton1231/gotal/pkg/log"
 )
 
@@ -37,7 +38,7 @@ func (u *UserController) Update(c *gin.Context) {
 	user.Email = r.Email
 	user.Extend = r.Extend
 
-	if validationErrors, err := validateUser(&r); err != nil {
+	if validationErrors, err := validation.CheckModel(&r); err != nil {
 		response.WriteResponse(c, errors.WithCode(code.ErrValidation, err.Error()), validationErrors)
 		return
 	}

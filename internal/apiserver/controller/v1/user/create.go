@@ -8,6 +8,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/response"
+	"github.com/skeleton1231/gotal/internal/pkg/validation"
 	"github.com/skeleton1231/gotal/pkg/log"
 	"github.com/skeleton1231/gotal/pkg/util/common"
 )
@@ -29,7 +30,7 @@ func (u *UserController) Create(c *gin.Context) {
 	user.EmailVerifiedAt = defaultTime
 	user.TrialEndsAt = defaultTime
 
-	if validationErrors, err := validateUser(&user); err != nil {
+	if validationErrors, err := validation.CheckModel(&user); err != nil {
 		response.WriteResponse(c, errors.WithCode(code.ErrValidation, err.Error()), validationErrors)
 		return
 	}
