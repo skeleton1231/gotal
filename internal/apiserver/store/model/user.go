@@ -14,13 +14,14 @@ type User struct {
 	Email           string    `json:"email" gorm:"column:email" validate:"required,email,min=1,max=100"`
 	EmailVerifiedAt time.Time `gorm:"column:email_verified_at" json:"-"`
 	Password        string    `json:"password,omitempty" gorm:"column:password" validate:"required"`
-	RememberToken   string    `gorm:"size:100" json:"token,omitempty"`
+	RememberToken   string    `gorm:"size:100" json:"-"`
 	StripeID        string    `gorm:"size:255" json:"stripeId"`
 	DiscordID       uint64    `gorm:"default:0" json:"discordId"`
 	PMType          string    `gorm:"size:255" json:"-"`
 	PMLastFour      string    `gorm:"size:4" json:"-"`
 	TrialEndsAt     time.Time `gorm:"column:trial_ends_at" json:"-"`
 	TotalCredits    int       `gorm:"default:0" json:"totalCredits"`
+	Token           string    `json:"token,omitempty" gorm:"-"`
 }
 
 // TableName overrides the table name used by User to `users`.

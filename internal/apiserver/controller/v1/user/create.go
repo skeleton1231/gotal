@@ -49,7 +49,7 @@ func (u *UserController) Create(c *gin.Context) {
 	if err != nil {
 		log.Errorf("generateJWTToken error is %s", err.Error())
 	}
-	user.RememberToken = token
+	user.Token = token
 	response.WriteResponse(c, nil, user)
 
 }
