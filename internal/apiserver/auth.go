@@ -54,7 +54,6 @@ func newJWTAuth() middleware.AuthStrategy {
 		PayloadFunc:     payloadFunc(),
 		IdentityHandler: func(c *gin.Context) interface{} {
 			claims := jwt.ExtractClaims(c)
-
 			return claims[jwt.IdentityKey]
 		},
 		IdentityKey:  middleware.UsernameKey,
@@ -174,9 +173,9 @@ func payloadFunc() func(data interface{}) jwt.MapClaims {
 	return func(data interface{}) jwt.MapClaims {
 		claims := jwt.MapClaims{}
 		if u, ok := data.(*model.User); ok {
-			claims[jwt.IdentityKey] = u.Name
+			claims[jwt.IdentityKey] = u.Name // 用户名
+			claims["userID"] = u.ID          // 用户ID
 		}
-
 		return claims
 	}
 }
