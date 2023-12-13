@@ -17,7 +17,7 @@ type UserSrv interface {
 	Create(ctx context.Context, user *model.User, opts model.CreateOptions) error
 	Update(ctx context.Context, user *model.User, opts model.UpdateOptions) error
 	Delete(ctx context.Context, userId uint64, opts model.DeleteOptions) error
-	DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error
+	// DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error
 	Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error)
 	List(ctx context.Context, opts model.ListOptions) (*model.UserList, error)
 	ChangePassword(ctx context.Context, user *model.User) error
@@ -65,12 +65,12 @@ func (u *userService) Delete(ctx context.Context, userId uint64, opts model.Dele
 }
 
 // DeleteCollection implements UserSrv.
-func (u *userService) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
-	if err := u.store.Users().DeleteCollection(ctx, userIds, opts); err != nil {
-		return errors.WithCode(code.ErrDatabase, err.Error())
-	}
-	return nil
-}
+// func (u *userService) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
+// 	if err := u.store.Users().DeleteCollection(ctx, userIds, opts); err != nil {
+// 		return errors.WithCode(code.ErrDatabase, err.Error())
+// 	}
+// 	return nil
+// }
 
 // Get implements UserSrv.
 func (u *userService) Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error) {

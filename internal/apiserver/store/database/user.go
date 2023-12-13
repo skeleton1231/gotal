@@ -42,15 +42,15 @@ func (u *users) Delete(ctx context.Context, userId uint64, opts model.DeleteOpti
 }
 
 // DeleteCollection batch deletes the users.
-func (u *users) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
+// func (u *users) DeleteCollection(ctx context.Context, userIds []uint64, opts model.DeleteOptions) error {
 
-	return u.db.Where("id in (?)", userIds).Delete(&model.User{}).Error
-}
+// 	return u.db.Where("id in (?)", userIds).Delete(&model.User{}).Error
+// }
 
 // Get return an user by the user identifier.
 func (u *users) Get(ctx context.Context, userId uint64, opts model.GetOptions) (*model.User, error) {
 	user := &model.User{}
-	err := u.db.Where("id = ? and status = 1", userId).First(&user).Error
+	err := u.db.Where("id = ? and status = 1 and deleted_at IS NULL", userId).First(&user).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(code.ErrUserNotFound, err.Error())
@@ -65,7 +65,7 @@ func (u *users) Get(ctx context.Context, userId uint64, opts model.GetOptions) (
 // Get return an user by the user identifier.
 func (u *users) GetByUsername(ctx context.Context, username string, opts model.GetOptions) (*model.User, error) {
 	user := &model.User{}
-	err := u.db.Where("name = ? and status = 1", username).First(&user).Error
+	err := u.db.Where("name = ? and status = 1 and deleted_at IS NULL", username).First(&user).Error
 	if err != nil {
 		if errors.Is(err, gorm.ErrRecordNotFound) {
 			return nil, errors.WithCode(code.ErrUserNotFound, err.Error())
@@ -83,7 +83,7 @@ func (u *users) List(ctx context.Context, opts model.ListOptions) (*model.UserLi
 	ol := model.Unpointer(opts.Offset, opts.Limit)
 
 	// Apply field selectors to the query
-	query, err := userApplyFieldSelectors(u.db.Where("status = 1"), opts.FieldSelector)
+	query, err := userApplyFieldSelectors(u.db.Where("status = 1 and deleted_at IS NULL"), opts.FieldSelector)
 	if err != nil {
 		log.Errorf("user query error: %v", err)
 		return nil, err // Return immediately if there's an error
