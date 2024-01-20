@@ -180,14 +180,40 @@ func payloadFunc() func(data interface{}) jwt.MapClaims {
 	}
 }
 
+// func authorizator() func(data interface{}, c *gin.Context) bool {
+// 	return func(data interface{}, c *gin.Context) bool {
+// 		if v, ok := data.(string); ok {
+// 			log.Record(c).Infof("user `%s` is authenticated.", v)
+
+// 			return true
+// 		}
+
+// 		return false
+// 	}
+// }
+
 func authorizator() func(data interface{}, c *gin.Context) bool {
 	return func(data interface{}, c *gin.Context) bool {
-		if v, ok := data.(string); ok {
-			log.Record(c).Infof("user `%s` is authenticated.", v)
+		if username, ok := data.(string); ok {
+			log.Record(c).Infof("user `%s` is authenticated.", username)
+			// 用户已经认证，现在检查他们是否有权限
+			// 例如，这里可以构建一个请求到 authz 服务
+			allowed, err := checkAuthzPermission(username, c.Request.Method, c.Request.URL.Path)
+			if err != nil {
+				// 处理可能的错误
+				return false
+			}
 
-			return true
+			return allowed
 		}
 
 		return false
 	}
+}
+
+func checkAuthzPermission(username, method, path string) (bool, error) {
+	// 构造请求到 authz 服务
+	// 您需要根据实际的 authz API 接口来调整这里的代码
+	// ...
+	return true, nil
 }

@@ -143,6 +143,8 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 
 	store.SetClient(storeIns)
 
+	// Register GRPC Server
+
 	reflection.Register(grpcServer)
 
 	return &grpcAPIServer{grpcServer, c.Addr}, nil
