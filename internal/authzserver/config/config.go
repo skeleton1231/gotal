@@ -1,6 +1,6 @@
 package config
 
-import "github.com/skeleton1231/gotal/internal/apiserver/options"
+import "github.com/skeleton1231/gotal/internal/authzserver/options"
 
 // Config is the running configuration structure of the IAM pump service.
 type Config struct {

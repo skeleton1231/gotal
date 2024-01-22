@@ -127,9 +127,9 @@ func NewCompletedConfig(c *Config) CompletedConfig {
 }
 
 // Complete finalizes the Config by setting any missing values and returns a CompletedConfig.
-// func (c *Config) Complete() CompletedConfig {
-// 	return CompletedConfig{c}
-// }
+func (c *Config) Complete() CompletedConfig {
+	return CompletedConfig{c}
+}
 
 // New initializes and returns a new APIServer instance based on the completed configuration.
 func (c CompletedConfig) New() (*APIServer, error) {
