@@ -1,7 +1,10 @@
 package apiserver
 
 import (
+	"math/rand"
 	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/gin-gonic/gin"
 	"github.com/skeleton1231/gotal/internal/apiserver/controller/v1/user"
@@ -84,12 +87,12 @@ func testController(g *gin.Engine) {
 		ctx := c.Request.Context()
 
 		// Example key-value to set in Redis
-		key := "testKey111"
-		value := "testValue111"
+		key := "testKey"
+		randomNumber := strconv.Itoa(rand.Int()) // 生成一个随机整数
 
-		redisClient := &cache.RedisClusterV2{KeyPrefix: "test"}
+		redisClient := &cache.RedisClusterV2{}
 		// Set the value in Redis
-		err := redisClient.SetKey(ctx, key, value, 3600)
+		err := redisClient.SetRawKey(ctx, key, randomNumber, 3600*time.Second)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": "Failed to set key in Redis",
@@ -98,7 +101,7 @@ func testController(g *gin.Engine) {
 		}
 
 		// Get the value back from Redis
-		retrievedValue, err := redisClient.GetKey(ctx, key)
+		retrievedValue, err := redisClient.GetRawKey(ctx, key)
 		if err != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
 				"error": "Failed to get key from Redis",
