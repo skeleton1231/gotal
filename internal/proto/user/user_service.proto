@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package gotal.user; // 您的Proto包名称
+
+// 指定生成Go代码的包路径和包名
+option go_package = "github.com/skeleton1231/gotal/internal/apiserver/service";
+
+import "google/protobuf/struct.proto";
+import "google/protobuf/timestamp.proto";
+
+message ObjectMeta {
+  uint64 id = 1;
+  google.protobuf.Struct extend = 2; // 使用Struct来表示动态键值对
+  string extendShadow = 3; // JSON字符串，可选使用
+  google.protobuf.Timestamp createdAt = 4;
+  google.protobuf.Timestamp updatedAt = 5;
+  // 对于DeletedAt，protobuf3不支持直接的nullable类型，可以用bool表示是否被删除，或者使用Timestamp
+  google.protobuf.Timestamp deletedAt = 6;
+  bool isDeleted = 7; // 根据需要添加，用于表示是否已删除
+  int32 status = 8;
+}
+
+
+message User {
+    ObjectMeta meta = 1;
+    string name = 2;
+    string email = 3;
+    google.protobuf.Timestamp emailVerifiedAt = 4;
+    // 密码字段在这里不包括，因为它不应通过API传输
+    string rememberToken = 5;
+    string stripeId = 6;
+    uint64 discordId = 7;
+    string pmType = 8;
+    string pmLastFour = 9;
+    google.protobuf.Timestamp trialEndsAt = 10;
+    int32 totalCredits = 11;
+    // Token字段通常用于认证响应，而不是作为用户模型的一部分发送，这里也不包括它
+}
+
+message UserList {
+  repeated User items = 1;
+  int64 totalCount = 2;
+}
+
+message CreateRequest {
+  User user = 1;
+  // CreateOptions可以根据需要添加更多字段
+}
+
+message CreateResponse {
+  User user = 1;
+}
+
+message UpdateRequest {
+  User user = 1;
+  // UpdateOptions可以根据需要添加更多字段
+}
+
+message UpdateResponse {
+  User user = 1;
+}
+
+message DeleteRequest {
+  uint64 userId = 1;
+  // DeleteOptions可以根据需要添加更多字段
+}
+
+message DeleteResponse {
+}
+
+message GetRequest {
+  uint64 userId = 1;
+  // GetOptions可以根据需要添加更多字段
+}
+
+message GetResponse {
+  User user = 1;
+}
+
+message ListRequest {
+  // ListOptions可以根据需要添加更多字段
+}
+
+message ListResponse {
+  UserList users = 1;
+}
+
+message ChangePasswordRequest {
+  uint64 userId = 1;
+  string newPassword = 2;
+}
+
+message ChangePasswordResponse {
+}
+
+service UserService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc Update(UpdateRequest) returns (UpdateResponse);
+  rpc Delete(DeleteRequest) returns (DeleteResponse);
+  rpc Get(GetRequest) returns (GetResponse);
+  rpc List(ListRequest) returns (ListResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
+}

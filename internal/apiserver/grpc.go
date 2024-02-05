@@ -8,7 +8,6 @@ import (
 	"net"
 
 	"github.com/sirupsen/logrus"
-	"github.com/skeleton1231/gotal/pkg/log"
 	"google.golang.org/grpc"
 )
 
@@ -29,10 +28,10 @@ func (s *grpcAPIServer) Run() {
 		}
 	}()
 
-	log.Infof("start grpc server at %s", s.address)
+	logrus.Infof("start grpc server at %s", s.address)
 }
 
 func (s *grpcAPIServer) Close() {
 	s.GracefulStop()
-	log.Infof("GRPC server on %s stopped", s.address)
+	logrus.Infof("GRPC server on %s stopped", s.address)
 }

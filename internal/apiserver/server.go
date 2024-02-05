@@ -9,6 +9,9 @@ import (
 	"fmt"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
+	serv1 "github.com/skeleton1231/gotal/internal/apiserver/service"
+	sserve1 "github.com/skeleton1231/gotal/internal/apiserver/service/server"
+
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/database"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
@@ -143,8 +146,9 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 
 	store.SetClient(storeIns)
 
+	userService, _ := sserve1.GetUserInsOr(storeIns)
 	// Register GRPC Server
-
+	serv1.RegisterUserServiceServer(grpcServer, userService)
 	reflection.Register(grpcServer)
 
 	return &grpcAPIServer{grpcServer, c.Addr}, nil

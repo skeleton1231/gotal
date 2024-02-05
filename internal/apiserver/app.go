@@ -13,7 +13,7 @@ import (
 )
 
 const serverName = "APISERVER"
-const commandDesc = ` Description`
+const commandDesc = `Description`
 
 // NewApp creates an App object with default parameters.
 func NewApp(basename string) *app.App {
