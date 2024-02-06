@@ -40,7 +40,8 @@ func installController(g *gin.Engine) *gin.Engine {
 	})
 
 	storeIns, _ := database.GetMySQLFactoryOr(nil)
-	userController := user.NewUserController(storeIns)
+	// Add Grpc Invoke
+	userController := user.NewUserController(storeIns, nil)
 	testController(g)
 
 	authGroup := g.Group("/v1")

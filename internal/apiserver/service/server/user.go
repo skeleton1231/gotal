@@ -39,13 +39,35 @@ func GetUserInsOr(store store.Factory) (*UserServiceServer, error) {
 
 // 实现 Create 方法
 func (s *UserServiceServer) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
-	// 在这里编写 Create 方法的具体实现
-	s.store.Users().Create(ctx, &model.User{}, model.CreateOptions{})
+	obj := req.GetUser()
+	var user *model.User
+	user.Email = obj.Email
+	user.Name = obj.Name
+	s.store.Users().Create(ctx, user, model.CreateOptions{})
 	return &pb.CreateResponse{}, nil
 }
 
 // 实现 Update 方法
 func (s *UserServiceServer) Update(ctx context.Context, req *pb.UpdateRequest) (*pb.UpdateResponse, error) {
+	// 从请求中获取用户信息
+	pbUser := req.GetUser()
+
+	// 创建一个空的 model.User 对象
+	user := &model.User{}
+
+	// 检查是否提供了有效的用户信息
+	if pbUser != nil {
+		// 如果提供了姓名字段且有值，则更新姓名
+		if pbUser.Name != "" {
+			user.Name = pbUser.Name
+		}
+		// 如果提供了邮箱字段且有值，则更新邮箱
+		if pbUser.Email != "" {
+			user.Email = pbUser.Email
+		}
+		// 其他字段的检查和更新操作
+	}
+	s.store.Users().Update(ctx, user, model.UpdateOptions{})
 	// 在这里编写 Update 方法的具体实现
 	return &pb.UpdateResponse{}, nil
 }
@@ -57,9 +79,30 @@ func (s *UserServiceServer) Delete(ctx context.Context, req *pb.DeleteRequest) (
 }
 
 // 实现 Get 方法
+// 实现 Get 方法
 func (s *UserServiceServer) Get(ctx context.Context, req *pb.GetRequest) (*pb.GetResponse, error) {
-	// 在这里编写 Get 方法的具体实现
-	return &pb.GetResponse{}, nil
+	// 从请求中获取用户的标识（假设是用户的 ID）
+	userID := req.GetUserId()
+
+	// 使用 userID 从数据库或存储中检索用户的信息
+	user, err := s.store.Users().Get(ctx, userID, model.GetOptions{})
+	if err != nil {
+		// 处理错误，例如用户不存在的情况
+		return nil, err
+	}
+
+	// 创建 GetResponse 对象，并将检索到的用户信息赋值给它
+	response := &pb.GetResponse{
+		User: &pb.User{
+			// 在这里赋值用户信息，例如姓名、邮箱等
+			Name:  user.Name,
+			Email: user.Email,
+			// 其他字段的赋值
+		},
+	}
+
+	// 返回 GetResponse 对象作为响应
+	return response, nil
 }
 
 // 实现 List 方法
