@@ -22,7 +22,7 @@ var (
 	once       sync.Once
 )
 
-// GetCacheInsOr return cache server instance with given factory.
+// GetUserInsOr return cache server instance with given factory.
 func GetUserInsOr(store store.Factory) (*UserServiceServer, error) {
 	if store != nil {
 		once.Do(func() {
@@ -38,13 +38,22 @@ func GetUserInsOr(store store.Factory) (*UserServiceServer, error) {
 }
 
 // 实现 Create 方法
+// 实现 Create 方法
 func (s *UserServiceServer) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
 	obj := req.GetUser()
-	var user *model.User
-	user.Email = obj.Email
-	user.Name = obj.Name
-	s.store.Users().Create(ctx, user, model.CreateOptions{})
-	return &pb.CreateResponse{}, nil
+	// 先初始化 user 变量
+	user := &model.User{
+		Email: obj.Email,
+		Name:  obj.Name,
+	}
+	// 然后调用 store 方法来创建用户
+	err := s.store.Users().Create(ctx, user, model.CreateOptions{})
+	if err != nil {
+		// 处理创建过程中可能发生的错误
+		return nil, err
+	}
+	// 如果创建成功，返回创建的用户信息
+	return &pb.CreateResponse{User: obj}, nil
 }
 
 // 实现 Update 方法
@@ -78,7 +87,6 @@ func (s *UserServiceServer) Delete(ctx context.Context, req *pb.DeleteRequest) (
 	return &pb.DeleteResponse{}, nil
 }
 
-// 实现 Get 方法
 // 实现 Get 方法
 func (s *UserServiceServer) Get(ctx context.Context, req *pb.GetRequest) (*pb.GetResponse, error) {
 	// 从请求中获取用户的标识（假设是用户的 ID）
