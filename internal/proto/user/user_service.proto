@@ -3,10 +3,12 @@ syntax = "proto3";
 package gotal.user; // 您的Proto包名称
 
 // 指定生成Go代码的包路径和包名
-option go_package = "github.com/skeleton1231/gotal/internal/apiserver/service";
+option go_package = "github.com/skeleton1231/gotal/internal/proto/user";
 
 import "google/protobuf/struct.proto";
 import "google/protobuf/timestamp.proto";
+import "options/options.proto";
+
 
 message ObjectMeta {
   uint64 id = 1;
@@ -42,27 +44,30 @@ message UserList {
   int64 totalCount = 2;
 }
 
+// 扩展CreateRequest消息以包含CreateOptions
 message CreateRequest {
   User user = 1;
-  // CreateOptions可以根据需要添加更多字段
+  gotal.options.CreateOptions options = 2; // 添加的选项字段
 }
 
 message CreateResponse {
   User user = 1;
 }
 
+// 扩展UpdateRequest消息以包含UpdateOptions
 message UpdateRequest {
   User user = 1;
-  // UpdateOptions可以根据需要添加更多字段
+  gotal.options.UpdateOptions options = 2; // 添加的选项字段
 }
 
 message UpdateResponse {
   User user = 1;
 }
 
+// 扩展DeleteRequest消息以包含DeleteOptions
 message DeleteRequest {
   uint64 userId = 1;
-  // DeleteOptions可以根据需要添加更多字段
+  gotal.options.DeleteOptions options = 2; // 添加的选项字段
 }
 
 message DeleteResponse {
@@ -70,20 +75,31 @@ message DeleteResponse {
 
 message GetRequest {
   uint64 userId = 1;
-  // GetOptions可以根据需要添加更多字段
+  gotal.options.GetOptions options = 2;
 }
 
 message GetResponse {
   User user = 1;
 }
 
+// 扩展ListRequest消息以包含ListOptions
 message ListRequest {
-  // ListOptions可以根据需要添加更多字段
+  gotal.options.ListOptions options = 1; // 添加的选项字段
 }
 
 message ListResponse {
   UserList users = 1;
 }
+
+message GetByUsernameRequest {
+  string username = 1; // 用户名字段
+  gotal.options.GetOptions options = 2;
+}
+
+message GetByUsernameResponse {
+  User user = 1; // 返回的用户对象
+}
+
 
 message ChangePasswordRequest {
   uint64 userId = 1;
@@ -100,4 +116,5 @@ service UserService {
   rpc Get(GetRequest) returns (GetResponse);
   rpc List(ListRequest) returns (ListResponse);
   rpc ChangePassword(ChangePasswordRequest) returns (ChangePasswordResponse);
+  rpc GetByUsername(GetByUsernameRequest) returns (GetByUsernameResponse);
 }

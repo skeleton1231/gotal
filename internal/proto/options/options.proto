@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package gotal.options;
+
+option go_package = "github.com/skeleton1231/gotal/internal/proto/options";
+
+import "google/protobuf/wrappers.proto";
+
+message GetOptions {
+  //
+}
+
+// DeleteOptions defines options for Delete operations.
+message DeleteOptions {
+  bool unscoped = 1; // 对应 Go 结构体中的 Unscoped 字段
+}
+
+// CreateOptions defines options for Create operations.
+message CreateOptions {
+  repeated string dryRun = 1; // 对应 Go 结构体中的 DryRun 字段
+}
+
+// UpdateOptions defines options for Update operations.
+message UpdateOptions {
+  repeated string dryRun = 1; // 对应 Go 结构体中的 DryRun 字段
+}
+
+// CommonOptions defines common options that can be used across different operations.
+message CommonOptions {
+  repeated string dryRun = 1; // 对应 PatchOptions 和 UpdateOptions 中的 DryRun 字段
+  bool force = 2; // 对应 PatchOptions 中的 Force 字段
+}
+
+// ListOptions defines options for listing operations.
+message ListOptions {
+  google.protobuf.StringValue labelSelector = 1;
+  google.protobuf.StringValue fieldSelector = 2;
+  google.protobuf.Int64Value limit = 3;
+  google.protobuf.Int64Value offset = 4;
+}
+
+// TableOptions defines options for table formatting.
+// Note: Since TableOptions in Go has a NoHeaders field that's not exposed (json:"-"),
+// it's assumed not to be necessary for the protobuf definition. If needed, it could be added here.

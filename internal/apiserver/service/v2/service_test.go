@@ -6,9 +6,9 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	pb "github.com/skeleton1231/gotal/internal/apiserver/service"
 	sserve1 "github.com/skeleton1231/gotal/internal/apiserver/service/server"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/mock_store"
+	pb "github.com/skeleton1231/gotal/internal/proto/user"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 	"google.golang.org/grpc/test/bufconn"

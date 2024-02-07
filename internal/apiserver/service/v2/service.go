@@ -1,7 +1,7 @@
 package service
 
 import (
-	pb "github.com/skeleton1231/gotal/internal/apiserver/service"
+	pb "github.com/skeleton1231/gotal/internal/proto/user"
 )
 
 // Service 定义了服务层的接口，它抽象了服务的功能。

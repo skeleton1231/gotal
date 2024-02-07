@@ -2,9 +2,9 @@
 // versions:
 // - protoc-gen-go-grpc v1.3.0
 // - protoc             v4.25.2
-// source: user_service.proto
+// source: user/user_service.proto
 
-package service
+package user
 
 import (
 	context "context"
@@ -25,6 +25,7 @@ const (
 	UserService_Get_FullMethodName            = "/gotal.user.UserService/Get"
 	UserService_List_FullMethodName           = "/gotal.user.UserService/List"
 	UserService_ChangePassword_FullMethodName = "/gotal.user.UserService/ChangePassword"
+	UserService_GetByUsername_FullMethodName  = "/gotal.user.UserService/GetByUsername"
 )
 
 // UserServiceClient is the client API for UserService service.
@@ -37,6 +38,7 @@ type UserServiceClient interface {
 	Get(ctx context.Context, in *GetRequest, opts ...grpc.CallOption) (*GetResponse, error)
 	List(ctx context.Context, in *ListRequest, opts ...grpc.CallOption) (*ListResponse, error)
 	ChangePassword(ctx context.Context, in *ChangePasswordRequest, opts ...grpc.CallOption) (*ChangePasswordResponse, error)
+	GetByUsername(ctx context.Context, in *GetByUsernameRequest, opts ...grpc.CallOption) (*GetByUsernameResponse, error)
 }
 
 type userServiceClient struct {
@@ -101,6 +103,15 @@ func (c *userServiceClient) ChangePassword(ctx context.Context, in *ChangePasswo
 	return out, nil
 }
 
+func (c *userServiceClient) GetByUsername(ctx context.Context, in *GetByUsernameRequest, opts ...grpc.CallOption) (*GetByUsernameResponse, error) {
+	out := new(GetByUsernameResponse)
+	err := c.cc.Invoke(ctx, UserService_GetByUsername_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // UserServiceServer is the server API for UserService service.
 // All implementations must embed UnimplementedUserServiceServer
 // for forward compatibility
@@ -111,6 +122,7 @@ type UserServiceServer interface {
 	Get(context.Context, *GetRequest) (*GetResponse, error)
 	List(context.Context, *ListRequest) (*ListResponse, error)
 	ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error)
+	GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
 
@@ -135,6 +147,9 @@ func (UnimplementedUserServiceServer) List(context.Context, *ListRequest) (*List
 }
 func (UnimplementedUserServiceServer) ChangePassword(context.Context, *ChangePasswordRequest) (*ChangePasswordResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
+}
+func (UnimplementedUserServiceServer) GetByUsername(context.Context, *GetByUsernameRequest) (*GetByUsernameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetByUsername not implemented")
 }
 func (UnimplementedUserServiceServer) mustEmbedUnimplementedUserServiceServer() {}
 
@@ -257,6 +272,24 @@ func _UserService_ChangePassword_Handler(srv interface{}, ctx context.Context, d
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserService_GetByUsername_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetByUsernameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserServiceServer).GetByUsername(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: UserService_GetByUsername_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserServiceServer).GetByUsername(ctx, req.(*GetByUsernameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserService_ServiceDesc is the grpc.ServiceDesc for UserService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -288,7 +321,11 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "ChangePassword",
 			Handler:    _UserService_ChangePassword_Handler,
 		},
+		{
+			MethodName: "GetByUsername",
+			Handler:    _UserService_GetByUsername_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
-	Metadata: "user_service.proto",
+	Metadata: "user/user_service.proto",
 }

@@ -6,7 +6,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/skeleton1231/gotal/internal/apiserver/controller/v1/user"
-	"github.com/skeleton1231/gotal/internal/apiserver/store/database"
+	"github.com/skeleton1231/gotal/internal/apiserver/store/rpc_service"
 	"github.com/skeleton1231/gotal/internal/pkg/code"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/middleware"
@@ -39,9 +39,9 @@ func installController(g *gin.Engine) *gin.Engine {
 		response.WriteResponse(c, errors.WithCode(code.ErrPageNotFound, "Page not found."), nil)
 	})
 
-	storeIns, _ := database.GetMySQLFactoryOr(nil)
-	// Add Grpc Invoke
-	userController := user.NewUserController(storeIns, nil)
+	// storeIns, _ := database.GetMySQLFactoryOr(nil)
+	storeIns := rpc_service.GetRPCServerFactoryOrDie("", "")
+	userController := user.NewUserController(storeIns)
 	testController(g)
 
 	authGroup := g.Group("/v1")

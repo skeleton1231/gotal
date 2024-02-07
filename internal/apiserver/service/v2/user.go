@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	pb "github.com/skeleton1231/gotal/internal/apiserver/service"
+	pb "github.com/skeleton1231/gotal/internal/proto/user"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 )
