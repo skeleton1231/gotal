@@ -3,6 +3,7 @@ package rpc_service
 
 import (
 	"context"
+	"errors"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
@@ -68,11 +69,16 @@ func (s *userGrpcServiceImpl) GetByUsername(ctx context.Context, username string
 	userPb, err := s.client.GetByUsername(ctx, &pb.GetByUsernameRequest{
 		Username: username,
 	})
-	pb := userPb.GetUser()
-	user.ID = pb.Meta.GetId()
-	user.Name = pb.GetName()
-	user.DiscordID = pb.GetDiscordId()
-	user.Email = pb.GetEmail()
+	if err != nil {
+		// 处理错误
+		return nil, err
+	}
+	if userPb == nil || userPb.GetUser() == nil {
+		// 处理未找到用户或其他情况
+		return nil, errors.New("user not found")
+	}
+	pbUser := userPb.GetUser()
+	user, _ = model.ProtoToUser(pbUser)
 	return user, err
 }
 

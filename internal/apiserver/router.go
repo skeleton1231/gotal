@@ -39,8 +39,8 @@ func installController(g *gin.Engine) *gin.Engine {
 		response.WriteResponse(c, errors.WithCode(code.ErrPageNotFound, "Page not found."), nil)
 	})
 
-	// storeIns, _ := database.GetMySQLFactoryOr(nil)
-	storeIns := rpc_service.GetRPCServerFactoryOrDie("", "")
+	//storeIns, _ := database.GetMySQLFactoryOr(nil)
+	storeIns, _ := rpc_service.GetRPCServerFactory("", "")
 	userController := user.NewUserController(storeIns)
 	testController(g)
 

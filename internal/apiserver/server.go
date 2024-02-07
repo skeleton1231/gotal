@@ -8,12 +8,12 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/sirupsen/logrus"
 	"github.com/skeleton1231/gotal/internal/apiserver/config"
-	sserve1 "github.com/skeleton1231/gotal/internal/apiserver/service/server"
-	pb "github.com/skeleton1231/gotal/internal/proto/user"
 
 	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/database"
+	"github.com/skeleton1231/gotal/internal/apiserver/store/rpc_service"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/cache"
@@ -22,7 +22,6 @@ import (
 	posix "github.com/skeleton1231/gotal/pkg/shutdown/managers"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-	"google.golang.org/grpc/reflection"
 )
 
 type apiServer struct {
@@ -142,14 +141,16 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 
 	storeIns, _ := database.GetMySQLFactoryOr(c.mysqlOptions)
 
-	log.Debugf("Store Connections %v:", storeIns)
+	logrus.Debugf("Store Connections %v:", storeIns)
 
 	store.SetClient(storeIns)
 
-	userService, _ := sserve1.GetUserInsOr(storeIns)
-	// Register GRPC Server
-	pb.RegisterUserServiceServer(grpcServer, userService)
-	reflection.Register(grpcServer)
+	rpc_service.GetRPCServerFactory("127.0.0.1:8081", c.ServerCert.CertKey.CertFile)
+
+	// userService, _ := sserve1.GetUserInsOr(storeIns)
+	// // Register GRPC Server
+	// pb.RegisterUserServiceServer(grpcServer, userService)
+	// reflection.Register(grpcServer)
 
 	return &grpcAPIServer{grpcServer, c.Addr}, nil
 }

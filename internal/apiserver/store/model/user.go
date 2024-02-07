@@ -1,6 +1,7 @@
 package model
 
 import (
+	"errors"
 	"fmt"
 	"time"
 
@@ -55,6 +56,7 @@ func (u *User) Compare(pwd string) error {
 
 // ToProto converts User model to protobuf message
 func UserToProto(u *User) *pb.User {
+
 	// 使用u.Extend构造*structpb.Struct
 	extendProto, err := structpb.NewStruct(u.Extend)
 	if err != nil {
@@ -90,6 +92,10 @@ func UserToProto(u *User) *pb.User {
 }
 
 func ProtoToUser(pbUser *pb.User) (*User, error) {
+
+	if pbUser == nil {
+		return nil, errors.New("userProto is nil")
+	}
 	// 转换extend字段
 	var extend Extend
 	if pbUser.Meta.GetExtend() != nil {
