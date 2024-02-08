@@ -15,11 +15,8 @@ import (
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
 	"github.com/skeleton1231/gotal/pkg/cache"
-	"github.com/skeleton1231/gotal/pkg/log"
 	"github.com/skeleton1231/gotal/pkg/shutdown"
 	posix "github.com/skeleton1231/gotal/pkg/shutdown/managers"
-	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials"
 )
 
 type apiServer struct {
@@ -35,10 +32,10 @@ type preparedAPIServer struct {
 
 // ExtraConfig defines extra configuration for the apiserver such as mysql and other options fields.
 type ExtraConfig struct {
-	Addr         string
-	MaxMsgSize   int
-	ServerCert   options.GeneratableKeyCert
-	mysqlOptions *options.MySQLOptions
+	Addr       string
+	MaxMsgSize int
+	ServerCert options.GeneratableKeyCert
+	// mysqlOptions *options.MySQLOptions
 }
 
 func NewAPIServer(cfg *config.Config) (*apiServer, error) {
@@ -89,7 +86,7 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 
 	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
 
-		s.gRPCAPIServer.Close()
+		// s.gRPCAPIServer.Close()
 		s.httpAPIServer.Close()
 
 		return nil
@@ -99,13 +96,13 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 }
 
 func (s preparedAPIServer) Run() error {
-	// Start GRPC Server
-	go s.gRPCAPIServer.Run()
+	// // Start GRPC Server
+	// go s.gRPCAPIServer.Run()
 
-	// start shutdown managers
-	if err := s.gs.Start(); err != nil {
-		log.Fatalf("start shutdown manager failed: %s", err.Error())
-	}
+	// // start shutdown managers
+	// if err := s.gs.Start(); err != nil {
+	// 	log.Fatalf("start shutdown manager failed: %s", err.Error())
+	// }
 
 	// Start Http/Https Server
 	return s.httpAPIServer.Run()
@@ -125,17 +122,17 @@ func newCompletedExtraConfig(c *ExtraConfig) *completedExtraConfig {
 
 // New create a grpcAPIServer instance.
 func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
-	creds, err := credentials.NewServerTLSFromFile(c.ServerCert.CertKey.CertFile, c.ServerCert.CertKey.KeyFile)
-	if err != nil {
-		log.Fatalf("Failed to generate credentials %s", err.Error())
-	}
-	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
-	grpcServer := grpc.NewServer(opts...)
+	// creds, err := credentials.NewServerTLSFromFile(c.ServerCert.CertKey.CertFile, c.ServerCert.CertKey.KeyFile)
+	// if err != nil {
+	// 	log.Fatalf("Failed to generate credentials %s", err.Error())
+	// }
+	// opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
+	// grpcServer := grpc.NewServer(opts...)
 
 	storeIns, _ := rpc_service.GetRPCServerFactory("127.0.0.1:8081", c.ServerCert.CertKey.CertFile)
 	store.SetClient(storeIns)
 
-	return &grpcAPIServer{grpcServer, c.Addr}, nil
+	return &grpcAPIServer{nil, c.Addr}, nil
 }
 
 func buildGenericConfig(cfg *config.Config) (genericConfig *server.Config, lastErr error) {
@@ -166,10 +163,10 @@ func buildGenericConfig(cfg *config.Config) (genericConfig *server.Config, lastE
 // nolint: unparam
 func buildExtraConfig(cfg *config.Config) (*ExtraConfig, error) {
 	return &ExtraConfig{
-		Addr:         fmt.Sprintf("%s:%d", cfg.GRPCOptions.BindAddress, cfg.GRPCOptions.BindPort),
-		MaxMsgSize:   cfg.GRPCOptions.MaxMsgSize,
-		ServerCert:   cfg.SecureServing.ServerCert,
-		mysqlOptions: cfg.MySQLOptions,
+		Addr:       fmt.Sprintf("%s:%d", cfg.GRPCOptions.BindAddress, cfg.GRPCOptions.BindPort),
+		MaxMsgSize: cfg.GRPCOptions.MaxMsgSize,
+		ServerCert: cfg.SecureServing.ServerCert,
+		// mysqlOptions: cfg.MySQLOptions,
 	}, nil
 }
 
