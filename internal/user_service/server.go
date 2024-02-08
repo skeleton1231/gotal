@@ -2,24 +2,28 @@
 // Use of this source code is governed by a MIT style
 // license that can be found in the LICENSE file.
 
-package apiserver
+package userservice
 
 import (
 	"context"
 	"fmt"
 
-	"github.com/skeleton1231/gotal/internal/apiserver/config"
+	"github.com/sirupsen/logrus"
+	"github.com/skeleton1231/gotal/internal/user_service/config"
+	"github.com/skeleton1231/gotal/internal/user_service/store"
 
-	"github.com/skeleton1231/gotal/internal/apiserver/store"
-	"github.com/skeleton1231/gotal/internal/apiserver/store/rpc_service"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
 	"github.com/skeleton1231/gotal/internal/pkg/server"
+	pbUser "github.com/skeleton1231/gotal/internal/proto/user"
+	ssv1 "github.com/skeleton1231/gotal/internal/user_service/service/server"
+	"github.com/skeleton1231/gotal/internal/user_service/store/database"
 	"github.com/skeleton1231/gotal/pkg/cache"
 	"github.com/skeleton1231/gotal/pkg/log"
 	"github.com/skeleton1231/gotal/pkg/shutdown"
 	posix "github.com/skeleton1231/gotal/pkg/shutdown/managers"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
+	"google.golang.org/grpc/reflection"
 )
 
 type apiServer struct {
@@ -89,6 +93,11 @@ func (s *apiServer) PrepareRun() preparedAPIServer {
 
 	s.gs.AddShutdownCallback(shutdown.ShutdownFunc(func(string) error {
 
+		mysqlStore, _ := database.GetMySQLFactoryOr(nil)
+		if mysqlStore != nil {
+			_ = mysqlStore.Close()
+		}
+
 		s.gRPCAPIServer.Close()
 		s.httpAPIServer.Close()
 
@@ -132,8 +141,15 @@ func (c *completedExtraConfig) New() (*grpcAPIServer, error) {
 	opts := []grpc.ServerOption{grpc.MaxRecvMsgSize(c.MaxMsgSize), grpc.Creds(creds)}
 	grpcServer := grpc.NewServer(opts...)
 
-	storeIns, _ := rpc_service.GetRPCServerFactory("127.0.0.1:8081", c.ServerCert.CertKey.CertFile)
+	storeIns, _ := database.GetMySQLFactoryOr(c.mysqlOptions)
+	logrus.Debugf("Store Connections %v:", storeIns)
+
 	store.SetClient(storeIns)
+
+	userService, _ := ssv1.GetUserInsOr(storeIns)
+	// Register GRPC Server
+	pbUser.RegisterUserServiceServer(grpcServer, userService)
+	reflection.Register(grpcServer)
 
 	return &grpcAPIServer{grpcServer, c.Addr}, nil
 }

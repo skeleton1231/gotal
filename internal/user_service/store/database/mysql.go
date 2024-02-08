@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/pkg/errors"
 	"github.com/skeleton1231/gotal/internal/pkg/logger"
 	"github.com/skeleton1231/gotal/internal/pkg/options"
+	"github.com/skeleton1231/gotal/internal/user_service/store"
 	"github.com/skeleton1231/gotal/pkg/db"
 	"gorm.io/gorm"
 )

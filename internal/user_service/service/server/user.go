@@ -5,9 +5,9 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/skeleton1231/gotal/internal/apiserver/store"
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 	pb "github.com/skeleton1231/gotal/internal/proto/user"
+	"github.com/skeleton1231/gotal/internal/user_service/store"
 )
 
 // userServiceServer 是 UserServiceServer 接口的实现
