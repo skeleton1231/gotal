@@ -37,7 +37,6 @@ type preparedAPIServer struct {
 	*apiServer
 }
 
-// ExtraConfig defines extra configuration for the apiserver such as mysql and other options fields.
 type ExtraConfig struct {
 	Addr         string
 	MaxMsgSize   int
@@ -49,15 +48,13 @@ func NewAPIServer(cfg *config.Config) (*apiServer, error) {
 	gs := shutdown.New()
 	gs.AddShutdownManager(posix.NewPosixSignalManager())
 
-	// Assgin apiServer config to APIServer, because we need build the internal/pkg/server/apiserver configs
 	genericConfig, err := buildGenericConfig(cfg)
 	if err != nil {
 		return nil, err
 	}
 
-	// New a internal/pkg/server/apiserver APIServer
 	genericServer, err := server.NewCompletedConfig(genericConfig).New()
-	// genericServer, err := genericConfig.Complete().New()
+
 	if err != nil {
 		return nil, err
 	}
