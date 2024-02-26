@@ -129,17 +129,3 @@ func ProtoToUser(pbUser *pb.User) (*User, error) {
 
 	return user, nil
 }
-
-// structpbToMap 是一个辅助函数，用于将*structpb.Struct转换为map[string]interface{}
-func structpbToMap(structProto *structpb.Struct) (Extend, error) {
-	extend := make(Extend)
-	if structProto == nil {
-		return extend, nil
-	}
-
-	for k, v := range structProto.Fields {
-		extend[k] = v.AsInterface()
-	}
-
-	return extend, nil
-}
