@@ -20,5 +20,5 @@ func main() {
 	if len(os.Getenv("GOMAXPROCS")) == 0 {
 		runtime.GOMAXPROCS(runtime.NumCPU())
 	}
-	userservice.NewApp("apiserver").Run()
+	userservice.NewApp("user-service").Run()
 }
