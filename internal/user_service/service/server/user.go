@@ -8,6 +8,7 @@ import (
 	"github.com/skeleton1231/gotal/internal/apiserver/store/model"
 	pb "github.com/skeleton1231/gotal/internal/proto/user"
 	"github.com/skeleton1231/gotal/internal/user_service/store"
+	"github.com/skeleton1231/gotal/pkg/log"
 )
 
 // userServiceServer 是 UserServiceServer 接口的实现
@@ -42,9 +43,18 @@ func (s *UserServiceServer) Create(ctx context.Context, req *pb.CreateRequest) (
 	obj := req.GetUser()
 	// 先初始化 user 变量
 	user := &model.User{
-		Email: obj.Email,
-		Name:  obj.Name,
+		Email:           obj.Email,
+		Name:            obj.Name,
+		EmailVerifiedAt: obj.GetEmailVerifiedAt().AsTime(),
+		TrialEndsAt:     obj.GetTrialEndsAt().AsTime(),
+		ObjectMeta: model.ObjectMeta{
+			Status: int(obj.GetMeta().Status),
+		},
 	}
+
+	log.Infof("EmailVerifiedAt: %+v\n", obj.GetEmailVerifiedAt().AsTime())
+	log.Infof("TrialEndsAt: %+v\n", obj.GetTrialEndsAt().AsTime())
+
 	// 然后调用 store 方法来创建用户
 	err := s.store.Users().Create(ctx, user, model.CreateOptions{})
 	if err != nil {
