@@ -7,34 +7,176 @@ Welcome to GoTAL, a Go-based enterprise project. This project utilizes a robust 
 
 ### Prerequisites
 - Golang environment setup
+- http server + grpc server (microservices)
 - MySQL and Redis services running
 - Necessary environment variables set for MySQL and Redis configurations
 
+### Framework Design
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│   Frontend    │       │   Frontend    │       │   Frontend    │     ...... (Different Roles Of Clients)
+│   (Customer)  │       │   (Admin)     │       │   (Robot)     │
+└───────┬───────┘       └───────┬───────┘       └───────┬───────┘
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│    BFF        │       │    BFF        │       │    BFF        │
+│  (Controller  │       │  (Controller  │       │  (Controller  │
+│   + Service)  │       │   + Service)  │       │   + Service)  │
+└───────┬───────┘       └───────┬───────┘       └───────┬───────┘
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│  Store Layer  │       │  Store Layer  │       │  Store Layer  │
+│ (gRPC Client) │       │ (gRPC Client) │       │ (gRPC Client) │
+└───────┬───────┘       └───────┬───────┘       └───────┬───────┘
+        │                       │                       │
+        ▼                       ▼                       ▼
+┌───────────────┐       ┌───────────────┐       ┌───────────────┐
+│ Backend gRPC  │       │ Backend gRPC  │       │ Backend gRPC  │
+│   Services    │       │   Services    │       │   Services    │
+│(Service +     │       │(Service +     │       │(Service +     │
+│    Store)     │       │    Store)     │       │    Store)     │
+└───────────────┘       └───────────────┘       └───────────────┘
+        │                       │                       │
+        └───────────────────────┴───────────────────────┘
+                                │
+                                ▼
+                           ┌───────────┐
+                           │  Database │
+                           └───────────┘
+
+
 ### Project Structure
 ```
-gotal/
+├── CHANGELOG
+├── CONTRIBUTING.md
+├── LICENSE
+├── Makefile
+├── README.md
 ├── api
 ├── build
 ├── cert
+│   ├── apiserver-key.pem
+│   ├── apiserver.pem
+│   ├── san.cnf
+│   ├── server.crt
+│   ├── server.csr
+│   └── server.key
 ├── cmd
-│   └── apiserver
+│   ├── apiserver
+│   │   ├──  stdout
+│   │   ├── apiserver
+│   │   └── apiserver.go
+│   ├── authzserver
+│   │   ├── authzserver
+│   │   └── authzserver.go
+│   ├── redis_test
+│   │   ├── main
+│   │   ├── main.go
+│   │   └── redis_test
+│   ├── rpc_test
+│   │   └── main.go
+│   └── user_service
+│       ├── user.go
+│       └── user_service
 ├── configs
+│   ├── apiserver-client.yaml
+│   ├── authzserver.yaml
+│   └── user-service.yaml
 ├── deployments
 ├── docs
 ├── githooks
 ├── go.mod
 ├── go.sum
+├── image.png
 ├── init
+├── init.sh
 ├── internal
 │   ├── apiserver
-│   └── pkg
+│   │   ├── app.go
+│   │   ├── auth.go
+│   │   ├── config
+│   │   ├── controller
+│   │   ├── grpc.go
+│   │   ├── options
+│   │   ├── router.go
+│   │   ├── run.go
+│   │   ├── server.go
+│   │   ├── service
+│   │   └── store
+│   ├── authzserver
+│   │   ├── app.go
+│   │   ├── config
+│   │   ├── options
+│   │   ├── run.go
+│   │   └── server.go
+│   ├── pkg
+│   │   ├── code
+│   │   ├── errors
+│   │   ├── logger
+│   │   ├── middleware
+│   │   ├── options
+│   │   ├── response
+│   │   ├── server
+│   │   ├── util
+│   │   └── validation
+│   ├── proto
+│   │   ├── options
+│   │   └── user
+│   └── user_service
+│       ├── app.go
+│       ├── config
+│       ├── doc.go
+│       ├── grpc.go
+│       ├── options
+│       ├── router.go
+│       ├── run.go
+│       ├── server.go
+│       ├── service
+│       └── store
 ├── logs
+│   ├── apiserver.error.log
+│   ├── apiserver.log
+│   └── user_service
+│       ├── user.error.log
+│       └── user.log
 ├── pkg
+│   ├── app
+│   │   ├── app.go
+│   │   ├── cmd.go
+│   │   ├── config.go
+│   │   ├── help.go
+│   │   └── option.go
+│   ├── cache
+│   │   ├── cache.go
+│   │   └── redis.go
+│   ├── cli
+│   ├── db
+│   │   ├── mysql.go
+│   │   └── plugin.go
+│   ├── log
+│   │   ├── context.go
+│   │   ├── encoder.go
+│   │   ├── log.go
+│   │   ├── options.go
+│   │   └── types.go
+│   ├── shutdown
+│   │   ├── managers
+│   │   └── shutdown.go
+│   ├── util
+│   │   ├── common
+│   │   ├── flag
+│   │   └── term
+│   └── validator
 ├── test
+│   └── ratelimiter-test.sh
+├── third_party
 └── tools
+
+61 directories, 64 files
 ```
 
-### Setup and Running
+### Setup and Running Http REST Server
 1. **Building the API server:**
    Navigate to the API server directory:
    ```
