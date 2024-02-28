@@ -87,7 +87,7 @@ func UserToProto(u *User) *pb.User {
 		PmLastFour:      u.PMLastFour,
 		TrialEndsAt:     timestamppb.New(u.TrialEndsAt),
 		TotalCredits:    int32(u.TotalCredits),
-		// Token字段通常用于认证响应，而不是作为用户模型的一部分发送，这里也不包括它
+		Password:        u.Password,
 	}
 }
 
@@ -125,6 +125,7 @@ func ProtoToUser(pbUser *pb.User) (*User, error) {
 		PMLastFour:      pbUser.GetPmLastFour(),
 		TrialEndsAt:     pbUser.GetTrialEndsAt().AsTime(),
 		TotalCredits:    int(pbUser.GetTotalCredits()),
+		Password:        pbUser.GetPassword(),
 	}
 
 	return user, nil

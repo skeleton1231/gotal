@@ -41,24 +41,25 @@ func GetUserInsOr(store store.Factory) (*UserServiceServer, error) {
 // 实现 Create 方法
 func (s *UserServiceServer) Create(ctx context.Context, req *pb.CreateRequest) (*pb.CreateResponse, error) {
 	obj := req.GetUser()
-	// 先初始化 user 变量
-	user := &model.User{
-		Email:           obj.Email,
-		Name:            obj.Name,
-		EmailVerifiedAt: obj.GetEmailVerifiedAt().AsTime(),
-		TrialEndsAt:     obj.GetTrialEndsAt().AsTime(),
-		ObjectMeta: model.ObjectMeta{
-			Status: int(obj.GetMeta().Status),
-		},
-	}
+	log.Infof("pb obj data: %+v\n", obj)
 
-	log.Infof("EmailVerifiedAt: %+v\n", obj.GetEmailVerifiedAt().AsTime())
-	log.Infof("TrialEndsAt: %+v\n", obj.GetTrialEndsAt().AsTime())
+	var err error
+	var user *model.User
+	user, err = model.ProtoToUser(obj)
+	if err != nil {
+		log.Errorf("model to proto fail: %+v\n", err)
+		return nil, err
+	}
+	log.Infof("user: %+v\n", user)
+
+	// log.Infof("EmailVerifiedAt: %+v\n", obj.GetEmailVerifiedAt().AsTime())
+	// log.Infof("TrialEndsAt: %+v\n", obj.GetTrialEndsAt().AsTime())
 
 	// 然后调用 store 方法来创建用户
-	err := s.store.Users().Create(ctx, user, model.CreateOptions{})
+	err = s.store.Users().Create(ctx, user, model.CreateOptions{})
 	if err != nil {
 		// 处理创建过程中可能发生的错误
+		log.Errorf("User Create fail: %+v\n", err)
 		return nil, err
 	}
 	// 如果创建成功，返回创建的用户信息

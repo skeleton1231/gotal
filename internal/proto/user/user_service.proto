@@ -28,7 +28,6 @@ message User {
     string name = 2;
     string email = 3;
     google.protobuf.Timestamp emailVerifiedAt = 4;
-    // 密码字段在这里不包括，因为它不应通过API传输
     string rememberToken = 5;
     string stripeId = 6;
     uint64 discordId = 7;
@@ -36,7 +35,7 @@ message User {
     string pmLastFour = 9;
     google.protobuf.Timestamp trialEndsAt = 10;
     int32 totalCredits = 11;
-    // Token字段通常用于认证响应，而不是作为用户模型的一部分发送，这里也不包括它
+    string password = 13; // 密码字段放在最后
 }
 
 message UserList {
