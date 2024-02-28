@@ -12,6 +12,7 @@ Welcome to GoTAL, a Go-based enterprise project. This project utilizes a robust 
 - Necessary environment variables set for MySQL and Redis configurations
 
 ### Framework Design
+```
 ┌───────────────┐       ┌───────────────┐       ┌───────────────┐
 │   Frontend    │       │   Frontend    │       │   Frontend    │     ...... (Different Roles Of Clients)
 │   (Customer)  │       │   (Admin)     │       │   (Robot)     │
@@ -44,7 +45,7 @@ Welcome to GoTAL, a Go-based enterprise project. This project utilizes a robust 
                            ┌───────────┐
                            │  Database │
                            └───────────┘
-
+```
 
 ### Project Structure
 ```
